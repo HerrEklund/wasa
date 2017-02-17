@@ -69,7 +69,7 @@ $( document ).ready(function () {
         }
     });
 
-    $("body").click(function () {
+    $("body").bind("click touchstart", function(){
         resetSelectionAndLineup();
     });
 
@@ -256,7 +256,7 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
     new_component.attr("rotation", 0);
 
     if (enable_component_rotation) {
-        new_component.click(function (event, ui) {
+        new_component.bind("click touchstart", function(event, ui) {
             var new_angle;
             var current_rotation = new_component.attr("rotation");
 
@@ -281,7 +281,7 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
     var DELAY = 300, clicks = 0, timer = null;
     if (enable_stack_selection) {
 
-        new_component.on("click", function(e){
+        new_component.bind("click touchstart", function(e){
 
             clicks++;  //count clicks
 
@@ -339,7 +339,7 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
 
 
         })
-        .on("dblclick", function(e){
+        .bind("dblclick", function(e){
             e.preventDefault();  //cancel system double-click event
         });
     }

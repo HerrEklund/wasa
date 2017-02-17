@@ -69,9 +69,15 @@ $( document ).ready(function () {
         }
     });
 
+    $("#game_board").bind("click touchstart", function(){
+        resetSelectionAndLineup();
+    });
+
+    // TODO: Not working on ipad?
     $("body").bind("click touchstart", function(){
         resetSelectionAndLineup();
     });
+
 
     /**
      * TODO: investigate how to enable lasso properly, not working well atm

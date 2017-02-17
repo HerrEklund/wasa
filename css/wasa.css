@@ -35,6 +35,9 @@
     .lineup_component {
         margin: 2px;
     }
+    #lineup_box {
+        width: 200px;
+    }
     .lineup_box_active {
         border: #fff solid 2px;
         border-radius: 8px;

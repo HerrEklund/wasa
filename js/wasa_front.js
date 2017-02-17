@@ -6,6 +6,7 @@ var game_id = 'foobar';
 // Default values
 var animate_transformation = true;
 var animate_duration = 400;
+var direct_lineup_box_on_double_click = false;
 
 jQuery.fn.rotate = function(degrees) {
     $(this).css({'transform' : 'rotate('+ degrees +'deg)'});
@@ -69,11 +70,11 @@ $( document ).ready(function () {
         }
     });
 
-    $("#game_board").bind("click touchstart tap", function(){
+    $("#game_board").bind("click tap", function(){
         resetSelectionAndLineup();
     });
 
-    $("#lineup_box").bind("click touchstart tap", function(){
+    $("#lineup_box").bind("click tap", function(){
         resetSelectionAndLineup();
     });
 
@@ -316,32 +317,24 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
                 // Custom Double click handler
                 console.log("duble click on "+new_component_id);
 
-                var position = new_component.position();
+
 
                 // Select all that share a coordiante with clicked element
                 var added_to_lineup = false;
 
                 // IF dbl clicked on selected, add all seleted to lineup
                 if(new_component.hasClass('selected_component')) {
-
-                    resetLineup();
-                    $('.selected_component').each(function () {
-                        addCloneToLineupBox($(this));
-                        added_to_lineup = true;
-                    });
+                     selectedToLineup(new_component);
                 } else {
                     $('.component').each(function () {
                         if( overlaps(new_component, $(this))) {
                             $(this).addClass('selected_component')
                         }
+                        if (direct_lineup_box_on_double_click) {
+                             selectedToLineup(new_component);
+                        }
                     });
 
-                }
-                if (added_to_lineup) {
-                    //addCloneToLineupBox($(e.target));
-
-                    // Lineup was added to, add clicked target to lineup also and move lineup to above clicked target
-                    placeLineupBox(position.left, position.top);
                 }
 
                 clearTimeout(timer);    //prevent single-click action
@@ -369,6 +362,17 @@ function resetSelectionAndLineup() {
     $('.selected_component').removeClass('selected_component');
 
     resetLineup();
+}
+
+function selectedToLineup(component) {
+    var position = component.position();
+
+    resetLineup();
+
+    $('.selected_component').each(function () {
+        addCloneToLineupBox($(this));
+    });
+    placeLineupBox(position.left, position.top);
 }
 
 function resetLineup() {

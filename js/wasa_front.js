@@ -73,10 +73,16 @@ $( document ).ready(function () {
         resetSelectionAndLineup();
     });
 
+    $("#lineup_box").bind("click touchstart tap", function(){
+        resetSelectionAndLineup();
+    });
+
     // TODO: Not working on ipad?
     $("body").bind("click touchstart tap", function(){
         resetSelectionAndLineup();
     });
+
+
 
 
     /**

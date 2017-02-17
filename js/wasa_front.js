@@ -79,7 +79,7 @@ $( document ).ready(function () {
     });
 
     // TODO: Not working on ipad?
-    $("body").bind("click touchstart tap", function(){
+    $("body").bind("click", function(){
         resetSelectionAndLineup();
     });
 
@@ -291,10 +291,10 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
         });
     }
 
-    var DELAY = 300, clicks = 0, timer = null;
+    var DELAY = 400, clicks = 0, timer = null;
     if (enable_stack_selection) {
 
-        new_component.bind("click touchstart", function(e){
+        new_component.bind("click tap", function(e){
 
             clicks++;  //count clicks
 
@@ -316,8 +316,6 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
             } else {
                 // Custom Double click handler
                 console.log("duble click on "+new_component_id);
-
-
 
                 // Select all that share a coordiante with clicked element
                 var added_to_lineup = false;

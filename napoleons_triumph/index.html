@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wasa - Napoleons Triumph</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../frameworks/jquery/jquery.ui.touch-punch.min.js"></script>
+
+    <script src="../frameworks/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../frameworks/bootstrap/css/bootswatch-darkly/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- WASA -->
+    <script src="../js/gui_extras.js"></script>
+    <script src="../js/wasa_front.js"></script>
+
+    <link rel="stylesheet" href="../css/gui_extras.css">
+    <link rel="stylesheet" href="../css/wasa.css">
+
+    <style>
+        /*
+            Add the game board here
+         */
+        #game_board {
+            background-image: url('maps/austerlitz.jpg');       /* Scale down image only if performance must be considered */
+            width: 3400px;                                      /* Note set height and width FIRST to set scale for components etc */
+            height: 4400px;                                     /* This will set the image to a hard size */
+            position: relative;
+            background-size:100%;
+            background-repeat: no-repeat;
+            background-color: inherit;
+            border: 0;
+        }
+        .block {
+            width: 30px;
+            height: 155px;
+            border: 2px white;
+        }
+
+        .french_guard_infantry {
+            background-image: url('components/france/guard_infantry.png');
+        }
+        .french_one_strength_artillery {
+            background-image: url('components/france/1_strength_artillery.png');
+        }
+        .french_two_strength_infantry {
+            background-image: url('components/france/2_strength_infantry.png');
+        }
+        .french_three_strength_infantry {
+            background-image: url('components/france/3_strength_infantry.png');
+        }
+        .french_two_strength_cavalry {
+            background-image: url('components/france/2_strength_cavalry.png');
+        }
+        .french_three_strength_cavalry {
+            background-image: url('components/france/3_strength_cavalry.png');
+        }
+        .french_leader_bessiers {
+            background-image: url('components/france/bessiers.png');
+        }
+        .french_leader_murat {
+            background-image: url('components/france/murat.png');
+        }
+
+
+        .allied_guard_infantry {
+            background-image: url('components/allies/guard_infantry.png');
+        }
+        .allied_one_strength_artillery {
+            background-image: url('components/allies/1_strength_artillery.png');
+        }
+        .allied_one_strength_infantry {
+            background-image: url('components/allies/1_strength_infantry.png');
+        }
+        .allied_two_strength_infantry {
+            background-image: url('components/allies/2_strength_infantry.png');
+        }
+        .allied_three_strength_infantry {
+            background-image: url('components/allies/3_strength_infantry.png');
+        }
+        .allied_one_strength_cavalry {
+            background-image: url('components/allies/1_strength_cavalry.png');
+        }
+        .allied_two_strength_cavalry {
+            background-image: url('components/allies/2_strength_cavalry.png');
+        }
+        .allied_three_strength_cavalry {
+            background-image: url('components/allies/3_strength_cavalry.png');
+        }        
+        .allied_leader_bagration {
+            background-image: url('components/allies/bagration.png');
+        }
+        .allied_leader_constantine {
+            background-image: url('components/allies/constantine.png');
+        }
+
+    </style>
+
+</head>
+
+<body class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <h4 id="game_id" class="pull-right">F312-B161</h4>
+            <h3><a href=".."><<<</a>Napoleons Triumph</h3>
+            <p>The Battle of Austerlitz, 2 December 1805</p>
+
+            <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>Note</strong> Game state is not saved at this time. Page reload will reset game board!
+            </div>
+
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h5>Game chat</h5>
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                </div>
+
+                <div class="panel-body">
+                    <textarea id="game_chat" class="form-control"></textarea>
+                    <input id="chat_input" class="form-control" placeholder="Free chat for players and observers.">
+                </div>
+
+            </div>
+
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h5>Game events</h5>
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+
+                </div>
+                <div class="panel-body">
+                    <textarea id="game_events" class="form-control"></textarea>
+                    <button type="button" class="btn btn-default" onclick="roll_D6()">Roll D6</button>
+                    <button type="button" class="btn btn-default" onclick="roll_2D6()">Roll 2D6</button>
+                    <input id="event_input" class="form-control" placeholder="Only use this box to comment on game events, rolls etc.">
+                </div>
+            </div>
+
+
+            <div class="panel panel-info">
+
+                <div class="panel-heading">French Counter tray <small> - Drag to board. Drag back to tray to delete.</small></div>
+                <div class="panel-body component_tray">
+                    <p>Note: Click or SHIFT-Click on blocks to rotate them on the map.</p>
+
+                    <div class="component_group">
+                        <div class="component new_component block french_guard_infantry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block french_one_strength_artillery rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block french_two_strength_cavalry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block french_three_strength_cavalry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block french_two_strength_infantry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block french_three_strength_infantry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block french_leader_bessiers rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block french_leader_murat rotatable"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+
+                <div class="panel-heading">Allied Counter tray <small> - Drag to board. Drag back to tray to delete.</small></div>
+                <div class="panel-body component_tray">
+                    <p>Note: Click or SHIFT-Click on blocks to rotate them on the map.</p>
+
+                    <div class="component_group">
+                        <div class="component new_component block allied_guard_infantry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block allied_one_strength_artillery rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block allied_one_strength_cavalry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block allied_two_strength_cavalry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block allied_three_strength_cavalry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block allied_one_strength_infantry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block allied_two_strength_infantry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block allied_three_strength_infantry rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block allied_leader_bagration rotatable"></div>
+                    </div>
+                    <div class="component_group">
+                        <div class="component new_component block allied_leader_constantine rotatable"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div id="game_board" class="ui-widget-header">
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

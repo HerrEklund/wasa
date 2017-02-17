@@ -1,0 +1,48 @@
+    body {
+        margin-left: 0;
+    }
+    textarea {
+        font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+        font-size: 9px;
+    }
+    #events_textarea {
+        font-size: smaller;
+        min-height: 300px;
+    }
+
+    .component_tray {
+        /* Droppable */
+    }
+    .component_group {
+        width: 100%;
+    }
+    .ui-widget-header p, .ui-widget-content p {
+        margin: 0;
+    }
+    /*
+        Add game specific game components must carry a class named component
+     */
+    .component {
+        float: left;
+        cursor: pointer;
+    }
+    .new_component {
+        margin: 3px;
+    }
+    .selected_component {
+        border: #fff solid 2px!important;
+    }
+    .lineup_component {
+        margin: 2px;
+    }
+    .lineup_box_active {
+        border: #fff solid 2px;
+        border-radius: 8px;
+        background-color: dimgrey;
+        z-index: 1000000;
+        padding: 10px;
+        opacity: 0.9;
+    }
+    .hidden_component {
+        display: none;
+    }

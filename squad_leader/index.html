@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wasa - Squad Leader</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../frameworks/jquery/jquery.ui.touch-punch.min.js"></script>
+
+    <script src="../frameworks/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../frameworks/bootstrap/css/bootswatch-darkly/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- WASA -->
+    <script src="../js/gui_extras.js"></script>
+    <script src="../js/wasa_front.js?version=10"></script>
+
+    <script src="../js/wasa_back.js?version=10"></script>
+
+    <link rel="stylesheet" href="../css/gui_extras.css">
+    <link rel="stylesheet" href="../css/wasa.css">
+
+    <style>
+
+        #game_board {
+            background-image: url('maps/map1_west.jpg');
+            height: 1290px;
+            width: 1200px;
+            position: relative;
+            background-size:100%;
+            background-repeat: no-repeat;
+            background-color: inherit;
+            border: 0;
+        }
+
+        .sl_counter_extra {
+            font-size: 9px;
+        }
+        .sl_counter_numbers {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .sl_counter_figure {
+            height: 60%;
+            width: 100%;
+            margin-bottom: 0px;
+        }
+        .sl_counter_small {
+            /* Custom for this game */
+            width: 50px;
+            height: 50px;
+            padding: 2px;
+            border-top: 1px solid #111;
+            border-left: 1px solid #111;
+            border-radius: 4px;
+            color: black;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            box-shadow: 3px 3px 2px #111;
+            text-align: center;            
+        }
+        
+        .us {
+            background-color: #c4c24b;
+        }
+
+        .rus {
+            background-color: #b08037;
+        }
+
+        .ger {
+            background-color: #96b6cd;
+        }
+    </style>
+
+</head>
+
+<body class="container-fluid">
+
+    <script type="application/javascript">
+
+        // Set from splash screen
+        var GAME_ID='AF';
+
+        var wasa_client;
+        var wasa_backend_host = '88.99.168.32';
+        var wasa_backend_port = '7379';
+
+        var animate_transformation = true;
+        var animate_duration = 100;
+
+        // Don't enable both rotation with stack selection on click
+        var enable_component_rotation = false;
+        var enable_stack_selection = true;
+
+        $(document).ready( function() {
+
+            $('#game_id_header').innerHTML = GAME_ID;
+
+            wasa_client = new WasaClient(wasa_backend_host, wasa_backend_port, game_id, username, game_event_notification_handler, game_event_handler);
+
+            /**
+             *
+             * This piece may be a bit application specific
+             *
+             *   Load all events is a good start to get the player to the front, but there is room
+             *   for a custom start here. Depending on supplied keys etc,
+             *      - observer or player?
+             *      - setup new scenario or continue?
+            */
+            wasa_client.load_all_events(function () {
+                // Slow down animations after all existing elements was loaded
+                animate_duration = 400;
+            });
+
+        });
+
+        function game_event_notification_handler(notification) {
+            /**
+             * In case you have implemented game specific events, you can be notified of state changes
+             *  the generic game logic (create, move, rotate etc.) has taken place already.
+             */
+            console.log("Application received event notification:" + notification);
+        }
+
+        function game_event_handler(ge) {
+            /**
+             * WASA handles the basic stuff of chat, create, move, delete, rotate etc.
+             *
+             * But you could of course add game specific events here
+             *
+             */
+            console.log("Application received event:" + JSON.stringify(ge));
+
+            if(ge['event_type'] == 'chat') {
+                addChatMessage(ge);
+            }
+            else if (ge['event_type'] == 'create_component') {
+                createAndAddComponentToGameBoard(ge);
+            }
+            else if (ge['event_type'] == 'move_component') {
+                moveComponent(ge);
+            }
+            else if (ge['event_type'] == 'delete_component') {
+                deleteComponent(ge);
+            }
+            else if (ge['event_type'] == 'rotate_component') {
+                rotateComponent(ge);
+            }
+            else if (ge['event_type'] == 'rotate_component') {
+                rotateComponent(ge);
+            }
+            else if (ge['event_type'] == 'dice_roll') {
+                handleDiceRollEvent(ge);
+            }
+            else {
+                console.error("Unhandled event type "+ge['event_type']);
+            }
+        }
+
+
+    </script>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Game lobby</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Enter an email address and password to protect your games. You can not change email and password without losing access yo your current games.</p>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <form>
+                              <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                              </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-3" style="border-left: 1px solid grey; height: 100%;">
+                            <button type="button" class="btn btn-sm btn-danger">Reset game</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div id="pulled_header">
+                <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">
+                    Game lobby
+                </button>
+                <h3 id="game_id_header" class=""> </h3>
+            </div>
+            <h2><a href=".."><<<</a>Squad Leader</h2>
+            <p>THE GUARDS COUTNERATTACK - A test scenario of the Wasa online board game engine.</p>
+
+            <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>Note:</strong>
+                <p>Game is still in <strong>alpha stage</strong> development and any game my be erased or appear buggy at times.</p>
+            </div>
+
+            <div class="alert alert-info alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>Tips</strong>
+                <ul>
+                    <li>Use your browser zoom-tools! (Ctrl or ALT + plus/minus).</li>
+                    <li>If on a touch-screen, Pan and Pinch zoom.</li>
+                    <li>Drag components from the tray to the map.</li>
+                    <li>Components moved will immediately be moved on all viewing game boards also.</li>
+                    <li>Double click to select a stack of components.</li>
+                    <li>Double click on any selected component to inspect all selected. Click anywhere to dismiss inspection.</li>
+                </ul>
+            </div>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h5>Events</h5>
+                    <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+
+                </div>
+                <div class="panel-body">
+                    <textarea id="events_textarea" class="form-control"></textarea>
+
+                    <button type="button" class="btn btn-default" onclick="roll_D6()">Roll D6</button>
+                    <button type="button" class="btn btn-default" onclick="roll_2D6()">Roll 2D6</button>
+
+                    <input id="event_input" class="form-control" placeholder="Chat, comments, clarificatins or /help">
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+
+                <div class="panel-heading">Counter tray <small class="text-muted">Drag to board. Drag back to tray to delete.</small></div>
+                <div class="panel-body component_tray">
+                    <div class="component_group">
+                        <div class="component new_component ger sl_counter_small" id="ger_sgt_kelso">
+                            <div class="sl_counter_figure">
+                                <p class="sl_counter_extra">
+                                    Sgt. Kelso
+                                </p>
+                            </div>
+                            <p class="sl_counter_numbers">9-1</p>
+                        </div>
+                        <div class="component new_component ger sl_counter_small" id="ger_cpt_pollack">
+                            <div class="sl_counter_figure">
+                                <p class="sl_counter_extra">
+                                    Cpt. Pollack
+                                </p>
+                            </div>
+                            <p class="sl_counter_numbers">8-0</p>
+                        </div>
+                        <div class="component new_component ger sl_counter_small" id="ger_cpl_welzeberge">
+                            <div class="sl_counter_figure">
+                                <p class="sl_counter_extra">
+                                    Cpl. Welzeberge
+                                </p>
+                            </div>
+                            <p class="sl_counter_numbers">9-2</p>
+                        </div>
+                        <div class="component new_component ger sl_counter_small" id="ger_sgt_kamblen">
+                            <div class="sl_counter_figure">
+                                <p class="sl_counter_extra">
+                                    Sgt. Kamblen
+                                </p>
+                            </div>
+                            <p class="sl_counter_numbers">8-1</p>
+                        </div>
+                        <div class="component new_component ger sl_counter_small" id="ger_sgt_hieken">
+                            <div class="sl_counter_figure">
+                                <p class="sl_counter_extra">
+                                    Sgt. Hieken
+                                </p>
+                            </div>
+                            <p class="sl_counter_numbers">8-1</p>
+                        </div>
+                        <div class="component new_component ger sl_counter_small" id="ger_inf_467">
+                            <div class="sl_counter_figure">
+
+                            </div>
+                            <p class="sl_counter_numbers">4-6-7</p>
+                        </div>
+                        <div class="component new_component ger sl_counter_small" id="ger_LMG_28">
+                            <div class="sl_counter_figure">
+                                <span class="sl_counter_numbers">LMG</span>
+                                <p class="sl_counter_extra">2-8</p>
+                            </div>
+                            <p class="sl_counter_numbers">B12</p>
+                        </div>
+                        <div class="component new_component ger sl_counter_small" id="ger_MMG_412">
+                            <div class="sl_counter_figure">
+                                <span class="sl_counter_numbers">MMG</span>
+                                <p class="sl_counter_extra">4-12</p>
+                            </div>
+                            <p class="sl_counter_numbers">B12</p>
+                        </div>
+                        <div class="component new_component ger sl_counter_small" id="ger_HMG_612">
+                            <div class="sl_counter_figure">
+                                <span class="sl_counter_numbers">HMG</span>
+                                <p class="sl_counter_extra">6-12</p>
+                            </div>
+                            <p class="sl_counter_numbers">B12</p>
+                        </div>
+
+
+                        <div class="component new_component rus sl_counter_small" id="rus_com_cohenov">
+                            <div class="sl_counter_figure">
+                                <p class="sl_counter_extra">
+                                    Com. Cohenov
+                                </p>
+                            </div>
+                            <p class="sl_counter_numbers">8-0</p>
+                        </div>
+                        <div class="component new_component rus sl_counter_small" id="rus_lt_dubovich">
+                            <div class="sl_counter_figure">
+                                <p class="sl_counter_extra">
+                                    Lt. Dubovich
+                                </p>
+                            </div>
+                            <p class="sl_counter_numbers">9-1</p>
+                        </div>
+                        <div class="component new_component rus sl_counter_small" id="rus_col_berki">
+                            <div class="sl_counter_figure">
+                                <p class="sl_counter_extra">
+                                    Col. Berki
+                                </p>
+                            </div>
+                            <p class="sl_counter_numbers">10-2</p>
+                        </div>
+                        <div class="component new_component rus sl_counter_small" id="rus_inf_447">
+                            <div class="sl_counter_figure ">
+
+                            </div>
+                            <p class="sl_counter_numbers">4-4-7</p>
+                        </div>
+                        <div class="component new_component rus sl_counter_small" id="rus_inf_628">
+                            <div class="sl_counter_figure ">
+
+                            </div>
+                            <p class="sl_counter_numbers">6-2-8</p>
+                        </div>
+                        <div class="component new_component rus sl_counter_small" id="rus_MMG_410">
+                            <div class="sl_counter_figure">
+                                <span class="sl_counter_numbers">MMG</span>
+                                <p class="sl_counter_extra">4-10</p>
+                            </div>
+                            <p class="sl_counter_numbers">B11</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <div id="game_board" class="ui-widget-header">
+                <div id="lineup_box">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

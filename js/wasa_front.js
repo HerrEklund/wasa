@@ -40,6 +40,7 @@ $( document ).ready(function () {
 
 
     $(".new_component").draggable({
+        grid: [ 5, 5 ],
         helper: "clone",
         appendTo: "#game_board",
     });
@@ -69,18 +70,23 @@ $( document ).ready(function () {
             ghost_component.remove();
         }
     });
+    // Draggable lineup box?
+    $('#lineup_box').draggable({});
 
-    $("#game_board").bind("click tap", function(){
+    $("#game_board").bind("click tap", function(e){
         resetSelectionAndLineup();
+        e.stopPropagation();
     });
 
-    $("#lineup_box").bind("click tap", function(){
+    $("#lineup_box").bind("click tap", function(e){
         resetSelectionAndLineup();
+        e.stopPropagation();
     });
 
     // TODO: Not working on ipad?
-    $("body").bind("click", function(){
+    $("body").bind("click", function(e){
         resetSelectionAndLineup();
+        e.stopPropagation();
     });
 
 
@@ -231,6 +237,7 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
     new_component.removeClass("new_component");
 
     new_component.draggable({
+        grid: [ 5, 5 ],
         start: function (event, ui) {
             // Will move selected component to top when touched
             var topZ = 0;
@@ -295,60 +302,32 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
     if (enable_stack_selection) {
 
         new_component.bind("click tap", function(e){
+            console.log("Click on component!");
 
-            clicks++;  //count clicks
+            if(new_component.hasClass('selected_component')) {
+                // Clear selection before doing stack selection (and possibly auto-open lineup box)
+                $('.selected_component').removeClass('selected_component');
 
-            if(clicks === 1) {
-                console.log("click on "+new_component_id);
-
-                timer = setTimeout(function() {
-                    if (new_component.hasClass('selected_component')) {
-                        new_component.removeClass('selected_component');
-                    } else {
-                        resetLineup();
-                        new_component.addClass('selected_component');
+                $('.component').each(function () {
+                    if( overlaps(new_component, $(this))) {
+                        $(this).addClass('selected_component')
                     }
-
-                    clicks = 0;             //after action performed, reset counter
-
-                }, DELAY, new_component_id);
-
+                    if (direct_lineup_box_on_double_click) {
+                         selectedToLineup(new_component);
+                    }
+                });
             } else {
-                // Custom Double click handler
-                console.log("duble click on "+new_component_id);
-
-                // Select all that share a coordiante with clicked element
-                var added_to_lineup = false;
-
-                // IF dbl clicked on selected, add all seleted to lineup
-                if(new_component.hasClass('selected_component')) {
-                     selectedToLineup(new_component);
-                } else {
-                    $('.component').each(function () {
-                        if( overlaps(new_component, $(this))) {
-                            $(this).addClass('selected_component')
-                        }
-                        if (direct_lineup_box_on_double_click) {
-                             selectedToLineup(new_component);
-                        }
-                    });
-
-                }
-
-                clearTimeout(timer);    //prevent single-click action
-                clicks = 0;             //after action performed, reset counter
+                new_component.addClass('selected_component');
             }
+
             e.stopPropagation();
-
-
-        })
-        .bind("dblclick", function(e){
-            e.preventDefault();  //cancel system double-click event
         });
     }
 
     new_component.dblclick(function (event, ui) {
         // Warning, it is not advised to both use a click AND dblclick handler
+
+        // Warning, doubleclick (real or sythesized with timers) seem to work half bad on touch
     });
 
     new_component.prop('title', 'ID='+new_component_id);
@@ -393,7 +372,7 @@ function addCloneToLineupBox(component) {
 
     lineup_clone.appendTo('#lineup_box');
 
-    lineup_clone.draggable( 'disable' );
+    lineup_clone.draggable();
 
     // Hide original
     component.addClass('hidden_component');
@@ -401,8 +380,9 @@ function addCloneToLineupBox(component) {
 }
 
 function placeLineupBox(left, top) {
-  $('#lineup_box').css({top: top, left: left, position:'absolute'});
+    $('#lineup_box').css({top: top + 60, left: left, position: 'absolute'});
 }
+
 
 
 var overlaps = (function () {

@@ -26,22 +26,26 @@
 
     <h2>Wasa <small>web based multiplayer board game concept</small></h2>
     <p class="lead">
-        A concept for an online board-game platform based on a single REDIS database as backend (NO server side logic!).
-        The technology can be applied to any board/counter/dice based game.
+        Wasa is a concept for a fully online board-game platform. Wasa explores how modern web technologies can enable
+        classic board games to be enjoyed on modern platforms such as touch devices as well as on large-screen PCs.
     </p>
 
     <h3>Features</h3>
+    <p>What makes Wasa different from other board-game (online or not) solutions.</p>
     <ul>
         <li>Web based solution - works on any platform.</li>
-        <li>Mobile first - Must work great on touch-screens such as smartphones or iPads</li>
+        <li><strong>Mobile first</strong> - Must work great on touch-screens such as smartphones or iPads</li>
         <li>Quick access - One link to start or continue game.</li>
-        <li>Allow observers just as easily to join in</li>
-        <li>No rules - just movement of componets on a board. New games are easily added.</li>
-        <li>Everything is recorded instantly - no cheating possible.</li>
+        <li>Live movements, everything is instantly seen by other players.</li>
+        <li>Generic - Wasa focuses on component movement and interactions, less on specific game rules.</li>
     </ul>
     <p>The draw-back is of course that players must know the rules and there is no automatic score/resource counting etc.</p>
 
     <h3>Technical stuff</h3>
+    <ul>
+        <li>"Standard" Bootstrap / Jquery(UI) solution</li>
+        <li>Websocket event notification for instant and no page refresh experience.</li>
+    </ul>
     <p>The backend is based on a Redis database which the HTML5/Javascript client interacts with. The security comes
     from client-side generated Keys to create and find games as well as client side generated public and private key-pairs.</p>
 
@@ -51,7 +55,12 @@
     the game will receive the updates instantly - no page reload needed.</p>
 
     <h3>Demo games</h3>
-    <p>The content below serves as a demo for the concept and will be updated along the way.</p>
+    <p>The content below serves as a demo for the concept and will be updated along the way. While features are added
+        continuously, Wasa aims to implement games with the following characteristics at this time: </p>
+        <ul>
+            <li>Complex wargames (ie. tries to handle stacks of components, component flipping, rotation etc)</li>
+            <li>No hidden informations (ie no decks of cards, no bags with chits, no hidden tokens, no block games)</li>
+        </ul>
 
     <div class="row">
         <div class="col-md-4">

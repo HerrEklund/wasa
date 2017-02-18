@@ -19,9 +19,9 @@
 
     <!-- WASA -->
     <script src="../js/gui_extras.js"></script>
-    <script src="../js/wasa_front.js?version=12"></script>
+    <script src="../js/wasa_front.js?version=13"></script>
 
-    <script src="../js/wasa_back.js?version=12"></script>
+    <script src="../js/wasa_back.js?version=13"></script>
 
     <link rel="stylesheet" href="../css/gui_extras.css">
     <link rel="stylesheet" href="../css/wasa.css">
@@ -99,13 +99,18 @@
         var enable_component_rotation = false;
         var enable_stack_selection = true;
 
+        var component_id = 0;
+        var username = 'Guest';
+        var game_id = 'foobar';
+
+        // Default values
         var direct_lineup_box_on_double_click = true;
 
         $(document).ready( function() {
 
             $('#game_id_header').innerHTML = GAME_ID;
 
-            wasa_client = new WasaClient(wasa_backend_host, wasa_backend_port, game_id, username, game_event_notification_handler, game_event_handler);
+            wasa_client = new WasaClient(wasa_backend_host, wasa_backend_port, GAME_ID, username, game_event_notification_handler, game_event_handler);
 
             /**
              *
@@ -123,12 +128,19 @@
 
         });
 
-        function game_event_notification_handler(notification) {
+        function game_event_notification_handler(command_event) {
             /**
              * In case you have implemented game specific events, you can be notified of state changes
              *  the generic game logic (create, move, rotate etc.) has taken place already.
              */
-            console.log("Application received event notification:" + notification);
+            console.log("Application received command event:" + command_event);
+
+            if (command_event['command'] == 'new_event') {
+                var event_list_length = parseInt(command_event['parameters']['events']);
+
+                // TODO: Load all events that the client has not yet seen, so could be load range or load single here!
+                wasa_client.load_event(event_list_length);
+            }
         }
 
         function game_event_handler(ge) {
@@ -192,7 +204,7 @@
                             </form>
                         </div>
                         <div class="col-sm-3" style="border-left: 1px solid grey; height: 100%;">
-                            <button type="button" class="btn btn-sm btn-danger">Reset game</button>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="wasa_client.reset_game();">Reset game</button>
                         </div>
 
                     </div>

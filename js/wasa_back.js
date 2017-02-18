@@ -160,6 +160,13 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
         store_event_to_list(JSON.stringify(dice_event));
     };
 
+    that.reset_game = function() {
+        confirm("Are you sure?\n\nThis can not be undone.");
+        async_get_jsonp('/DEL/'+wasa_event_list_name, function (data) {
+            alert("Game reset!");
+        });
+    };
+
     function store_event_to_list(json_event) {
         // 1) Store to backend
         //wasaSocket.send(JSON.stringify(["LPUSH", that.wasa_event_list_name, json_event]));
@@ -171,7 +178,15 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
 
             // Publish the index of the event that was stored
             var event_index = data['RPUSH'];
-            async_get_jsonp('/PUBLISH/' + wasa_event_channel_name + '/'+ event_index);
+
+            var command_event = {
+                'command': 'new_event',
+                'parameters': {
+                    'events': event_index - 1
+                }
+            };
+
+            async_get_jsonp('/PUBLISH/' + wasa_event_channel_name + '/'+ JSON.stringify(command_event));
         });
     }
 
@@ -179,7 +194,7 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
         return Math.floor(Date.now() / 1000);
     }
 
-    /* Listen to a PUBSUB channel using chunked encoding*/
+    /* Listen to a PUBSUB channel using chunked encoding */
     function subscribe(channel_name, game_event_notification_handler) {
         that.previous_response_length = 0;
         that.xhr = new XMLHttpRequest();
@@ -201,21 +216,18 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
             console.log("PubSub data received: "+pubsub_payload);
 
             if (pubsub_payload['SUBSCRIBE'][0] == 'message') {
-                var event_list_length = pubsub_payload['SUBSCRIBE'][2];
+                // TODO: Use somekind of key-based scheme to verify the command_events
+                var command_event_json = pubsub_payload['SUBSCRIBE'][2];
 
-                /* Two strategies:
-                    1) Either this is a notification of new events available, clients must then fetch to get up to date
-
-                    2) The message contain the actual event data, so just let the application callback handle it,
-                */
-                //
-
-                // TODO: Load all events that the client has not yet seen
-                // so could be load range or load single here!
-                that.load_event(parseInt(event_list_length) - 1);
-
-                // Forward the event to the Application in case we need to extend this
-                that.game_event_notification_handler(event_list_length);
+                /**
+                 *   command_event =  {
+                 *       'command': 'command_name'
+                 *       'parameters': [p0, p1, p2 ... ]
+                 *   }
+                 *
+                 */
+                var command_event = JSON.parse(command_event_json);
+                game_event_notification_handler(command_event);
             }
         }
     }

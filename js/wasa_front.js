@@ -298,12 +298,9 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
         });
     }
 
-    var DELAY = 400, clicks = 0, timer = null;
     if (enable_stack_selection) {
-
         new_component.bind("click tap", function(e){
             console.log("Click on component!");
-
             if(new_component.hasClass('selected_component')) {
                 // Clear selection before doing stack selection (and possibly auto-open lineup box)
                 $('.selected_component').removeClass('selected_component');

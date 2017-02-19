@@ -29,8 +29,8 @@
     <style>
 
         #game_board {
-            background-image: url('maps/map1_west.jpg');
-            height: 1290px;
+            background-image: url('../img/squad_leader/maps/map1_west.jpg');
+            height: 800px;
             width: 1200px;
             position: relative;
             background-size:100%;
@@ -85,7 +85,7 @@
     <script type="application/javascript">
 
         // Set from splash screen
-        var GAME_ID='AF';
+        var GAME_ID='SL_TEST';
 
         var wasa_client;
         var wasa_backend_host = '88.99.168.32';
@@ -152,11 +152,11 @@
              */
             console.log("Application received event:" + JSON.stringify(ge));
 
-            $('#game_board').addClass('board_flash');
+            $('#game_board').addClass('board_flash_white');
 
             setTimeout(function () {
-                $('#game_board').removeClass('board_flash');
-            }, 1500);
+                $('#game_board').removeClass('board_flash_white');
+            }, 250);
 
             if(ge['event_type'] == 'chat') {
                 addChatMessage(ge);

@@ -25,10 +25,16 @@
 <body class="container">
 
     <h2>Wasa <small>web based multiplayer board game concept</small></h2>
+    <hr>
     <p class="lead">
         Wasa is a concept for a fully online board-game platform. Wasa explores how modern web technologies can enable
-        classic board games to be enjoyed on modern platforms such as touch devices as well as on large-screen PCs.
+        board games to be enjoyed on modern platforms such as touch devices as well as on large-screen PCs.
     </p>
+
+    <div class="alert alert-warning">
+        <strong>Disclaimer!</strong> Wasa is not a fully working board game solution. It is a project made to explore
+        how real time web-based touch-interface gaming could work. It is a work in process.
+    </div>
 
     <h3>Features</h3>
     <p>What makes Wasa different from other board-game (online or not) solutions.</p>
@@ -65,30 +71,37 @@
     <div class="row">
         <div class="col-md-4">
             <h4>Features working</h4>
+            <p>All features are implemented with touch support first in mind (must work great on both PCs and iPads etc.).
             <ul>
-                <li>Draggable markers</li>
-                <li>Markers move to top when moved</li>
-                <li>Touch support! (Try pinch-zoom and pan on iPad, it looks and feels great!)</li>
+                <li>State synchronization between multiple browsers!</li>
+                <li>In-game chat.</li>
+                <li>Current game history loaded when first entering game.</li>
+                <li>Counter move animations.</li>
+                <li>Draggable markers.</li>
+                <li>Rotatable markers (if enabled and useful).</li>
+                <li>Markers move to top when moved.</li>
+                <li>Stack selection (select all overlapping).</li>
+                <li>Peek into stacks.</li>
+                <li>Selectable markers<./li>
+                <li>Counter coloring.</li>
+                <li>Draggable panels (Tray, game board etc.)</li>
             </ul>
         </div>
         <div class="col-md-4">
             <h4>Major features currently in development</h4>
             <ul>
-                <li>Simple event notification (chat comming first)</li>
+                <li>Simple Game lobby (select or create new private game)</li>
             </ul>
-            <h4>Minor features currently in development</h4>
+            <h4>Cool features in investigation or development</h4>
             <ul>
-                <li>Peek into stacks without generating events (even for observers)</li>
+                <li>Turn concept (ie. lock board of others while acting in your turn)</li>
+                <li>Offline mode (stack events locally until connection is made)</li>
             </ul>
         </div>
         <div class="col-md-4">
             <h4>Backlog</h4>
             <ul>
-                <li>Game component source (ie. game box) - drag from it to create components.</li>
-                <li>Game componenent generator script from VASSAL module.</li>
-                <li>Saving of game state in backend</li>
-                <li>Load of complete game state</li>
-                <li>Component move notifications.</li>
+                <li>Game component generator script from VASSAL module.</li>
                 <li>Secure messages by key signing.</li>
             </ul>
         </div>
@@ -102,7 +115,26 @@
             <th>Game</th>
             <th>Status</th>
             <th>Special needs</th>
-            <th>Comments</th>
+            <th>Goals</th>
+        </tr>
+        <tr>
+            <td>
+                <div class="game_container">
+                    <a href="red_winter/">
+                        <img class="game_image" src="./img/red_winter/vassal/splash.png"><br>
+                        <strong>Red Winter</strong>
+                    </a> - The Soviet Attack at Tolvajärvi, Finland 1939
+                </div>
+            </td>
+            <td><strong class="text-danger">Not playable!</strong> Map and draggable panels. Still using SL component tray</td>
+            <td>
+                Flipping of components. Maybe rotation. Dice.
+            </td>
+            <td>
+                Generate the full component set from the Vassal file. Generalize library code
+                even further to accomodate both Red Storm and Squad Leader with minimum
+                game specific logic and markup.
+            </td>
         </tr>
         <tr>
             <td>
@@ -113,13 +145,13 @@
                     </a> - The guards counter-attack scenario only
                 </div>
             </td>
-            <td>Solo playable but game state will be refreshed on page reload!</td>
+            <td><strong class="text-success">Playable!</strong></td>
             <td>
                 Flipping of components. Maybe rotation. Dice.
             </td>
-            <th>
-                -
-            </th>
+            <td>
+                All the basic features was developed using this small game scenario.
+            </td>
         </tr>
         <tr>
             <td>
@@ -134,9 +166,10 @@
             <td>
                 Flip and rotation of components.
             </td>
-            <th>
-                -
-            </th>
+            <td>
+                This game needs component rotation and also the ability to flip/hide the components
+                until they are revealed to the opponent.
+            </td>
         </tr>
     </table>
 

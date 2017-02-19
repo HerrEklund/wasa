@@ -38,11 +38,17 @@ $( document ).ready(function () {
         }
       };
 
+    $(".wasa_panel").draggable({
+        handle: '.panel-heading',
+        stack: ".wasa_panel"
+    });
+
+    $(".resizable").resizable();
 
     $(".new_component").draggable({
         grid: [ 5, 5 ],
         helper: "clone",
-        appendTo: "#game_board",
+        appendTo: "#game_board"
     });
     $(".component_tray").droppable({
         accept: '.component',
@@ -96,7 +102,8 @@ $( document ).ready(function () {
 
     $(".cb_mark").bind("click tap", function(e) {
 
-        var cbox_border_color = $(e.target).css('border-color');
+        // Extract border-bottom-color as "border-color" is not always defined in all browsers
+        var cbox_border_color = $(e.target).css('border-bottom-color');
 
         var component_ids = [];
         $('.selected_component').each(function () {
@@ -271,6 +278,19 @@ function handleDiceRollEvent(dice_roll_event) {
  *  GUI Support functions
  *
  */
+function placeComponentOnTop(component) {
+    // Will move selected component to top when touched
+    var topZ = 0;
+    var topZ_element;
+    $('.component').each(function () {
+        var thisZ = parseInt($(this).css('zIndex'), 10);
+        if (thisZ > topZ) {
+            topZ = thisZ;
+            topZ_element = this;
+        }
+    });
+    component.css('zIndex', topZ + 1);
+}
 function addComponentToGameBoard(new_component, new_component_id, top, left) {
 
     new_component.appendTo('#game_board');
@@ -283,17 +303,7 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
     new_component.draggable({
         grid: [ 5, 5 ],
         start: function (event, ui) {
-            // Will move selected component to top when touched
-            var topZ = 0;
-            var topZ_element;
-            $('.component').each(function () {
-                var thisZ = parseInt($(this).css('zIndex'), 10);
-                if (thisZ > topZ) {
-                    topZ = thisZ;
-                    topZ_element = this;
-                }
-            });
-            $(event.target).css('zIndex', topZ + 1);
+            placeComponentOnTop($(event.target));
         },
         stop: function(event, ui) {
             var coordinates = $(event.target).position();
@@ -372,6 +382,8 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
     });
 
     new_component.prop('title', 'ID='+new_component_id);
+
+    placeComponentOnTop(new_component);
 }
 
 function resetSelectionAndLineup() {

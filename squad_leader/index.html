@@ -19,7 +19,7 @@
 
     <!-- WASA -->
     <script src="../js/gui_extras.js"></script>
-    <script src="../js/wasa_front.js?version=15"></script>
+    <script src="../js/wasa_front.js?version=16"></script>
 
     <script src="../js/wasa_back.js?version=15"></script>
 
@@ -56,8 +56,7 @@
             width: 50px;
             height: 50px;
             padding: 2px;
-            border-top: 1px solid #111;
-            border-left: 1px solid #111;
+            border: 2px solid #111;
             border-radius: 4px;
             color: black;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -92,8 +91,8 @@
         var wasa_backend_host = '88.99.168.32';
         var wasa_backend_port = '7379';
 
-        var animate_transformation = true;
-        var animate_duration = 100;
+        var animate_transformation = false;
+        var animate_duration = 0;
 
         // Don't enable both rotation with stack selection on click
         var enable_component_rotation = false;
@@ -123,6 +122,7 @@
             */
             wasa_client.load_all_events(function () {
                 // Slow down animations after all existing elements was loaded
+                animate_transformation = true;
                 animate_duration = 400;
             });
 
@@ -221,7 +221,7 @@
 
     <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-sm-3">
             <div id="pulled_header">
                 <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">
                     Game lobby
@@ -245,8 +245,9 @@
                     <li>If on a touch-screen, Pan and Pinch zoom.</li>
                     <li>Drag components from the tray to the map.</li>
                     <li>Components moved will immediately be moved on all viewing game boards also.</li>
-                    <li>Double click to select a stack of components.</li>
-                    <li>Double click on any selected component to inspect all selected. Click anywhere to dismiss inspection.</li>
+                    <li>Click to select a stack of components.</li>
+                    <li>Click again on any selected component to inspect a stack. Click anywhere to dismiss inspection.</li>
+                    <li>While inspecting, you can drag a component as from the component location.</li>
                 </ul>
             </div>
 
@@ -389,14 +390,21 @@
             </div>
 
         </div>
-        <div class="col-md-8">
+        <div class="col-sm-9">
             <div id="game_board" class="ui-widget-header">
                 <div id="lineup_box">
+                    <div class="cbox_holder">
+                        <div class="cbox cb_unmark"></div>
+                        <div class="cbox cb_mark cb_red"></div>
+                        <div class="cbox cb_mark cb_green"></div>
+                        <div class="cbox cb_mark cb_blue"></div>
+                        <div class="cbox cb_mark cb_yellow"></div>
+                        <div class="cbox cb_mark cb_pink"></div>
+                        <div class="cbox cb_mark cb_cyan"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 </body>
 </html>

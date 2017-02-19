@@ -82,16 +82,25 @@ $( document ).ready(function () {
         resetSelectionAndLineup();
         e.stopPropagation();
     });
-
-    // TODO: Not working on ipad?
-    $("body").bind("click", function(e){
-        resetSelectionAndLineup();
-        e.stopPropagation();
+    $(".cb_unmark").bind("click tap", function () {
+        // Remove marked if already marked
+        $('.selected_component.marked_component').removeClass('marked_component');
+        $('.selected_component').css({'border-color': '#111'});
     });
 
+    $(".cb_mark").bind("click tap", function(e) {
 
+        var cbox_border_color = $(e.target).css('border-color');
 
+        // Just for testing, move to event callback when working ok   border:
+        $('.selected_component').css({'border-color': cbox_border_color});
+        $('.selected_component').addClass('marked_component');
+        resetSelectionAndLineup();
 
+        $('.selected_component').each(function () {
+            // Need to send marked event for each component, component name and color etc.
+        })
+    });
     /**
      * TODO: investigate how to enable lasso properly, not working well atm
      *
@@ -303,7 +312,7 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
             console.log("Click on component!");
             if(new_component.hasClass('selected_component')) {
                 // Clear selection before doing stack selection (and possibly auto-open lineup box)
-                $('.selected_component').removeClass('selected_component');
+                //$('.selected_component').removeClass('selected_component');
 
                 $('.component').each(function () {
                     if( overlaps(new_component, $(this))) {
@@ -359,6 +368,8 @@ function resetLineup() {
     $('.hidden_component').removeClass('hidden_component');
 
     $('#lineup_box').removeClass('lineup_box_active');
+    $('#lineup_box').hide();
+
 }
 
 function addCloneToLineupBox(component) {
@@ -373,11 +384,12 @@ function addCloneToLineupBox(component) {
 
     // Hide original
     component.addClass('hidden_component');
-    $('#lineup_box').addClass('lineup_box_active');
 }
 
 function placeLineupBox(left, top) {
+    $('#lineup_box').addClass('lineup_box_active');
     $('#lineup_box').css({top: top + 60, left: left, position: 'absolute'});
+    $('#lineup_box').show();
 }
 
 

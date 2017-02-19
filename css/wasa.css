@@ -32,11 +32,14 @@
     .selected_component {
         border: #fff solid 2px!important;
     }
+    .marked_component {
+        border: dashed 2px;
+    }
     .lineup_component {
         margin: 2px;
     }
     #lineup_box {
-        max-width: 200px;
+        max-width: 220px;
     }
     .lineup_box_active {
         border: #fff solid 2px;
@@ -44,9 +47,45 @@
         background-color: #333;
         z-index: 1000000;
         padding: 10px;
+        padding-left: 20px;
         opacity: 0.8;
     }
     .hidden_component {
         opacity: 0.6;
         /* display: none; */
+    }
+    .cbox_holder {
+        margin-bottom: 10px;
+    }
+    .cbox {
+        float: left;
+        border: #fff solid 4px;
+        border-radius: 4px;
+        width: 20px;
+        height: 20px;
+        margin: 3px;
+    }
+    .cbox:hover {
+        background-color: lightgrey;
+    }
+    .cb_unmark {
+        border-color: dimgrey;
+    }
+    .cb_red {
+        border-color: red;
+    }
+    .cb_green {
+        border-color: lawngreen;
+    }
+    .cb_blue {
+        border-color: blue;
+    }
+    .cb_yellow {
+        border-color: yellow;
+    }
+    .cb_pink {
+        border-color: deeppink;
+    }
+    .cb_cyan {
+        border-color: cyan;
     }

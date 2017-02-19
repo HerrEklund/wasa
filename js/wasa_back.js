@@ -89,7 +89,7 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
                 'message': encodeURIComponent(message)
             }
         };
-        store_event_to_list(JSON.stringify(chat_event));
+        store_event_to_list(JSON.stringify(chat_event), true);
     };
 
     that.store_create_component_event = function(tray_component_id, component_id, left, top) {
@@ -104,7 +104,7 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
                 'top': top
             }
         };
-        store_event_to_list(JSON.stringify(component_event));
+        store_event_to_list(JSON.stringify(component_event), true);
     };
 
     that.store_move_component_event = function(component_id, left, top, zIndex) {
@@ -119,7 +119,7 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
                 'zIndex': zIndex
             }
         };
-        store_event_to_list(JSON.stringify(component_event));
+        store_event_to_list(JSON.stringify(component_event), true);
     };
 
     that.store_delete_component_event = function(component_id) {
@@ -131,7 +131,7 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
                 'component_id': component_id
             }
         };
-        store_event_to_list(JSON.stringify(component_event));
+        store_event_to_list(JSON.stringify(component_event), true);
     };
 
     that.store_rotate_component_event = function(component_id, angle) {
@@ -144,7 +144,7 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
                 'angle': angle
             }
         };
-        store_event_to_list(JSON.stringify(component_event));
+        store_event_to_list(JSON.stringify(component_event), true);
     };
 
     that.roll_dice_event = function(dice_rolled, result) {
@@ -157,9 +157,33 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
                 'result': result
             }
         };
-        store_event_to_list(JSON.stringify(dice_event));
+        store_event_to_list(JSON.stringify(dice_event), true);
     };
 
+    that.mark_components_event = function(component_ids, color) {
+        var mark_components_event = {
+            'event_type': 'mark_components',
+            'username': encodeURIComponent(username),
+            'time': getTimestamp(),
+            'payload': {
+                'component_ids': component_ids,
+                'color': color
+            }
+        };
+        store_event_to_list(JSON.stringify(mark_components_event), true);
+    };
+
+    that.unmark_components_event = function(component_ids) {
+        var unmark_components_event = {
+            'event_type': 'unmark_components',
+            'username': encodeURIComponent(username),
+            'time': getTimestamp(),
+            'payload': {
+                'component_ids': component_ids
+            }
+        };
+        store_event_to_list(JSON.stringify(unmark_components_event), true);
+    };
     that.reset_game = function() {
         confirm("Are you sure?\n\nThis can not be undone.");
         async_get_jsonp('/DEL/'+wasa_event_list_name, function (data) {
@@ -167,7 +191,19 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
         });
     };
 
-    function store_event_to_list(json_event) {
+    that.store_events = function(events) {
+        var command_event;
+
+        for (var i = 0, l = events.length; i < l; i++) {
+            // store multiple, but dont notify on each!
+            command_event = store_event_to_list(evets[i], false);
+        }
+
+        // Just notifiy using the last command_event
+        async_get_jsonp('/PUBLISH/' + wasa_event_channel_name + '/'+ JSON.stringify(command_event));
+    };
+
+    function store_event_to_list(json_event, notify) {
         // 1) Store to backend
         //wasaSocket.send(JSON.stringify(["LPUSH", that.wasa_event_list_name, json_event]));
 
@@ -186,7 +222,11 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
                 }
             };
 
-            async_get_jsonp('/PUBLISH/' + wasa_event_channel_name + '/'+ JSON.stringify(command_event));
+            if (notify) {
+                async_get_jsonp('/PUBLISH/' + wasa_event_channel_name + '/'+ JSON.stringify(command_event));
+            } else {
+                return command_event
+            }
         });
     }
 
@@ -209,9 +249,14 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
         if(that.xhr.readyState == 3)  {
             var response = that.xhr.responseText;
             var chunk = response.slice(that.previous_response_length);
-            that.previous_response_length = response.length;
 
-            var pubsub_payload = JSON.parse(chunk);
+            try {
+                var pubsub_payload = JSON.parse(chunk);
+                that.previous_response_length = response.length;
+            } catch(e) {
+                console.error("Failed to parse JSON Event: "+chunk);
+                return
+            }
 
             console.log("PubSub data received: "+pubsub_payload);
 

@@ -36,7 +36,7 @@
             background-size:100%;
             background-repeat: no-repeat;
             background-color: inherit;
-            border: 0;
+            border: #111 4px solid;
         }
 
         .sl_counter_extra {
@@ -152,6 +152,12 @@
              */
             console.log("Application received event:" + JSON.stringify(ge));
 
+            $('#game_board').addClass('board_flash');
+
+            setTimeout(function () {
+                $('#game_board').removeClass('board_flash');
+            }, 1500);
+
             if(ge['event_type'] == 'chat') {
                 addChatMessage(ge);
             }
@@ -169,6 +175,12 @@
             }
             else if (ge['event_type'] == 'rotate_component') {
                 rotateComponent(ge);
+            }
+            else if (ge['event_type'] == 'mark_components') {
+                markComponents(ge);
+            }
+            else if (ge['event_type'] == 'unmark_components') {
+                unmarkComponents(ge);
             }
             else if (ge['event_type'] == 'dice_roll') {
                 handleDiceRollEvent(ge);

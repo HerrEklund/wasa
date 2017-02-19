@@ -84,22 +84,28 @@ $( document ).ready(function () {
     });
     $(".cb_unmark").bind("click tap", function () {
         // Remove marked if already marked
-        $('.selected_component.marked_component').removeClass('marked_component');
-        $('.selected_component').css({'border-color': '#111'});
+        var component_ids = [];
+        $('.selected_component').each(function () {
+            component_ids.push($(this).attr('id'));
+        });
+
+        // Need to send marked event for each component, component name and color etc.
+        wasa_client.unmark_components_event(component_ids);
+
     });
 
     $(".cb_mark").bind("click tap", function(e) {
 
         var cbox_border_color = $(e.target).css('border-color');
 
-        // Just for testing, move to event callback when working ok   border:
-        $('.selected_component').css({'border-color': cbox_border_color});
-        $('.selected_component').addClass('marked_component');
-        resetSelectionAndLineup();
-
+        var component_ids = [];
         $('.selected_component').each(function () {
-            // Need to send marked event for each component, component name and color etc.
-        })
+            component_ids.push($(this).attr('id'));
+        });
+
+        // Need to send marked event for each component, component name and color etc.
+        wasa_client.mark_components_event(component_ids, cbox_border_color);
+
     });
     /**
      * TODO: investigate how to enable lasso properly, not working well atm
@@ -217,6 +223,35 @@ function rotateComponent(rotate_component_event) {
     rotate(component, new_angle);
 
     print_game_event(time, event_username, "Rotated component "+component_id);
+}
+
+function markComponents(mark_component_event) {
+    var e = mark_component_event;
+    var event_username = e['username'];
+    var time = e['time'];
+
+    var component_ids = e['payload']['component_ids'];
+    var color = e['payload']['color'];
+
+    for (var i=0; i < component_ids.length; i++) {
+        var component = $('#'+component_ids[i]);
+        component.addClass('marked_component');
+        component.css({'border-color': color});
+    }
+}
+
+function unmarkComponents(unmark_components_event) {
+    var e = unmark_components_event;
+    var event_username = e['username'];
+    var time = e['time'];
+
+    var component_ids = e['payload']['component_ids'];
+
+    for (var i=0; i < component_ids.length; i++) {
+        var component = $('#'+component_ids[i]);
+        component.removeClass('marked_component');
+        component.css({'border-color': '#111'});
+    }
 }
 
 function handleDiceRollEvent(dice_roll_event) {

@@ -19,7 +19,6 @@
     .resizable {
     }
     #events_textarea {
-        font-size: smaller;
         min-height: 300px;
     }
 
@@ -40,6 +39,8 @@
         cursor: pointer;
     }
     .new_component {
+        float: left;
+        cursor: pointer;
         margin: 3px;
         z-index: 1000000;
     }
@@ -47,7 +48,7 @@
         border: #fff dashed 2px!important;
     }
     .marked_component {
-        border: dashed 2px;
+        border: solid 2px;
     }
     .lineup_component {
         margin: 2px;

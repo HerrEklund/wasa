@@ -1,7 +1,6 @@
 
 var component_id = 0;
 var username = 'Guest';
-var game_id = 'foobar';
 
 // Default values
 var animate_transformation = true;
@@ -17,7 +16,8 @@ function test_is_touch_device() {
   return 'ontouchstart' in window;
 }
 
-$( document ).ready(function () {
+function init_wasa_front() {
+
     console.log('##');
     console.log('##');
     console.log('##  NO CHEATING !!!');
@@ -137,7 +137,7 @@ $( document ).ready(function () {
         });
     }
      */
-});
+}
 
 /**
  *
@@ -299,6 +299,7 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
     new_component.css({top: top, left: left, position:'absolute'});
 
     new_component.removeClass("new_component");
+    new_component.addClass("component");
 
     new_component.draggable({
         grid: [ 5, 5 ],
@@ -395,6 +396,8 @@ function resetSelectionAndLineup() {
 }
 
 function selectedToLineup(component) {
+     console.log("selectedToLineup()");
+
     var position = component.position();
 
     resetLineup();

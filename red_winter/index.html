@@ -13,7 +13,7 @@
 
     <!-- Bootstrap -->
     <link href="../frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../frameworks/bootstrap/css/bootswatch-darkly/bootstrap.min.css" rel="stylesheet">
+    <link href="../frameworks/bootstrap/css/bootswatch-slate/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -21,7 +21,7 @@
     <script src="../js/gui_extras.js"></script>
     <script src="../js/wasa_front.js?version=18"></script>
     <script src="../js/wasa_back.js?version=18"></script>
-    <script src="../js/wasa_components.js?version=1"></script>
+    <script src="../js/wasa_components.js?version=2"></script>
 
     <link rel="stylesheet" href="../css/gui_extras.css">
     <link rel="stylesheet" href="../css/wasa.css">
@@ -222,18 +222,19 @@
         </div>
     </div>
 
-    <div id="pulled_header">
-        <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">
-            Game lobby
-        </button>
-        <h3 id="game_id_header" class=""> </h3>
-    </div>
-    <h2><a href=".."><<<</a>Red Winter <small>v0.1a</small></h2>
-    <p>The Soviet Attack at Tolvajärvi, Finland 1939</p>
 
-    <div class="row">
+    <div class="row" style="margin-top:10px;">
 
         <div class="col-sm-3">
+            <div id="pulled_header">
+                <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#myModal">
+                    Game lobby
+                </button>
+                <h3 id="game_id_header" class=""> </h3>
+            </div>
+            <h2 class="cb_red"><a href=".."><<<</a>Red Winter <small>v0.23a</small></h2>
+            <p>The Soviet Attack at Tolvajärvi, Finland 1939</p>
+
 
             <div class="alert alert-warning alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -286,9 +287,21 @@
 
         </div>
         <div class="col-sm-9">
-            <div class="panel panel-default wasa_panel">
-                <div class="panel-heading">Game Board <small class="text-muted">(This panel is draggable!)</small></div>
-                <div class="panel-body">
+            <div>
+
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab_board" aria-controls="tab_board" role="tab" data-toggle="tab">Game board</a></li>
+                <li role="presentation"><a href="#tab_turn_track" aria-controls="tab_turn_track" role="tab" data-toggle="tab">Turn track</a></li>
+                <li role="presentation"><a href="#tab_pac1" aria-controls="tab_pac1" role="tab" data-toggle="tab">Player Aid 1</a></li>
+                <li role="presentation"><a href="#tab_pac2" aria-controls="tab_pac2" role="tab" data-toggle="tab">Player Aid 2</a></li>
+                <li role="presentation"><a href="#tab_getting_started" aria-controls="tab_getting_started" role="tab" data-toggle="tab">Getting started</a></li>
+                <li role="presentation"><a href="#tab_rules" aria-controls="tab_rules" role="tab" data-toggle="tab">Rules</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="tab_board">
                     <div id="game_board" class="ui-widget-header">
                         <div id="lineup_box">
                             <div class="cbox_holder">
@@ -303,7 +316,29 @@
                         </div>
                     </div>
                 </div>
+                <div role="tabpanel" class="tab-pane" id="tab_turn_track">
+                    <img src="../img/red_winter/vassal/turn_track.png" style="width: 80%; height: 80%;">
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab_pac1">
+                    <img src="../img/red_winter/vassal/pac1.png">
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab_pac2">
+                    <img src="../img/red_winter/vassal/pac2.png">
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab_getting_started">
+                    <img src="../img/red_winter/vassal/getting_started.png">
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab_rules">
+                    <br>
+                    <p>We recommend to open the rules in a separate <strong>browser tab</strong> for best performance, just click the button below!</p>
+                    <br>
+                    <a href="http://www.gmtgames.com/redwinter/RW_Rules_FINAL_Med_Res.pdf" target="_blank" class="btn btn-default">Red Winter Final Rules at GMT Games</a>
+                </div>
+              </div>
+
             </div>
+
+
         </div>
     </div>
 </body>

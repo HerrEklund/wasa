@@ -79,16 +79,16 @@ function init_wasa_front() {
     // Draggable lineup box?
     $('#lineup_box').draggable({});
 
-    $("#game_board").bind("click tap", function(e){
+    $("#game_board").bind("click tap touchstart", function(e){
         resetSelectionAndLineup();
         e.stopPropagation();
     });
 
-    $("#lineup_box").bind("click tap", function(e){
+    $("#lineup_box").bind("click tap touchstart", function(e){
         resetSelectionAndLineup();
         e.stopPropagation();
     });
-    $(".cb_unmark").bind("click tap", function () {
+    $(".cb_unmark").bind("click tap touchstart", function () {
         // Remove marked if already marked
         var component_ids = [];
         $('.selected_component').each(function () {
@@ -100,7 +100,7 @@ function init_wasa_front() {
 
     });
 
-    $(".cb_mark").bind("click tap", function(e) {
+    $(".cb_mark").bind("click tap touchstart", function(e) {
 
         // Extract border-bottom-color as "border-color" is not always defined in all browsers
         var cbox_border_color = $(e.target).css('border-bottom-color');
@@ -354,7 +354,7 @@ function addComponentToGameBoard(new_component, new_component_id, top, left) {
     }
 
     if (enable_stack_selection) {
-        new_component.bind("click tap", function(e){
+        new_component.bind("click touchstart tap", function(e){
             console.log("Click on component!");
             if(new_component.hasClass('selected_component')) {
                 // Clear selection before doing stack selection (and possibly auto-open lineup box)

@@ -6,7 +6,7 @@ function createComponentsForTray(component_list, component_path_prefix, tray_id)
     for (var i=0; i<component_list.length; i++) {
         var file_name = component_list[i];
 
-        var component_image_path = encodeURIComponent(component_path_prefix+file_name);
+        var component_image_path = component_path_prefix+encodeURIComponent(file_name);
 
         // Create ID from the file name, make sure it is safe for ID also
         var new_id = 'C_'+file_name.split('.')[0];

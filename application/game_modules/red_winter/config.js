@@ -34,6 +34,8 @@ var game_data = {
 
     'component_path_prefix': 'components/vassal/',
 
+    'component_classes': 'RW_component',
+
     'map_tab':
         {   // Just special as it may contain special markup and is also active by default
             'title': 'Main',

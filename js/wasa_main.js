@@ -44,7 +44,7 @@ function createWasaBoardGame() {
 
 
     if (typeof game_id === 'undefined' || game_id.length == 0) {
-        showGameLobby();
+        showGameLibrary();
     } else {
         // First dynamically load all needed scripts for this game module
         loadGameModule(game_id, function () {
@@ -62,7 +62,8 @@ function createWasaBoardGame() {
                 verifyLoadedGameModule();
             } catch(err) {
                 alert("Invalid game module, reason was: "+err);
-                throw err;
+                window.location = window.location.href.split("?")[0];
+                return;
             }
 
             // Try get session from URL, if not, load by cookie.
@@ -125,7 +126,7 @@ function showEnterEmailModal() {
     $('#nunjucks_contents')[0].innerHTML = nunjucks.render('enter_email_modal.html', template_data);
 }
 
-function showGameLobby() {
+function showGameLibrary() {
 
     var template_data = {
         'email': email,
@@ -209,7 +210,7 @@ function layoutWasaBoardGaame(game_id, game_data) {
     $('#nunjucks_contents')[0].innerHTML = nunjucks.render(nuinjucks_main_template, template_data);
 
     // 2) When done, add all components
-    createComponentsForTray(component_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], 'main_tray');
+    createComponentsForTray(component_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['component_classes'], 'main_tray');
 
     if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
         // Show session modal then.
@@ -218,7 +219,7 @@ function layoutWasaBoardGaame(game_id, game_data) {
 
 }
 
-function createComponentsForTray(component_list, component_path_prefix, tray_id) {
+function createComponentsForTray(component_list, component_path_prefix, component_classes, tray_id) {
 
     var component_tray = $('#'+tray_id);
 
@@ -238,7 +239,7 @@ function createComponentsForTray(component_list, component_path_prefix, tray_id)
             console.log("Adding component ("+file_name+") using ID = "+new_id);
         }
 
-        var tray_component = $('<div class="new_component RW_component" id="'+new_id+'"></div>');
+        var tray_component = $('<div class="new_component '+component_classes+'" id="'+new_id+'"></div>');
 
         tray_component.css('backgroundImage', 'url(' + component_image_path + ')');
 

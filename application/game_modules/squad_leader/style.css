@@ -1,49 +1,28 @@
 
-        #game_board {
-            background-image: url('components/maps/map1_west.jpg');
-            height: 800px;
-            width: 1200px;
-            position: relative;
-            background-size:100%;
-            background-repeat: no-repeat;
-            background-color: inherit;
-            border: #111 4px solid;
-        }
+#game_board {
+    background-image: url('components/maps/map1_west.jpg');
+    height: 800px;
+    width: 1200px;
+    position: relative;
+    background-size:100%;
+    background-repeat: no-repeat;
+    background-color: inherit;
+    border: #111 4px solid;
+}
 
-        .sl_counter_extra {
-            font-size: 9px;
-        }
-        .sl_counter_numbers {
-            font-size: 12px;
-            font-weight: bold;
-        }
-        .sl_counter_figure {
-            height: 60%;
-            width: 100%;
-            margin-bottom: 0px;
-        }
-        .sl_counter_small {
-            /* Custom for this game */
-            width: 50px;
-            height: 50px;
-            padding: 2px;
-            border: 2px solid #111;
-            border-radius: 4px;
-            color: black;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 12px;
-            box-shadow: 3px 3px 2px #111;
-            text-align: center;
-        }
+.sl_counter_small {
+    /* Custom for this game */
+    background-repeat: no-repeat;
+    width: 56px;
+    height: 56px;
 
-        .us {
-            background-color: #c4c24b;
-        }
+    background-size: 100%;
 
-        .rus {
-            background-color: #b08037;
-        }
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 4px 4px 4px #111;
 
-        .ger {
-            background-color: #96b6cd;
-        }
+}
+

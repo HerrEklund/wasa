@@ -1,12 +1,4 @@
 
-var component_id = 0;
-var username = 'Guest';
-
-// Default values
-var animate_transformation = true;
-var animate_duration = 400;
-var direct_lineup_box_on_double_click = false;
-
 jQuery.fn.rotate = function(degrees) {
     $(this).css({'transform' : 'rotate('+ degrees +'deg)'});
     return $(this);

@@ -1,0 +1,40 @@
+
+
+    <div class="modal fade" id="game_session_modal" tabindex="-1" role="dialog" aria-labelledby="game_session_modal_label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="game_session_modal_label">Game session</h4>
+                </div>
+                <div class="modal-body">
+                    {% if game_session_id %}
+                    <p>The link in your browser window represent this game, share it with your opponents.</p>
+                    {% else %}
+                    <div class="alert alert-info">
+                        No session selected, either continue with an ongoing game, or create a new one.
+                    </div>
+                    {% endif %}
+                    <h5>You have access to the following games: </h5>
+
+                    <table class="table">
+                        <tr>
+                            <th>Session Link</th>
+                            <th>Comment</th>
+                        </tr>
+                        {% for session in available_sessions %}
+                        <tr>
+                            <td><a class="btn btn-sm btn-primary" href="?game_session_id={{ session.game_session_id }}&game_id={{ game_id }}">{{ session.game_session_id }}</a></td>
+                            <td>{{ session.comment }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

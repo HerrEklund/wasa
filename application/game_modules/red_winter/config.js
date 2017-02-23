@@ -30,6 +30,8 @@ var game_data = {
 
     'subtitle': 'The Soviet Attack at Tolvajärvi, Finland 1939',
 
+    'box_front_img': 'components/vassal/splash.png',
+
     'component_path_prefix': 'components/vassal/',
 
     'map_tab':

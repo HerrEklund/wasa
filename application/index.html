@@ -17,17 +17,27 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+
     <!-- WASA -->
     <script src="../js/gui_extras.js"></script>
-    <script src="../js/wasa_front.js?version=18"></script>
     <script src="../js/wasa_back.js?version=18"></script>
-    <script src="../js/wasa_main.js?version=3"></script>
+    <script src="../js/wasa_front.js?version=19"></script>
+    <script src="../js/wasa_main.js?version=5"></script>
+
+    <!-- Module registry -->
+    <script src="game_modules/registered_modules.js"></script>
 
     <link rel="stylesheet" href="../css/gui_extras.css">
     <link rel="stylesheet" href="../css/wasa.css">
 
+    <!-- Cookies -->
+    <script src="../js/lib/js.cookie.js"></script>
+
     <!-- Template rendering -->
     <script src="../js/lib/nunjucks.min.js"></script>
+    <script src="../js/lib/URI.js"></script>
+
+    <script src="../js/lib/fnv1a.js"></script>
 
 </head>
 
@@ -35,18 +45,16 @@
 
     <script type="application/javascript">
 
-        // Fake and static until we fix lobby ethc.
-        var username = 'Guest';
-        var game_id = 'red_winter';
-        var game_session_id = 'RedW_TEST';
-
         $(document).ready( function() {
-            createWasaBoardGame(username, game_id, game_session_id);
+
+            nunjucks.configure('templates', {autoescape: true});
+
+            createWasaBoardGame();
         });
 
     </script>
 
-    <div id="game_page">
+    <div id="nunjucks_contents">
         <!-- Content is added here by nunjucks.js -->
     </div>
 

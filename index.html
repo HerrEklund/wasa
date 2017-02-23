@@ -9,17 +9,6 @@
     <link href="./frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <style type="text/css">
-        .game_image {
-            height: 200px;
-            width: 150px;
-        }
-        .game_container {
-            padding: 20px;
-            display:inline-block
-        }
-    </style>
-
 </head>
 
 <body class="container">
@@ -110,68 +99,8 @@
     <p>We implement several games in parallel to keep the platform general so the special needs of different games
     can be identified and handled in an ordered fashion.</p>
 
-    <table class="table table-striped table-bordered table-responsive">
-        <tr>
-            <th>Game</th>
-            <th>Status</th>
-            <th>Special needs</th>
-            <th>Goals</th>
-        </tr>
-        <tr>
-            <td>
-                <div class="game_container">
-                    <a href="red_winter/">
-                        <img class="game_image" src="./img/red_winter/vassal/splash.png"><br>
-                        <strong>Red Winter</strong>
-                    </a> - The Soviet Attack at Tolvajärvi, Finland 1939
-                </div>
-            </td>
-            <td><strong class="text-danger">Not playable!</strong> Map and draggable panels. Still using SL component tray</td>
-            <td>
-                Flipping of components. Maybe rotation. Dice.
-            </td>
-            <td>
-                Generate the full component set from the Vassal file. Generalize library code
-                even further to accomodate both Red Storm and Squad Leader with minimum
-                game specific logic and markup.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="game_container">
-                    <a href="squad_leader/">
-                        <img class="game_image" src="./img/squad_leader.jpg"><br>
-                        <strong>Squad Leader</strong>
-                    </a> - The guards counter-attack scenario only
-                </div>
-            </td>
-            <td><strong class="text-success">Playable!</strong></td>
-            <td>
-                Flipping of components. Maybe rotation. Dice.
-            </td>
-            <td>
-                All the basic features was developed using this small game scenario.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="game_container">
-                    <a href="napoleons_triumph/">
-                        <img class="game_image" src="./img/napoleons_triumph.jpg"><br>
-                        <strong>Napoleons Triumph</strong>
-                    </a>
-                </div>
-            </td>
-            <td>Blocks can be place and rotated. All leader-components not yet implemented.</td>
-            <td>
-                Flip and rotation of components.
-            </td>
-            <td>
-                This game needs component rotation and also the ability to flip/hide the components
-                until they are revealed to the opponent.
-            </td>
-        </tr>
-    </table>
+    <a class="btn btn-primary" href="application/">Open the Wasa Application</a>
 
+    <br><br>
 </body>
 </html>

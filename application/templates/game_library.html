@@ -1,0 +1,40 @@
+
+<style type="text/css">
+    .game_image {
+        height: 200px;
+        width: 150px;
+    }
+    .game_container {
+        padding: 20px;
+        display:inline-block
+    }
+</style>
+
+<div class="container">
+
+
+    <h2>Wasa Game Library</h2>
+
+    <p>You are logged in as {{username}} using email {{email}}.</p>
+
+    <table class="table table-striped table-bordered table-responsive">
+        <tr>
+            <th>Game</th>
+        </tr>
+
+        {% for module_entry in registered_modules %}
+        <tr>
+            <td>
+                <div class="game_container">
+                    <a href="?game_id={{ module_entry.game_id }}">
+                        <img class="game_image" src="{{ module_entry.box_front }}"><br>
+                        <strong>{{ module_entry.title }}</strong>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>

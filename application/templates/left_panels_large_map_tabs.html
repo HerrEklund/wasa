@@ -1,4 +1,4 @@
-{% include "lobby_modal.html" %}
+{% include "game_session_modal.html" %}
 
 <!--
 This file is generated using Nunjucks:
@@ -8,12 +8,12 @@ This file is generated using Nunjucks:
 
     <div class="col-sm-4">
         <div id="pulled_header">
-            <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#lobby_modal">
-                Game lobby
+            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#game_session_modal">
+                Session: {{game_session_id}}
             </button>
-            <h3 id="game_id_header" class=""> </h3>
+            <h3 id="game_id_header"></h3>
         </div>
-        <h2 class="cb_red"><a href=".."><<<</a>{{ game.title }} <small>{{ game.version }}</small></h2>
+        <h2 class="cb_red"><a href="."><<<</a>{{ game.title }} <small>{{ game.version }}</small></h2>
         <p class="lead">{{ game.subtitle }}</p>
 
 

@@ -1,0 +1,121 @@
+{% include "lobby_modal.html" %}
+
+<!--
+This file is generated using Nunjucks:
+    https://mozilla.github.io/nunjucks/templating.html
+-->
+<div class="row" style="margin-top:10px;">
+
+    <div class="col-sm-4">
+        <div id="pulled_header">
+            <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#lobby_modal">
+                Game lobby
+            </button>
+            <h3 id="game_id_header" class=""> </h3>
+        </div>
+        <h2 class="cb_red"><a href=".."><<<</a>{{ game.title }} <small>{{ game.version }}</small></h2>
+        <p class="lead">{{ game.subtitle }}</p>
+
+
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Note:</strong>
+            <p>Game is still in <strong>alpha stage</strong> development and any game my be erased or appear buggy at times.</p>
+        </div>
+
+        <div class="alert alert-info alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Tips</strong>
+            <ul>
+                <li>Use your browser zoom-tools! (Ctrl or ALT + plus/minus).</li>
+                <li>If on a touch-screen, Pan and Pinch zoom.</li>
+                <li>Drag components from the tray to the map.</li>
+                <li>Components moved will immediately be moved on all viewing game boards also.</li>
+                <li>Click to select a stack of components.</li>
+                <li>Click again on any selected component to inspect a stack. Click anywhere to dismiss inspection.</li>
+                <li>While inspecting, you can drag a component as from the component location.</li>
+            </ul>
+        </div>
+
+        <div class="panel panel-default wasa_panel">
+
+            <div class="panel-heading">
+                <h5>Events <small class="text-muted">(This panel is draggable!)</small></h5>
+                <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+
+            </div>
+            <div class="panel-body">
+                <textarea id="events_textarea" class="form-control"></textarea>
+
+                <button type="button" class="btn btn-default" onclick="roll_D6()">Roll D6</button>
+                <button type="button" class="btn btn-default" onclick="roll_2D6()">Roll 2D6</button>
+
+                <input id="event_input" class="form-control" placeholder="Chat, comments, clarificatins or /help">
+            </div>
+        </div>
+
+        <div class="panel panel-default wasa_panel resizable">
+
+            <div class="panel-heading">
+                <h5>Counter tray <small class="text-muted">(This panel is draggable!)</small></h5>
+                <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+
+            </div>
+            <div class="panel-body component_tray" id="main_tray">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-8">
+        <div>
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#tab_board" aria-controls="tab_board" role="tab" data-toggle="tab">Game board</a></li>
+              {% for tab in game.extra_tabs %}
+                  <li role="presentation">
+                      <a href="#{{ tab.id }}" role="tab" data-toggle="tab">{{ tab.title }}</a>
+                  </li>
+              {% endfor %}
+              <li role="presentation"><a href="#{{ game.rules_tab.id }}" aria-controls="tab_rules" role="tab" data-toggle="tab">Rules</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="tab_board">
+                <div id="game_board" class="ui-widget-header">
+                    <div id="lineup_box">
+                        <div class="cbox_holder">
+                            <div class="cbox cb_unmark"></div>
+                            <div class="cbox cb_mark cb_red"></div>
+                            <div class="cbox cb_mark cb_green"></div>
+                            <div class="cbox cb_mark cb_blue"></div>
+                            <div class="cbox cb_mark cb_yellow"></div>
+                            <div class="cbox cb_mark cb_pink"></div>
+                            <div class="cbox cb_mark cb_cyan"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {% for tab in game.extra_tabs %}
+            <div role="tabpanel" class="tab-pane" id="{{ tab.id }}">
+                <img src="{{ module_path }}/{{ tab.image_src }}" style="{{ tab.image_style }}">
+            </div>
+            {% endfor %}
+
+            <div role="tabpanel" class="tab-pane" id="{{ game.rules_tab.id }}">
+                <br>
+                <p>We recommend to open the rules in a separate <strong>browser tab</strong> for best performance, just click the button below!</p>
+                <br>
+                <a href="{{ game.rules_tab.link_src }}" target="_blank" class="btn btn-default">{{ game.rules_tab.link_title }}</a>
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+</div>
+

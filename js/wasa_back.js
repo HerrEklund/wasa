@@ -6,20 +6,23 @@
  *  https://github.com/nicolasff/webdis
  *
  */
-var WasaClient = function (hostname, port, game_id, username, game_event_notification_handler, game_event_handler) {
+var WasaClient = function (hostname, port, game_session_id, username, game_event_notification_handler, game_event_handler) {
     if (typeof jQuery === 'undefined') {
         throw new Error('Wasa requires jQuery')
     }
 
+    // For counting events to keep the client in sync, must be increased after all successful events loaded from the back
+    var next_event_index = 0;
+
     var that = this;
 
-    that.game_id = game_id;
+    that.game_session_id = game_session_id;
     that.username = username;
     that.http_url = 'http://'+hostname+':'+port;
     that.ws_url = 'ws://'+hostname+':'+port;
 
-    var wasa_event_channel_name = game_id+'_event_channel';
-    var wasa_event_list_name = game_id+'_event_list';
+    var wasa_event_channel_name = game_session_id+'_event_channel';
+    var wasa_event_list_name = game_session_id+'_event_list';
 
     subscribe(wasa_event_channel_name, game_event_notification_handler);
 
@@ -56,13 +59,23 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
         }
     });
 
-    that.load_all_events = function(after_events_loaded_callback) {
-        async_get_jsonp('/LRANGE/'+wasa_event_list_name+'/0/-1', function (data) {
+    /**
+     * Will load all events not yet loaded.
+     *
+     * @param after_events_loaded_callback
+     */
+    that.load_events = function(after_events_loaded_callback) {
+        async_get_jsonp('/LRANGE/'+wasa_event_list_name+'/'+next_event_index+'/-1', function (data) {
             var events = data['LRANGE'];
             var eventsLength = events.length;
 
             for (var i = 0; i < eventsLength; i++) {
-                game_event_handler(JSON.parse(events[i]));
+                try {
+                    game_event_handler(JSON.parse(events[i]));
+                    next_event_index++;
+                } catch(e) {
+                    console.error("DOH! Failed to parse a game event and the error was not handled by the game (ie. ignored), this could be fatal and should not happen. If it is a chat event, se could live without it.\n\n"+events[i]);
+                }
             }
 
             // Since async call, let caller continue after all events was loaded
@@ -73,9 +86,8 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
     that.load_event = function(event_id) {
         async_get_jsonp('/LINDEX/'+wasa_event_list_name+'/'+event_id, function (data) {
             var event = data['LINDEX'];
-
             game_event_handler(JSON.parse(event));
-
+            next_event_index++;
         });
     };
 
@@ -236,12 +248,14 @@ var WasaClient = function (hostname, port, game_id, username, game_event_notific
 
     /* Listen to a PUBSUB channel using chunked encoding */
     function subscribe(channel_name, game_event_notification_handler) {
+        console.log("Subscribing to game events using "+channel_name);
         that.previous_response_length = 0;
         that.xhr = new XMLHttpRequest();
         that.xhr.onreadystatechange = on_event_received;
         that.xhr.open("GET", that.http_url+"/SUBSCRIBE/"+channel_name, true);
         that.xhr.send(null);
         that.game_event_notification_handler = game_event_notification_handler;
+
     }
 
     function on_event_received() {

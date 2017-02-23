@@ -5,6 +5,13 @@
         font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
         font-size: 9px;
     }
+    .game_board {
+        position: relative;
+        background-size:100%;
+        background-repeat: no-repeat;
+        background-color: inherit;
+        border: #111 4px solid;
+    }
     .board_flash_white {
         border: white 4px solid!important;
     }

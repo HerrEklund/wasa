@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wasa - Red Winter</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../frameworks/jquery/jquery.ui.touch-punch.min.js"></script>
+
+    <script src="../frameworks/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../frameworks/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../frameworks/bootstrap/css/bootswatch-slate/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- WASA -->
+    <script src="../js/gui_extras.js"></script>
+    <script src="../js/wasa_front.js?version=18"></script>
+    <script src="../js/wasa_back.js?version=18"></script>
+    <script src="../js/wasa_main.js?version=3"></script>
+
+    <link rel="stylesheet" href="../css/gui_extras.css">
+    <link rel="stylesheet" href="../css/wasa.css">
+
+    <!-- Template rendering -->
+    <script src="../js/lib/nunjucks.min.js"></script>
+
+</head>
+
+<body class="container-fluid">
+
+    <script type="application/javascript">
+
+        // Fake and static until we fix lobby ethc.
+        var username = 'Guest';
+        var game_id = 'red_winter';
+        var game_session_id = 'RedW_TEST';
+
+        $(document).ready( function() {
+            createWasaBoardGame(username, game_id, game_session_id);
+        });
+
+    </script>
+
+    <div id="game_page">
+        <!-- Content is added here by nunjucks.js -->
+    </div>
+
+</body>
+</html>

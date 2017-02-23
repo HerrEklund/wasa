@@ -19,9 +19,9 @@
 
     <!-- WASA -->
     <script src="../js/gui_extras.js"></script>
-    <script src="../js/wasa_front.js?version=18"></script>
-    <script src="../js/wasa_back.js?version=18"></script>
-    <script src="../js/wasa_components.js?version=2"></script>
+    <script src="../js/wasa_main.js?version=1"></script>
+    <script src="../js/wasa_front.js?version=1"></script>
+    <script src="../js/wasa_back.js?version=5"></script>
 
     <link rel="stylesheet" href="../css/gui_extras.css">
     <link rel="stylesheet" href="../css/wasa.css">
@@ -90,7 +90,7 @@
         var direct_lineup_box_on_double_click = true;
 
         // From wasa_components.js, assumes a component_list is present
-        var component_path_prefix = '..\/img\/red_winter\/vassal\/';
+        var client_event_list_index = 0;
 
         $(document).ready( function() {
 
@@ -111,12 +111,14 @@
              *      - observer or player?
              *      - setup new scenario or continue?
             */
-            wasa_client.load_all_events(function () {
+            wasa_client.load_events(function () {
                 // Slow down animations after all existing elements was loaded
                 animate_transformation = true;
                 animate_duration = 400;
             });
 
+            // Could be important as notifications does not seem to come unless a client has posted one event
+            wasa_client.store_chat_event(username, "*** Requested all events and notifications ***")
         });
 
         function game_event_notification_handler(command_event) {
@@ -127,10 +129,12 @@
             console.log("Application received command event:" + command_event);
 
             if (command_event['command'] == 'new_event') {
+                // Doesnt really need this, just load forward when this comes
                 var event_list_length = parseInt(command_event['parameters']['events']);
 
-                // TODO: Load all events that the client has not yet seen, so could be load range or load single here!
-                wasa_client.load_event(event_list_length);
+                wasa_client.load_events(function () {
+                    // Up to date
+                });
             }
         }
 
@@ -141,13 +145,16 @@
              * But you could of course add game specific events here
              *
              */
-            console.log("Application received event:" + JSON.stringify(ge));
 
+            //console.log("Application received event:" + JSON.stringify(ge));
+
+            /*
             $('#game_board').addClass('board_flash_red');
 
             setTimeout(function () {
                 $('#game_board').removeClass('board_flash_red');
             }, 300);
+            */
 
             if(ge['event_type'] == 'chat') {
                 addChatMessage(ge);
@@ -232,7 +239,7 @@
                 </button>
                 <h3 id="game_id_header" class=""> </h3>
             </div>
-            <h2 class="cb_red"><a href=".."><<<</a>Red Winter <small>v0.23a</small></h2>
+            <h2 class="red"><a href=".."><<<</a>Red Winter <small>v0.23a</small></h2>
             <p>The Soviet Attack at Tolvajärvi, Finland 1939</p>
 
 

@@ -1,0 +1,32 @@
+
+#game_board {
+    background-image: url('components/vassal/Red_Winter_Map-150.jpg');
+    /*background-image: url('../img/red_winter/Red_Winter_Map_50perc.jpg'); */
+    height: 5100px;
+    width: 3300px;
+    position: relative;
+    background-size:100%;
+    background-repeat: no-repeat;
+    background-color: inherit;
+    border: #111 4px solid;
+}
+
+.RW_component {
+    width: 78px;
+    height: 78px;
+    background-size: 100%;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 4px 4px 4px #111;
+}
+
+/*
+.RW_component_50perc {
+    width: 39px;
+    height: 39px;
+    background-size: 100%;
+}
+*/

@@ -53,22 +53,21 @@ This file is generated using Nunjucks:
                 <input id="event_input" class="form-control" placeholder="Chat, comments, clarificatins or /help">
             </div>
         </div>
-
         <div class="panel panel-default wasa_panel resizable">
 
             <div class="panel-heading">
                 <h5>Counter tray <small class="text-muted">(This panel is draggable!)</small></h5>
                 <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                <input class="form-control" oninput="filter_components(this)" id="filter_input" placeholder="Filter component by ID">
 
             </div>
             <div class="panel-body component_tray" id="main_tray">
-
             </div>
         </div>
 
     </div>
     <div class="col-sm-8">
-        <div>
+        <div id="tab_side">
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">

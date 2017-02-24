@@ -229,7 +229,8 @@ function createComponentsForTray(component_list, component_path_prefix, componen
         var component_image_path = component_path_prefix+encodeURIComponent(file_name);
 
         // Create ID from the file name, make sure it is safe for ID also
-        var new_id = 'C_'+file_name.split('.')[0];
+        var base_id = file_name.split('.')[0].toLowerCase();
+        var new_id = 'C_'+base_id;
         new_id = new_id.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, "");
 
         if (new_id.length == 0) {
@@ -239,7 +240,7 @@ function createComponentsForTray(component_list, component_path_prefix, componen
             console.log("Adding component ("+file_name+") using ID = "+new_id);
         }
 
-        var tray_component = $('<div class="new_component '+component_classes+'" id="'+new_id+'"></div>');
+        var tray_component = $('<div class="new_component '+component_classes+'" id="'+new_id+'" title="'+base_id+'"></div>');
 
         tray_component.css('backgroundImage', 'url(' + component_image_path + ')');
 

@@ -523,3 +523,13 @@ function roll_2D6() {
     var result = d1+d2;
     wasa_client.roll_dice_event('2D6', result);
 }
+
+function filter_components(target) {
+    if (target.value.length == 0) {
+        $('.new_component').show();
+    } else {
+        // All componentes get C_ as prefix
+        var filter = target.value;
+        $('.new_component:not([id*='+filter+'])').hide();
+    }
+}

@@ -1,4 +1,7 @@
 
+#tab_side {
+    position: fixed;
+}
 #game_board {
     background-image: url('components/maps/map1_west.jpg');
     height: 800px;

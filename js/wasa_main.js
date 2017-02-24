@@ -229,9 +229,9 @@ function createComponentsForTray(component_list, component_path_prefix, componen
         var component_image_path = component_path_prefix+encodeURIComponent(file_name);
 
         // Create ID from the file name, make sure it is safe for ID also
-        var base_id = file_name.split('.')[0].toLowerCase();
-        var new_id = 'C_'+base_id;
-        new_id = new_id.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, "");
+        var base_id = file_name.substring(0, file_name.lastIndexOf(".")).toLowerCase();
+        var new_id = 'C_'+base_id.replace('.', '_');
+        new_id = new_id.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, "_");
 
         if (new_id.length == 0) {
             console.error("Failed to synthesize ID from file name = "+file_name);

@@ -78,13 +78,6 @@ def create_component_js():
 
             file_name = os.path.basename(r)
 
-            if file_name.endswith('_Back.gif'):
-                # TODO: add as "back
-                continue
-
-            if file_name.endswith('_B.gif'):
-                continue
-
             components_file.write("\n    '"+file_name+"',")
 
         components_file.write("];")

@@ -529,7 +529,7 @@ function filter_components(target) {
         $('.new_component').show();
     } else {
         // All componentes get C_ as prefix
-        var filter = target.value;
+        var filter = target.value.toLowerCase();
         $('.new_component:not([id*='+filter+'])').hide();
     }
 }

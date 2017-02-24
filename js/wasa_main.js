@@ -68,7 +68,7 @@ function createWasaBoardGame() {
 
             // Try get session from URL, if not, load by cookie.
             if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
-                var current_game_session_id = Cookies.get('current_game_session_id');
+                var current_game_session_id = Cookies.get(game_id+'_last_session');
                 if (current_game_session_id != null && current_game_session_id.length > 0 ) {
                     game_session_id = current_game_session_id;
                 }
@@ -83,7 +83,7 @@ function createWasaBoardGame() {
             } else {
 
                 // If here, the user selected a session, save it as current session_id
-                Cookies.set('current_game_session_id', game_session_id);
+                Cookies.set(game_id+'_last_session', game_session_id);
 
                 // Connect the client to the backend
                 wasa_client = new WasaClient(wasa_backend_host, wasa_backend_port, game_session_id, username, game_event_notification_handler, game_event_handler);

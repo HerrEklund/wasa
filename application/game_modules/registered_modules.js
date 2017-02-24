@@ -16,5 +16,12 @@ var registered_modules = [
         'title': 'Squad Leader',
         'subtitle': 'Scenario 1 - The guards counter attack.',
         'box_front': './game_modules/squad_leader/components/squad_leader.jpg'
+    },
+    {
+        'game_id': 'sjw',
+        'title': 'Stonewall Jacksons Way',
+        'subtitle': 'Cedar Mountains to second Manassas, August 1862',
+        'box_front': './game_modules/sjw/components/sjw_cover_small.png'
     }
+
 ];

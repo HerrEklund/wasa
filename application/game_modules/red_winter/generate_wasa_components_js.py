@@ -74,10 +74,10 @@ def create_component_js():
 
             if file_name.endswith('_Back.gif'):
                 # TODO: add as "back
-                continue
+                pass
 
             if file_name.endswith('_B.gif'):
-                continue
+                pass
 
             components_file.write("\n    '"+file_name+"',")
 

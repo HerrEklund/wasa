@@ -15,6 +15,7 @@
                         No session selected, either continue with an ongoing game, or create a new one.
                     </div>
                     {% endif %}
+
                     <h5>You have access to the following games: </h5>
 
                     <table class="table">
@@ -29,6 +30,9 @@
                         </tr>
                         {% endfor %}
                     </table>
+                    <a disabled="disabled" class="btn btn-success pull-right" href="?game_id={{ game_id }}&game_session_id={{ new_session_id }}">New session</a>
+                    <br>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

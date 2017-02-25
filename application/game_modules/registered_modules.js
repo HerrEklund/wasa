@@ -28,6 +28,11 @@ var registered_modules = [
         'title': 'Unconditional Surrender',
         'subtitle': 'World War 2 in Europe',
         'box_front': './game_modules/unconditional_surrender/components/vassal/UnCondSurrd-Cover.png'
+    },
+    {
+        'game_id': 'warriors_of_god',
+        'title': 'Warriors of God',
+        'subtitle': 'The Hundred Years War',
+        'box_front': './game_modules/warriors_of_god/components/vassal/Splash.png'
     }
-
 ];

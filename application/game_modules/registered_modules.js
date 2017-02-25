@@ -22,6 +22,12 @@ var registered_modules = [
         'title': 'Stonewall Jacksons Way',
         'subtitle': 'Cedar Mountains to second Manassas, August 1862',
         'box_front': './game_modules/sjw/components/sjw_cover_small.png'
+    },
+    {
+        'game_id': 'unconditional_surrender',
+        'title': 'Unconditional Surrender',
+        'subtitle': 'World War 2 in Europe',
+        'box_front': './game_modules/unconditional_surrender/components/vassal/UnCondSurrd-Cover.png'
     }
 
 ];

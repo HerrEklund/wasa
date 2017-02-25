@@ -12,7 +12,7 @@
     width: 3336px;
     height: 3761px;
     position: relative;
-    background-size:100%;
+    background-size: contain;
     background-repeat: no-repeat;
     background-color: inherit;
     border: inherit 4px solid;

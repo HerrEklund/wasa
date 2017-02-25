@@ -160,10 +160,8 @@ function loadGameModule(game_id, on_modules_loaded_callback) {
 
 function addScript(script_src, on_script_loaded_callback) {
     var script = document.createElement('script');
-    script.onload = function () {
-        on_script_loaded_callback();
-    };
     script.src = script_src;
+    script.onload = on_script_loaded_callback;
     document.head.appendChild(script);
 
     console.log("Added script "+script_src);
@@ -208,6 +206,9 @@ function layoutWasaBoardGaame(game_id, game_data) {
     template_data['game'] = game_data;
 
     $('#nunjucks_contents')[0].innerHTML = nunjucks.render(nuinjucks_main_template, template_data);
+
+    // Modify the page title to match the current game
+    document.title = 'Wasa - ' + game_data['title'];
 
     // 2) When done, add all components
     createComponentsForTray(component_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['component_classes'], 'main_tray');

@@ -256,6 +256,10 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
         that.xhr.send(null);
         that.game_event_notification_handler = game_event_notification_handler;
 
+        setTimeout(function () {
+            // Seem to be needed on some platforms (iPad) to not lose subscription
+            subscribe(channel_name, game_event_notification_handler);
+        }, 60*1000);
     }
 
     function on_event_received() {

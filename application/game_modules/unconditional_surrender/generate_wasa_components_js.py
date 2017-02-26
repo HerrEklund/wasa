@@ -59,8 +59,8 @@ def create_component_js():
     max_width = 100
     max_height = 100
 
-    min_width = 30
-    min_height = 30
+    min_width = 40
+    min_height = 40
 
     with open("components.js", "w") as components_file:
 

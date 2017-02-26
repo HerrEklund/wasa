@@ -45,6 +45,18 @@ var game_data = {
         },
 
     'extra_tabs': [
+        {
+            'title': 'CRT, Combat etc.',
+            'id': 'tab1',
+            'image_src': 'components/vassal/USE Player Aid Sheet-SV CRT 2015-11-06.jpg',
+            'image_style': 'width: 1800px; height: auto;'
+        },
+        {
+            'title': 'Production, movement etc.',
+            'id': 'tab2',
+            'image_src': 'components/vassal/USE Player Aid Sheet-SV Non-CRT 2015-11-06.jpg',
+            'image_style': 'width: 1800px; height: auto;'
+        }
     ],
 
     'rules_tab': {

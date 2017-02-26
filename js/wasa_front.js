@@ -512,16 +512,13 @@ function send_chat_message() {
     $('#event_input').val('');
 }
 
-function roll_D6() {
-    var result = Math.floor(Math.random() * 6) + 1;
-    wasa_client.roll_dice_event('1D6', result);
-}
+function roll_NDS(N, S) {
+    var result = 0;
 
-function roll_2D6() {
-    var d1 = Math.floor(Math.random() * 6) + 1;
-    var d2 = Math.floor(Math.random() * 6) + 1;
-    var result = d1+d2;
-    wasa_client.roll_dice_event('2D6', result);
+    for (i = 0; i < N; i++) {
+        result += Math.floor(Math.random() * S) + 1;
+    }
+    wasa_client.roll_dice_event(N+'D'+S, result);
 }
 
 function filter_components(target) {

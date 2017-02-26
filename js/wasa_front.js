@@ -105,7 +105,7 @@ function init_wasa_front() {
         $('.selected_component').removeClass('selected_component');
 
         // Need to send marked event for each component, component name and color etc.
-        wasa_client.mark_components_event(component_ids, cbox_border_color+"!important");
+        wasa_client.mark_components_event(component_ids, cbox_border_color);
 
     });
     /**

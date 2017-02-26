@@ -40,5 +40,11 @@ var registered_modules = [
         'title': 'Normandy \'44',
         'subtitle': 'D-Day and the Battle for Normandy, 6 - 27 JUNE, 1944',
         'box_front': './game_modules/normandy_44/components/vassal/cover.jpg'
+    },
+    {
+        'game_id': 'fire_in_the_lake',
+        'title': 'Fire in the Lake',
+        'subtitle': 'COIN Series, Volume IV',
+        'box_front': './game_modules/fire_in_the_lake/components/vassal/FireLake-CardBack2.jpg'
     }
 ];

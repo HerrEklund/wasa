@@ -59,6 +59,9 @@ def create_component_js():
     max_width = 100
     max_height = 100
 
+    min_width = 30
+    min_height = 30
+
     with open("components.js", "w") as components_file:
 
         components_file.write("var component_list = [")
@@ -73,7 +76,8 @@ def create_component_js():
             # Analyze image
             w, h = get_image_size(r)
 
-            if w > max_width or h > max_height:
+            # Skip too small or too large images
+            if w > max_width or h > max_height or w < min_width or h < min_height:
                 continue
 
             file_name = os.path.basename(r)

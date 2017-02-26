@@ -229,16 +229,19 @@ function createComponentsForTray(component_list, component_path_prefix, componen
 
         var component_image_path = component_path_prefix+encodeURIComponent(file_name);
 
+        // Handle parenthesis
+        component_image_path = component_image_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
+
         // Create ID from the file name, make sure it is safe for ID also
         var base_id = file_name.substring(0, file_name.lastIndexOf(".")).toLowerCase();
         var new_id = 'C_'+base_id.replace('.', '_');
-        new_id = new_id.replace(/[^a-z0-9\-_:\.]|^[^a-z]+/gi, "_");
+        new_id = new_id.replace(/[^a-z0-9\-_:\.()]|^[^a-z]+/gi, "_");
 
         if (new_id.length == 0) {
             console.error("Failed to synthesize ID from file name = "+file_name);
             continue;
         } else {
-            console.log("Adding component ("+file_name+") using ID = "+new_id);
+            //console.log("Adding component ("+file_name+") using ID = "+new_id);
         }
 
         var tray_component = $('<div class="new_component '+component_classes+'" id="'+new_id+'" title="'+base_id+'"></div>');

@@ -64,10 +64,11 @@ This file is generated using Nunjucks:
             <div class="panel-heading">
                 <h5>Counter tray <small class="text-muted">(This panel is draggable!)</small></h5>
                 <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-                <input class="form-control" oninput="filter_components(this)" id="filter_input" placeholder="Filter component by ID">
-
             </div>
-            <div class="panel-body component_tray" id="main_tray">
+            <div class="panel-body">
+                <input class="form-control" onkeyup="filter_components(this)" id="filter_input" placeholder="Filter component by ID">
+                <div class="component_tray" id="main_tray">
+                </div>
             </div>
         </div>
 

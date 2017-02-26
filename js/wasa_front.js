@@ -522,10 +522,11 @@ function roll_NDS(N, S) {
 }
 
 function filter_components(target) {
-    if (target.value.length == 0) {
-        $('.new_component').show();
-    } else {
-        // All componentes get C_ as prefix
+    $('.new_component').show();
+
+    // All componentes get C_ as prefix
+
+    if (target.value.length > 0) {
         var filter = target.value.toLowerCase();
         $('.new_component:not([id*='+filter+'])').hide();
     }

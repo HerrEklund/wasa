@@ -28,7 +28,9 @@
     #events_textarea {
         min-height: 300px;
     }
-
+    #filter_input {
+        margin-bottom: 5px;
+    }
     .component_tray {
         /* Droppable */
     }

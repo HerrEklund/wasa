@@ -46,18 +46,22 @@
     .component {
         float: left;
         cursor: pointer;
+        border: 1px solid black;
+
     }
     .new_component {
         float: left;
         cursor: pointer;
+        border: 1px solid black;
+
         margin: 3px;
         z-index: 1000000;
     }
     .selected_component {
-        border: #fff dashed 2px!important;
+        border: #fff dashed 2px;
     }
     .marked_component {
-        border: solid 2px;
+        border: solid 4px;
     }
     .lineup_component {
         margin: 2px;
@@ -67,11 +71,11 @@
         display: none;
     }
     .lineup_box_active {
-        border: #fff solid 2px;
+        border: 0;
         border-radius: 8px;
         background-color: #333;
         z-index: 1000000;
-        padding: 10px;
+        padding: 15px;
         padding-left: 20px;
         opacity: 0.8;
     }
@@ -98,7 +102,6 @@
     }
     .cb_red {
         border-color: red;
-        color: red;
     }
     .cb_green {
         border-color: lawngreen;

@@ -1,0 +1,34 @@
+
+#main_title {
+    color: #b2392e;
+}
+#tab_side {
+    /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
+    position: relative;
+}
+#game_board {
+    background-image: url('components/vassal/N44 Map-2015-FINAL-150.jpg');
+    width: 6550px;
+    height: 5100px;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: inherit;
+    border: #111 4px solid;
+}
+
+.normandy44_counter_small {
+    /* Custom for this game */
+    background-repeat: no-repeat;
+    width: 84px;
+    height: 84px;
+
+    background-size: 100%;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #111;
+
+}
+

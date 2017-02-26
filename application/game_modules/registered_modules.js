@@ -34,5 +34,11 @@ var registered_modules = [
         'title': 'Warriors of God',
         'subtitle': 'The Hundred Years War',
         'box_front': './game_modules/warriors_of_god/components/vassal/Splash.png'
+    },
+    {
+        'game_id': 'normandy_44',
+        'title': 'Normandy \'44',
+        'subtitle': 'D-Day and the Battle for Normandy, 6 - 27 JUNE, 1944',
+        'box_front': './game_modules/normandy_44/components/vassal/cover.jpg'
     }
 ];

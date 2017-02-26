@@ -25,12 +25,15 @@
     height: 41px;
 
     background-size: 100%;
-
+    border: 0;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    border: 1px solid black;
-    box-shadow: 4px 4px 4px #111;
+    box-shadow: 2px 2px 2px #111;
 
 }
 
+/* Overide default since SJW counters are small*/
+.marked_component {
+    border: solid 2px;
+}

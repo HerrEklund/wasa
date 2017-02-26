@@ -17,13 +17,13 @@
 .RW_component {
     width: 78px;
     height: 78px;
-    background-size: 100%;
 
+    background-size: 100%;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    border: 1px solid black;
     box-shadow: 4px 4px 4px #111;
+
 }
 
 /*

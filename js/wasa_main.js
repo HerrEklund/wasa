@@ -46,6 +46,17 @@ function createWasaBoardGame() {
     if (typeof game_id === 'undefined' || game_id.length == 0) {
         showGameLibrary();
     } else {
+
+        // Try get session from URL, if not, load by cookie.
+        if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
+            var current_game_session_id = Cookies.get(game_id+'_last_session');
+            if (current_game_session_id != null && current_game_session_id.length > 0 ) {
+                // Redirect to update URL
+                window.location = window.location.href.split("?")[0] + '?game_id='+game_id+'&game_session_id='+current_game_session_id
+                return;
+            }
+        }
+
         // First dynamically load all needed scripts for this game module
         loadGameModule(game_id, function () {
             /* After the loadGameModule, a couple of global accessible variables should exist:
@@ -57,21 +68,12 @@ function createWasaBoardGame() {
              *   component_list          ... components.js   This can be manually created or genrated by a script
              *
              */
-
             try {
                 verifyLoadedGameModule();
             } catch(err) {
                 alert("Invalid game module, reason was: "+err);
                 window.location = window.location.href.split("?")[0];
                 return;
-            }
-
-            // Try get session from URL, if not, load by cookie.
-            if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
-                var current_game_session_id = Cookies.get(game_id+'_last_session');
-                if (current_game_session_id != null && current_game_session_id.length > 0 ) {
-                    game_session_id = current_game_session_id;
-                }
             }
 
             // Create board game GUI
@@ -187,16 +189,16 @@ function layoutWasaBoardGaame(game_id, game_data) {
     // TODO: Use real sessions
     var available_sessions = [
         {
-            'game_session_id': (fnv1Hash(game_id+'_DEMO_1')),
+            'game_session_id': (fnv1Hash(game_id+'_PUBL_1')),
             'comment': 'Public demo game'
         },
         {
-            'game_session_id': (fnv1Hash(game_id+'_DEMO_2')),
-            'comment': 'Public demo game'
+            'game_session_id': (fnv1Hash(email + game_id+'_GAME_1')),
+            'comment': 'GAME 1 (Private, shareable)'
         },
         {
-            'game_session_id': (fnv1Hash(game_id+'_DEMO_3')),
-            'comment': 'Public demo game'
+            'game_session_id': (fnv1Hash(email + game_id+'_GAME_2')),
+            'comment': 'GAME 2 (Private, shareable)'
         }
     ];
 

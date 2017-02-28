@@ -46,5 +46,11 @@ var registered_modules = [
         'title': 'Fire in the Lake',
         'subtitle': 'COIN Series, Volume IV',
         'box_front': './game_modules/fire_in_the_lake/components/vassal/FireLake-CardBack2.jpg'
+    },
+    {
+        'game_id': 'next_war_korea',
+        'title': 'Next War: Korea',
+        'subtitle': '',
+        'box_front': './game_modules/next_war_korea/components/vassal/nwkbox.jpg'
     }
 ];

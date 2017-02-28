@@ -1,0 +1,36 @@
+
+#main_title {
+    color: orange;
+}
+#tab_side {
+    /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
+    position: relative;
+}
+#game_board {
+    background-image: url('components/MapFull.jpg');
+    width: 5460px;
+    height: 6536px;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: inherit;
+    border: #111 4px solid;
+}
+
+.nw_korea_small {
+    /* Custom for this game */
+    background-repeat: no-repeat;
+    width: 86px;
+    height: 86px;
+
+    background-size: 100%;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+    -webkit-box-shadow: 4px 4px 10px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 10px 4px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 10px 4px rgba(0,0,0,0.75);
+}
+

@@ -104,7 +104,7 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
         store_event_to_list(JSON.stringify(chat_event), true);
     };
 
-    that.store_create_component_event = function(tray_component_id, component_id, left, top) {
+    that.store_create_component_event = function(tray_component_id, component_id, game_board_id, left, top) {
         var component_event = {
             'event_type': 'create_component',
             'username': encodeURIComponent(username),
@@ -112,6 +112,7 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
             'payload': {
                 'tray_component_id': tray_component_id,
                 'component_id': component_id,
+                'game_board_id': game_board_id,
                 'left': left,
                 'top': top
             }

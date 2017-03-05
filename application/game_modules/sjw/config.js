@@ -36,13 +36,14 @@ var game_data = {
 
     'component_classes': 'sjw_counter',
 
-    'map_tab':
+    'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
-            'title': 'Main',
-            'id': 'tab_board',
-            'src': 'components/sjw_NS.jp2',
-            'class': ''
-        },
+            'title': 'North and south map',
+            'id': 'main_map',
+            'classes': ''
+        }
+
+    ],
 
     'extra_tabs': [
     ],

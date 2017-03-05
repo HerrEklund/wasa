@@ -36,13 +36,18 @@ var game_data = {
 
     'component_classes': 'sl_counter_small',
 
-    'map_tab':
+    'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
-            'title': 'Main',
-            'id': 'tab_board',
-            'src': 'components/map1_west.jpg',  // TODO: Set from CSS right now, ok or not?
-            'class': ''
+            'title': 'First',
+            'id': 'map1_west',
+            'classes': 'sql_map'
         },
+        {   // Just special as it may contain special markup and is also active by default
+            'title': 'Second',
+            'id': 'map2_west',
+            'classes': 'sql_map'
+        }
+    ],
 
     'extra_tabs': [
     ],

@@ -40,7 +40,7 @@ function init_wasa_front() {
     $(".new_component").draggable({
         grid: [ 5, 5 ],
         helper: "clone",
-        appendTo: "#game_board"
+        appendTo: "#all_tabs"       // Wrapper of the maps, drop will be off by some 40 pixels.
     });
     $(".component_tray").droppable({
         accept: '.component',
@@ -48,35 +48,36 @@ function init_wasa_front() {
             wasa_client.store_delete_component_event($(ui.helper).attr('id'));
         }
     });
-    $("#game_board").droppable({
+    $(".game_board").droppable({
         accept: '.new_component',
         drop: function(event, ui) {
+
+            console.log("Dropped on board #"+ event.target.id);
+
             var ghost_component = $(ui.helper);
 
-            var new_component = ghost_component.clone(true);
-
             // Extract what we need to post the event
-            var tray_component_id = new_component.context.id;
+            var tray_component_id = ghost_component.context.id;
             var coordinates = ghost_component.position();
 
             var left = coordinates.left;
             var top = coordinates.top;
 
-            // Store event to backend
-            wasa_client.store_create_component_event(tray_component_id, get_random_id(), left, top);
+            // Store event to backend, Note the -40 is due to the drop becomes due to the appendTo on the new_component draggable.
+            wasa_client.store_create_component_event(tray_component_id, get_random_id(), event.target.id, left, top-42);
 
             ghost_component.remove();
         }
     });
     // Draggable lineup box?
-    $('#lineup_box').draggable({});
+    $('.lineup_box').draggable({});
 
-    $("#game_board").bind("click tap touchstart", function(e){
+    $(".game_board").bind("click tap touchstart", function(e){
         resetSelectionAndLineup();
         e.stopPropagation();
     });
 
-    $("#lineup_box").bind("click tap touchstart", function(e){
+    $(".lineup_box").bind("click tap touchstart", function(e){
         resetSelectionAndLineup();
         e.stopPropagation();
     });
@@ -112,7 +113,7 @@ function init_wasa_front() {
      * TODO: investigate how to enable lasso properly, not working well atm
      *
     if (!is_touch_device) {
-        $("#game_board").selectable({
+        $(".game_board").selectable({
           filter: "div",
             start: function( event, ui ) {
 
@@ -168,11 +169,12 @@ function createAndAddComponentToGameBoard(create_component_event) {
     // Grab the tray component
     var tray_component = $('#'+e['payload']['tray_component_id']);
     var new_component_id = e['payload']['component_id'];
+    var game_board_id = e['payload']['game_board_id'];
 
     // Create component
     var new_component = tray_component.clone();
 
-    addComponentToGameBoard(new_component, new_component_id, e['payload']['top'], e['payload']['left']);
+    addComponentToGameBoard(new_component, new_component_id, game_board_id, e['payload']['top'], e['payload']['left']);
 
     print_game_event(time, event_username, "Created component "+new_component_id);
 }
@@ -285,9 +287,9 @@ function placeComponentOnTop(component) {
     });
     component.css('zIndex', topZ + 1);
 }
-function addComponentToGameBoard(new_component, new_component_id, top, left) {
+function addComponentToGameBoard(new_component, new_component_id, game_board_id, top, left) {
 
-    new_component.appendTo('#game_board');
+    new_component.appendTo('#' + game_board_id);
     new_component.attr('id', new_component_id);
 
     new_component.css({top: top, left: left, position:'absolute'});

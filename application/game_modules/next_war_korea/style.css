@@ -10,13 +10,17 @@
     background-image: url('components/MapFull.jpg');
     width: 5460px;
     height: 6536px;
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: inherit;
-    border: #111 4px solid;
 }
-
+#air_sup_board {
+    background-image: url('components/vassal/PAC2-Air Superiority.png');
+    width: 1600px;
+    height: 1800px;
+}
+#game_info_board {
+   background-image: url('components/vassal/PAC3-Game Info.png');
+    width: 1600px;
+    height: 1800px;
+}
 .nw_korea_small {
     /* Custom for this game */
     background-repeat: no-repeat;

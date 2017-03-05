@@ -36,14 +36,13 @@ var game_data = {
 
     'component_classes': 'normandy44_counter_small',
 
-    'map_tab':
+    'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
             'title': 'Main',
-            'id': 'tab_board',
-            'src': 'components/vassal/N44 Map-2015-FINAL-150.jpg',  // TODO: Set from CSS right now, ok or not?
-            'class': ''
-        },
-
+            'id': 'game_board',
+            'classes': ''
+        }
+    ],
     'extra_tabs': [
         {
             'title': 'German reinforcements',

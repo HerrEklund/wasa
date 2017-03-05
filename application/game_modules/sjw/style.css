@@ -7,7 +7,7 @@
     /* Relative or fixed (fixed is only good for small maps)*/
     position: relative;
 }
-#game_board {
+#main_map {
     background-image: url('components/sjw_NS.jpg');
     width: 3336px;
     height: 3761px;

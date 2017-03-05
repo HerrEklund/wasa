@@ -36,27 +36,24 @@ var game_data = {
 
     'component_classes': 'nw_korea_small',
 
-    'map_tab':
+    'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
             'title': 'Main',
-            'id': 'tab_board',
-            'src': 'components/MapFull.jpg',  // TODO: Set from CSS right now, ok or not?
-            'class': ''
+            'id': 'game_board',
+            'classes': ''
         },
-
-    'extra_tabs': [
         {
             'title': 'Air sup.',
-            'id': 'tab1',
-            'image_src': 'components/vassal/PAC2-Air Superiority.png',
-            'image_style': 'width: 1600px; height: auto;'
+            'id': 'air_sup_board',
+            'classes': ''
         },
         {
             'title': 'Game info',
-            'id': 'tab2',
-            'image_src': 'components/vassal/PAC3-Game Info.png',
-            'image_style': 'width: 1600px; height: auto;'
-        },
+            'id': 'game_info_board',
+            'classes': ''
+        }
+    ],
+    'extra_tabs': [
         {
             'title': 'Intl. posture',
             'id': 'tab3',

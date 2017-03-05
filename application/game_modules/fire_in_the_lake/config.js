@@ -36,13 +36,13 @@ var game_data = {
 
     'component_classes': 'fitl_marker',
 
-    'map_tab':
+    'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
-            'title': 'Main',
-            'id': 'tab_board',
-            'src': 'components/vassal/FITL Map VASSAL.jpg',  // TODO: Set from CSS right now, ok or not?
-            'class': ''
-        },
+            'title': 'Game board',
+            'id': 'game_board',
+            'classes': ''
+        }
+    ],
     'cards_tab':
         {
             'cards_js': 'cards.js'

@@ -13,7 +13,7 @@ This file is generated using Nunjucks:
             </button>
             <h3 id="game_id_header"></h3>
         </div>
-        <h2 id="main_title"><a href="."><<<</a>{{ game.title }} <small>{{ game.version }}</small></h2>
+        <h2 id="main_title"><a href="."><<<</a> {{ game.title }} <small>{{ game.version }}</small></h2>
         <p class="lead">{{ game.subtitle }}</p>
 
 
@@ -76,20 +76,31 @@ This file is generated using Nunjucks:
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#tab_board" aria-controls="tab_board" role="tab" data-toggle="tab">Game board</a></li>
-              {% for tab in game.extra_tabs %}
-                  <li role="presentation">
-                      <a href="#{{ tab.id }}" role="tab" data-toggle="tab">{{ tab.title }}</a>
+              {% for tab in game.game_board_tabs %}
+                  <li role="presentation" {% if loop.first %} class="active" {% endif %}>
+                      <a href="#{{ tab.id }}_tab" role="tab" data-toggle="tab" class="map_tab_title">> {{ tab.title }}</a>
                   </li>
               {% endfor %}
-              <li role="presentation"><a href="#{{ game.rules_tab.id }}" aria-controls="tab_rules" role="tab" data-toggle="tab">Rules</a></li>
+
+              {% for tab in game.extra_tabs %}
+                  <li role="presentation">
+                      <a href="#{{ tab.id }}" role="tab" data-toggle="tab" class="extra_tab_title">{{ tab.title }}</a>
+                  </li>
+              {% endfor %}
+
+              <li role="presentation">
+                  <a href="#{{ game.rules_tab.id }}" aria-controls="tab_rules" role="tab" data-toggle="tab" class="rules_tab_title">Rules</a>
+              </li>
           </ul>
 
           <!-- Tab panes -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="tab_board">
-                <div id="game_board" class="ui-widget-header">
-                    <div id="lineup_box">
+          <div class="tab-content" id="all_tabs">
+            {% for tab in game.game_board_tabs %}
+            <div role="tabpanel" class="tab-pane {% if loop.first %}active{% endif %}" id="{{ tab.id }}_tab">
+
+                <div id="{{tab.id}}" class="ui-widget-header game_board {{ tab.classes }}">
+                    <!-- TODO: -->
+                    <div class="lineup_box">
                         <div class="cbox_holder">
                             <div class="cbox cb_unmark"></div>
                             <div class="cbox cb_mark cb_red"></div>
@@ -100,9 +111,9 @@ This file is generated using Nunjucks:
                             <div class="cbox cb_mark cb_cyan"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
+            {% endfor %}
 
             {% for tab in game.extra_tabs %}
             <div role="tabpanel" class="tab-pane" id="{{ tab.id }}">

@@ -36,21 +36,20 @@ var game_data = {
 
     'component_classes': 'RW_component',
 
-    'map_tab':
+    'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
             'title': 'Main',
-            'id': 'tab_board',
-            'src': 'components/vassal/Red_Winter_Map-150.jpg',  // TODO: Set from CSS right now, ok or not?
-            'class': ''
+            'id': 'main_game_board',
+            'classes': ''
         },
-
-    'extra_tabs': [
         {
             'title': 'Turn track',
-            'id': 'tab_turn_track',
-            'image_src': 'components/vassal/turn_track.png',
-            'image_style': 'width: 80%; height: 80%'
-        },
+            'id': 'turn_track',
+            'classes': ''
+        }
+    ],
+
+    'extra_tabs': [
         {
             'title': 'Player Aid 1',
             'id': 'tab_player_aid_1',

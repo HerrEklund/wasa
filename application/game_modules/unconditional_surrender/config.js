@@ -36,13 +36,13 @@ var game_data = {
 
     'component_classes': 'uc_counter_small',
 
-    'map_tab':
+    'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
             'title': 'Main',
-            'id': 'tab_board',
-            'src': 'components/vassal/USE Map-WEST&EAST.jpg',  // TODO: Set from CSS right now, ok or not?
-            'class': ''
-        },
+            'id': 'main_game_board',
+            'classes': ''
+        }
+    ],
 
     'extra_tabs': [
         {

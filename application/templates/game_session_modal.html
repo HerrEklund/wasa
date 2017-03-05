@@ -10,6 +10,17 @@
                 <div class="modal-body">
                     {% if game_session_id %}
                     <p>The link in your browser window represent this game. You could share it with your opponents, but they will not be able to list it in this box.</p>
+
+                    {% if game.scenarios %}
+                    <p>Use the menu below to load a scenario setup. NOTE: After confirming the scenario selection, the current game session will be reset and set up using the scenario data.</p>
+                    <select class="form-control" onchange="loadScenario(this.value)">
+                        <option>-- Select scenario --</option>
+                        {% for scenario in game.scenarios %}
+                        <option value="{{scenario.id}}">{{ scenario.title }}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                    <br><br>
                     <button class="btn btn-danger pull-right" onclick="wasa_client.reset_current_game()" >Reset current game</button>
                     <br><br>
                     {% else %}

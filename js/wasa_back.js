@@ -206,16 +206,21 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
         }
     };
 
+    that.reset_and_continue = function(callback) {
+        async_get_jsonp('/DEL/'+wasa_event_list_name, function (data) {
+            callback();
+        });
+    };
+
+    that.store_event = function(event, notify) {
+        store_event_to_list(JSON.stringify(event), notify);
+    };
+
     that.store_events = function(events) {
-        var command_event;
-
-        for (var i = 0, l = events.length; i < l; i++) {
+        for (var i = 0; i < events.length; i++) {
             // store multiple, but dont notify on each!
-            command_event = store_event_to_list(evets[i], false);
+            store_event_to_list(JSON.stringify(events[i]), false);
         }
-
-        // Just notifiy using the last command_event
-        async_get_jsonp('/PUBLISH/' + wasa_event_channel_name + '/'+ JSON.stringify(command_event));
     };
 
     function store_event_to_list(json_event, notify) {
@@ -239,8 +244,6 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
 
             if (notify) {
                 async_get_jsonp('/PUBLISH/' + wasa_event_channel_name + '/'+ JSON.stringify(command_event));
-            } else {
-                return command_event
             }
         });
     }

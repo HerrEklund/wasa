@@ -319,6 +319,66 @@ function game_event_handler(ge) {
     }
 }
 
+function loadScenario(scenario_id) {
+    if (scenario_id.length == 0 ) {
+        return;
+    }
+    if(confirm('Are you sure you want to reset the current game session and load a new scenario?')) {
+
+        var scenario;
+        // Get scenario descriptor
+        for(var i=0; i < game_data.scenarios.length; i++) {
+            if (game_data.scenarios[i].id == scenario_id) {
+                scenario = game_data.scenarios[i];
+                break
+            }
+        }
+
+        if (scenario !== undefined) {
+            console.log('Loading scenario '+ scenario['title']);
+        }
+
+        // Reset current game
+        wasa_client.reset_and_continue(function () {
+            // This will add a new variable called scenario_setup to the environemnt
+            addScript('game_modules/'+game_id+'/scenarios/'+scenario['script'], function () {
+                console.log('Scenario loaded from script.');
+
+                wasa_client.store_chat_event(username, ' --- LOADING SCENARIO: '+scenario['title']+' ---');
+
+                setTimeout(function () {
+
+                    for (var i=0; i < scenario_setup.length; i++) {
+                        var event = scenario_setup[i];
+
+                        // Remove chat messages from setup
+                        if (event['type'] == 'chat') {
+                            continue;
+                        }
+
+                        // Replace user of the scenario creator with bogus one.
+                        event['username'] = '-SETUP-';
+
+                        // Store the events, note the bulk store does not notify
+                        wasa_client.store_event(event, false);
+                    }
+
+                    setTimeout(function () {
+                        wasa_client.store_chat_event(username, ' --- SETUP COMPLETE ---');
+
+                        // And reload page
+                        window.location = window.location.href;
+
+                    }, 500);
+
+                }, 300);
+
+            });
+        });
+
+    }
+}
+
 function flash_game_board() {
 
     $('.game_board').addClass('board_flash_white');

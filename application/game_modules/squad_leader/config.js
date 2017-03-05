@@ -28,7 +28,7 @@ var game_data = {
 
     'title': 'Squad Leader',
 
-    'subtitle': 'The Guards Counter Attack',
+    'subtitle': 'The game of infantry combat in World War II',
 
     'box_front_img': 'components/squad_leader.jpg',
 
@@ -56,5 +56,12 @@ var game_data = {
         'id': 'rules_tab',
         'link_src': 'http://www.thierryb.net/site/media/File/wargames/fiches_jeux/SLCv104.pdf',
         'link_title': 'Non official rules'
-    }
+    },
+    'scenarios': [
+        {
+            'id':'guard_counterattack',
+            'title': 'The Guards Counterattack',
+            'script': 'the_guards_counter_attack.js'
+        }
+    ]
 };

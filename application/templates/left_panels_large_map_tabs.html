@@ -13,7 +13,7 @@ This file is generated using Nunjucks:
             </button>
             <h3 id="game_id_header"></h3>
         </div>
-        <h2 id="main_title"><a href="."><<<</a> {{ game.title }} <small>{{ game.version }}</small></h2>
+        <h2 id="main_title" class="theme_color"><a href="."><<<</a> {{ game.title }} <small>{{ game.version }}</small></h2>
         <p class="lead">{{ game.subtitle }}</p>
 
 
@@ -78,7 +78,7 @@ This file is generated using Nunjucks:
           <ul class="nav nav-tabs" role="tablist">
               {% for tab in game.game_board_tabs %}
                   <li role="presentation" {% if loop.first %} class="active" {% endif %}>
-                      <a href="#{{ tab.id }}_tab" role="tab" data-toggle="tab" class="map_tab_title">> {{ tab.title }}</a>
+                      <a href="#{{ tab.id }}_tab" role="tab" data-toggle="tab" class="map_tab_title theme_color">> {{ tab.title }}</a>
                   </li>
               {% endfor %}
 

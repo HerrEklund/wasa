@@ -1,7 +1,11 @@
 
 #main_title {
+}
+
+.theme_color {
     color: orange;
 }
+
 #tab_side {
     position: fixed;
 }

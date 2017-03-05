@@ -1,7 +1,11 @@
 
 #main_title {
-    color: orange;
 }
+
+.theme_color {
+    color: #f12a36;
+}
+
 #tab_side {
     /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
     position: relative;
@@ -13,13 +17,13 @@
 }
 #air_sup_board {
     background-image: url('components/vassal/PAC2-Air Superiority.png');
-    width: 1600px;
-    height: 1800px;
+    width: 2150px;
+    height: 2356px;
 }
 #game_info_board {
    background-image: url('components/vassal/PAC3-Game Info.png');
-    width: 1600px;
-    height: 1800px;
+    width: 1875px;
+    height: 1500px;
 }
 .nw_korea_small {
     /* Custom for this game */

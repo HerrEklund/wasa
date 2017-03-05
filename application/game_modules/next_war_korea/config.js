@@ -63,7 +63,7 @@ var game_data = {
         {
             'title': 'Reinforc.',
             'id': 'tab4',
-            'image_src': 'components/vassal/PAC4-ReinfChart.png',
+            'image_src': 'components/vassal/RMap.png',
             'image_style': 'width: 1600px; height: auto;'
         },
         {

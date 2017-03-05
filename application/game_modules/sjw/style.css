@@ -1,8 +1,12 @@
 
 #main_title {
-    font-family: "Times";
     color: white;
 }
+
+.theme_color {
+    color: white;
+}
+
 #tab_side {
     /* Relative or fixed (fixed is only good for small maps)*/
     position: relative;

@@ -390,6 +390,20 @@ function resetSelectionAndLineup() {
     resetLineup();
 }
 
+function resetLineup() {
+     console.log("resetLineup()");
+
+   // Empty lineup_box and show temp hidden
+    $('.lineup_component').remove();
+
+    $('.hidden_component').draggable( 'enable' );
+    $('.hidden_component').removeClass('hidden_component');
+
+    $('.lineup_box').removeClass('lineup_box_active');
+    $('.lineup_box').hide();
+
+}
+
 function selectedToLineup(component) {
      console.log("selectedToLineup()");
 
@@ -403,27 +417,16 @@ function selectedToLineup(component) {
     placeLineupBox(position.left, position.top);
 }
 
-function resetLineup() {
-     console.log("resetLineup()");
-
-   // Empty lineup_box and show temp hidden
-    $('.lineup_component').remove();
-
-    $('.hidden_component').draggable( 'enable' );
-    $('.hidden_component').removeClass('hidden_component');
-
-    $('#lineup_box').removeClass('lineup_box_active');
-    $('#lineup_box').hide();
-
-}
-
 function addCloneToLineupBox(component) {
     var lineup_clone = component.clone(true);
     lineup_clone.css({position:'static'});
     lineup_clone.removeClass('selected_component');
     lineup_clone.addClass('lineup_component');
 
-    lineup_clone.appendTo('#lineup_box');
+    // Find the components lineup_box
+    var closest_lineup_box = $(component).siblings('.lineup_box')[0];
+
+    lineup_clone.appendTo(closest_lineup_box);
 
     lineup_clone.draggable();
 
@@ -432,9 +435,9 @@ function addCloneToLineupBox(component) {
 }
 
 function placeLineupBox(left, top) {
-    $('#lineup_box').addClass('lineup_box_active');
-    $('#lineup_box').css({top: top + 60, left: left, position: 'absolute'});
-    $('#lineup_box').show();
+    $('.lineup_box').addClass('lineup_box_active');
+    $('.lineup_box').css({top: top + 60, left: left, position: 'absolute'});
+    $('.lineup_box').show();
 }
 
 

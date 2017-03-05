@@ -287,12 +287,6 @@ function game_event_handler(ge) {
 
     event_cache.push(ge);
 
-    $('.game_board').addClass('board_flash_red');
-
-    setTimeout(function () {
-        $('.game_board').removeClass('board_flash_red');
-    }, 300);
-
     if(ge['event_type'] == 'chat') {
         addChatMessage(ge);
     }
@@ -323,4 +317,14 @@ function game_event_handler(ge) {
     else {
         console.error("Unhandled event type "+ge['event_type']);
     }
+}
+
+function flash_game_board() {
+
+    $('.game_board').addClass('board_flash_white');
+
+    setTimeout(function () {
+        $('.game_board').removeClass('board_flash_white');
+    }, 300);
+
 }

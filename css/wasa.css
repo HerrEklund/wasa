@@ -76,7 +76,7 @@
         margin: 2px;
     }
     .lineup_box {
-        max-width: 220px;
+        max-width: 300px;
         display: none;
     }
     .lineup_box_active {
@@ -99,9 +99,9 @@
         float: left;
         border: #fff solid 4px;
         border-radius: 4px;
-        width: 20px;
-        height: 20px;
-        margin: 3px;
+        width: 25px;
+        height: 25px;
+        margin: 6px;
     }
     .cbox:hover {
         background-color: lightgrey;

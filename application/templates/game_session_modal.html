@@ -10,6 +10,8 @@
                 <div class="modal-body">
                     {% if game_session_id %}
                     <p>The link in your browser window represent this game. You could share it with your opponents, but they will not be able to list it in this box.</p>
+                    <button class="btn btn-danger pull-right" onclick="wasa_client.reset_current_game()" >Reset current game</button>
+                    <br><br>
                     {% else %}
                     <div class="alert alert-info">
                         No session selected, either continue with an ongoing game, or create a new one.

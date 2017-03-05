@@ -151,7 +151,6 @@ function addChatMessage(chat_message_event) {
     events_textarea.scrollTop(events_textarea[0].scrollHeight);
 }
 
-
 /**
  *
  * Game event handlers
@@ -512,7 +511,24 @@ function get_printable_time(unix_timestamp) {
 
 function send_chat_message() {
     var message = $('#event_input').val();
-    wasa_client.store_chat_event(username, message);
+
+    if (message[0] == '/') {
+        // Handle command
+        if (message == '/dump') {
+            // Empty the events_dump
+            $('#events_dump').empty();
+
+            // Add
+            var dump = '/* Events from game_id = '+game_id+' */\n'+JSON.stringify(event_cache, null, 2);
+            $('<pre id="events_pre">'+dump+'</pre>').appendTo('#events_dump');
+
+            // And show the modal
+            $('#events_modal').modal('show');
+        }
+
+    } else {
+        wasa_client.store_chat_event(username, message);
+    }
     $('#event_input').val('');
 }
 
@@ -535,3 +551,21 @@ function filter_components(target) {
         $('.new_component:not([id*='+filter+'])').hide();
     }
 }
+
+function SelectText(element) {
+    var doc = document;
+    var text = doc.getElementById(element);
+    if (doc.body.createTextRange) { // ms
+        var range = doc.body.createTextRange();
+        range.moveToElementText(text);
+        range.select();
+    } else if (window.getSelection) {
+        var selection = window.getSelection();
+        var range = doc.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+    }
+}
+

@@ -274,6 +274,8 @@ function game_event_notification_handler(command_event) {
     }
 }
 
+var event_cache = [];
+
 function game_event_handler(ge) {
     /**
      * WASA handles the basic stuff of chat, create, move, delete, rotate etc.
@@ -282,6 +284,8 @@ function game_event_handler(ge) {
      *
      */
     console.log("Application received event:" + JSON.stringify(ge));
+
+    event_cache.push(ge);
 
     $('.game_board').addClass('board_flash_red');
 

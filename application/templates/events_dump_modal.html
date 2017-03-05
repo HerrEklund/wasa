@@ -1,0 +1,36 @@
+    <style type="text/css">
+        #events_dump pre {
+            max-height: 800px;
+        }
+    </style>
+
+    <script type="application/javascript">
+
+    </script>
+
+    <div class="modal fade" id="events_modal" tabindex="-1" role="dialog" aria-labelledby="events_modal_label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="events_modal_label">Raw Events</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div id="events_dump">
+                        <!-- This is added by javascript
+
+                            <pre id="events_pre"> </pre>
+
+                        -->
+                    </div>
+                    <button class="btn btn-default" id="select_all_button" onclick="SelectText('events_pre')">Select all</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

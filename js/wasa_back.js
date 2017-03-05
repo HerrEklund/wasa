@@ -197,11 +197,13 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
         };
         store_event_to_list(JSON.stringify(unmark_components_event), true);
     };
-    that.reset_game = function() {
-        confirm("Are you sure?\n\nThis can not be undone.");
-        async_get_jsonp('/DEL/'+wasa_event_list_name, function (data) {
-            alert("Game reset!");
-        });
+
+    that.reset_current_game = function() {
+        if(confirm("Are you sure?\n\nThis can not be undone.")) {
+            async_get_jsonp('/DEL/'+wasa_event_list_name, function (data) {
+                window.location = window.location.href;
+            });
+        }
     };
 
     that.store_events = function(events) {

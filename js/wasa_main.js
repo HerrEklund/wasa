@@ -352,7 +352,7 @@ function loadScenario(scenario_id) {
                         var event = scenario_setup[i];
 
                         // Remove chat messages from setup
-                        if (event['type'] == 'chat') {
+                        if (event['event_type'] == 'chat') {
                             continue;
                         }
 

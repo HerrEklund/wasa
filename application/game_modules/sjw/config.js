@@ -37,7 +37,7 @@ var game_data = {
     'component_classes': 'sjw_counter',
 
     'game_board_tabs': [
-        {   // Just special as it may contain special markup and is also active by default
+        {   // Note the id defined here must be defined in style.css where the bitmap is pointed out etc.
             'title': 'North and south map',
             'id': 'main_map',
             'classes': ''
@@ -46,6 +46,42 @@ var game_data = {
     ],
 
     'extra_tabs': [
+        {
+            'title': 'Combat Chart',
+            'id': 'tab1',
+            'image_src': 'components/combat_chart.png',
+            'image_style': 'width: 1000px; height: auto;'
+        },
+        {
+            'title': 'Terrain / Art.',
+            'id': 'tab2',
+            'image_src': 'components/terrain_artillery_attack.png',
+            'image_style': 'width: 1000px; height: auto;'
+        },
+        {
+            'title': 'Ratio / Sum. Comb.',
+            'id': 'tab3',
+            'image_src': 'components/ratio_combat_summary.png',
+            'image_style': 'width: 1000px; height: auto;'
+        },
+        {
+            'title': 'Flank / Cav.',
+            'id': 'tab4',
+            'image_src': 'components/flank_attack_combat_result_sum.png',
+            'image_style': 'width: 1000px; height: auto;'
+        },
+        {
+            'title': 'Move / Ext. march',
+            'id': 'tab5',
+            'image_src': 'components/movement_mp_cost_ext_march.png',
+            'image_style': 'width: 1000px; height: auto;'
+        },
+        {
+            'title': 'Retreat',
+            'id': 'tab6',
+            'image_src': 'components/retreat_chart.png',
+            'image_style': 'width: 1000px; height: auto;'
+        }
     ],
 
     'rules_tab': {

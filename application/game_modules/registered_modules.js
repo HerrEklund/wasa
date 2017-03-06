@@ -24,6 +24,12 @@ var registered_modules = [
         'box_front': './game_modules/sjw/components/sjw_cover_small.png'
     },
     {
+        'game_id': 'roads_to_gettysburg',
+        'title': 'Roads to Gettysburg',
+        'subtitle': 'Great Campaigns of the Civil War vol. III',
+        'box_front': './game_modules/roads_to_gettysburg/components/box.jpg'
+    },
+    {
         'game_id': 'unconditional_surrender',
         'title': 'Unconditional Surrender',
         'subtitle': 'World War 2 in Europe',

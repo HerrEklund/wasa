@@ -11,18 +11,29 @@
     /* Relative or fixed (fixed is only good for small maps)*/
     position: relative;
 }
-#main_map {
-    background-image: url('components/sjw_NS.jpg');
-    width: 3336px;
-    height: 3761px;
+#north_map {
+    background-image: url('components/vassal/NMap.jpg');
+    width: 3991px;
+    height: 2659px;
     position: relative;
     background-size: contain;
     background-repeat: no-repeat;
     background-color: inherit;
-    border: inherit 0 solid;
+    border: inherit 0px solid;
 }
 
-.sjw_counter {
+#south_map {
+    background-image: url('components/vassal/SMap.jpg');
+    width: 3991px;
+    height: 2657px;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: inherit;
+    border: inherit 0px solid;
+}
+
+.rtg_counter {
     /* Custom for this game, its OK to change width height from counter image size */
     background-repeat: no-repeat;
     width: 41px;

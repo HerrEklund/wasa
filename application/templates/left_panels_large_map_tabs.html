@@ -9,15 +9,17 @@ This file is generated using Nunjucks:
 <div class="row" style="margin-top:10px;">
 
     <div class="col-sm-4">
-        <div id="pulled_header">
-            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#game_session_modal">
-                Session: {{game_session_id}}
-            </button>
-            <h3 id="game_id_header"></h3>
-        </div>
         <h2 id="main_title" class="theme_color"><a href="."><<<</a> {{ game.title }} <small>{{ game.version }}</small></h2>
         <p class="lead">{{ game.subtitle }}</p>
 
+        <div class="pull-right">
+            {% include "game_menu.html" %}
+        </div>
+
+        <span class="clearfix"></span>
+        <hr>
+
+        <!--
         <div class="alert alert-warning alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Note:</strong>
@@ -37,6 +39,7 @@ This file is generated using Nunjucks:
                 <li>While inspecting, you can drag a component as from the component location.</li>
             </ul>
         </div>
+        -->
 
         <div class="panel panel-default wasa_panel">
 
@@ -51,10 +54,7 @@ This file is generated using Nunjucks:
 
                 <button type="button" class="btn btn-default" onclick="roll_NDS(1,6)">Roll D6</button>
                 <button type="button" class="btn btn-default" onclick="roll_NDS(2,6)">Roll 2D6</button>
-                <button type="button" class="btn btn-default" onclick="roll_NDS(3,6)">Roll 3D6</button>
-                <button type="button" class="btn btn-default" onclick="roll_NDS(4,6)">Roll 4D6</button>
                 <button type="button" class="btn btn-default" onclick="roll_NDS(5,6)">Roll 5D6</button>
-                <button type="button" class="btn btn-default" onclick="roll_NDS(6,6)">Roll 6D6</button>
                 <button type="button" class="btn btn-default" onclick="roll_NDS(1,10)">Roll D10</button>
                 <button type="button" class="btn btn-default" onclick="roll_NDS(1,20)">Roll D20</button>
 

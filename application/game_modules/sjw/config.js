@@ -88,5 +88,13 @@ var game_data = {
         'id': 'rules_tab',
         'link_src': 'game_modules/sjw/components/GCACW_Series_Rules_-_Version_1-2.pdf',
         'link_title': 'GCACW Series Rules, Version 1.2'
-    }
+    },
+    'scenarios': [
+        {
+            'id':'cedar_mountain',
+            'title': 'Scenario 1: Cedar Mountain',
+            'script': 'sc_1_cedar_mountain.js'
+        }
+    ]
+
 };

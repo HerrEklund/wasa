@@ -19,7 +19,7 @@
         background-size:100%;
         background-repeat: no-repeat;
         background-color: inherit;
-        border: #111 4px solid;
+        border: 0;
     }
     .board_flash_white {
         border: white 4px solid!important;

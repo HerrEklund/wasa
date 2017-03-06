@@ -38,6 +38,11 @@ var game_data = {
 
     'game_board_tabs': [
         {   // Note the id defined here must be defined in style.css where the bitmap is pointed out etc.
+            'title': 'Full map',
+            'id': 'full_map',
+            'classes': ''
+        },
+        {   // Note the id defined here must be defined in style.css where the bitmap is pointed out etc.
             'title': 'North map',
             'id': 'north_map',
             'classes': ''

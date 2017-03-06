@@ -11,6 +11,7 @@
     /* Relative or fixed (fixed is only good for small maps)*/
     position: relative;
 }
+
 #north_map {
     background-image: url('components/vassal/NMap.jpg');
     width: 3991px;
@@ -19,7 +20,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-color: inherit;
-    border: inherit 0px solid;
+    border: 0;
 }
 
 #south_map {
@@ -30,7 +31,18 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-color: inherit;
-    border: inherit 0px solid;
+    border: 0;
+}
+
+#full_map {
+    background-image: url('components/MapBoth.jpg');
+    width: 3991px;
+    height: 5316px;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: inherit;
+    border: 0;
 }
 
 .rtg_counter {

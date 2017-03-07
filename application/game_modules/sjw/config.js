@@ -94,7 +94,13 @@ var game_data = {
             'id':'cedar_mountain',
             'title': 'Scenario 1: Cedar Mountain',
             'script': 'sc_1_cedar_mountain.js'
+        },
+        {
+            'id':'lee_vs_pope',
+            'title': 'Scenario 2: Lee vs. Pope',
+            'script': 'sc_2_lee_vs_pope.js'
         }
+
     ]
 
 };

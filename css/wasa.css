@@ -22,9 +22,9 @@
         border: 0;
     }
     .event_signal {
-        -webkit-box-shadow: 0px 0px 90px 0px rgba(0,153,255,1);
-        -moz-box-shadow: 0px 0px 90px 0px rgba(0,153,255,1);
-        box-shadow: 0px 0px 90px 0px rgba(0,153,255,1);
+        -webkit-box-shadow: 0px 0px 77px 18px rgba(88,179,4,1);
+        -moz-box-shadow: 0px 0px 77px 18px rgba(88,179,4,1);
+        box-shadow: 0px 0px 77px 18px rgba(88,179,4,1);
     }
     .wasa_panel {
     }

@@ -1,0 +1,62 @@
+
+    <div class="panel panel-default wasa_panel" id="player_panel">
+
+        <div class="panel-heading">
+            <h3>Player panel [Session: {{game_session_id}}]</h3>
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+
+        </div>
+        <div class="panel-body">
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#pp_events_tab" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
+            <li role="presentation"><a href="#pp_component_tray_tab" aria-controls="component_tray" role="tab" data-toggle="tab">Component tray</a></li>
+            <li role="presentation"><a href="#pp_game_tab" aria-controls="game_tab" role="tab" data-toggle="tab">Game</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active pp_tab_pane" id="pp_events_tab">
+                <textarea id="events_textarea" class="form-control"></textarea>
+
+                <button type="button" class="btn btn-default" onclick="roll_NDS(1,6)">Roll D6</button>
+                <button type="button" class="btn btn-default" onclick="roll_NDS(2,6)">Roll 2D6</button>
+                <button type="button" class="btn btn-default" onclick="roll_NDS(5,6)">Roll 5D6</button>
+                <button type="button" class="btn btn-default" onclick="roll_NDS(1,10)">Roll D10</button>
+                <button type="button" class="btn btn-default" onclick="roll_NDS(1,20)">Roll D20</button>
+
+                <input id="event_input" class="form-control" placeholder="Chat, comments, clarifications etc.">
+
+            </div>
+            <div role="tabpanel" class="tab-pane pp_tab_pane" id="pp_component_tray_tab">
+                <div class="panel-body component_tray resizable_scroller" id="main_tray">
+                    <input class="form-control" onkeyup="filter_components(this)" id="filter_input" placeholder="Filter component by ID">
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane pp_tab_pane" id="pp_game_tab">
+                <br>
+                {% include "game_menu.html" %}
+                <br>
+                <hr>
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                  <strong>Note:</strong>
+                    <p>Game is still in <strong>alpha stage</strong> development and any game my be erased or appear buggy at times.</p>
+                </div>
+
+                <div class="alert alert-info alert-dismissible" role="alert">
+                  <strong>Tips</strong>
+                    <ul>
+                        <li>Use your browser zoom-tools! (Ctrl or ALT + plus/minus).</li>
+                        <li>If on a touch-screen, Pan and Pinch zoom.</li>
+                        <li>Drag components from the tray to the map.</li>
+                        <li>Click to inspect a stack of components.</li>
+                        <li>Click anywhere to dismiss stack inspection.</li>
+                        <li>While inspecting, you can drag a component as from the component location.</li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>

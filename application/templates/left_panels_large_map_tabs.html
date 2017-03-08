@@ -8,73 +8,14 @@ This file is generated using Nunjucks:
 -->
 <div class="row" style="margin-top:10px;">
 
-    <div class="col-sm-4">
+    <div>
         <h2 id="main_title" class="theme_color"><a href="."><<<</a> {{ game.title }} <small>{{ game.version }}</small></h2>
         <p class="lead">{{ game.subtitle }}</p>
-
-        <div class="pull-right">
-            {% include "game_menu.html" %}
-        </div>
-
-        <span class="clearfix"></span>
-        <hr>
-
-        <!--
-        <div class="alert alert-warning alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>Note:</strong>
-            <p>Game is still in <strong>alpha stage</strong> development and any game my be erased or appear buggy at times.</p>
-        </div>
-
-        <div class="alert alert-info alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>Tips</strong>
-            <ul>
-                <li>Use your browser zoom-tools! (Ctrl or ALT + plus/minus).</li>
-                <li>If on a touch-screen, Pan and Pinch zoom.</li>
-                <li>Drag components from the tray to the map.</li>
-                <li>Components moved will immediately be moved on all viewing game boards also.</li>
-                <li>Click to select a stack of components.</li>
-                <li>Click again on any selected component to inspect a stack. Click anywhere to dismiss inspection.</li>
-                <li>While inspecting, you can drag a component as from the component location.</li>
-            </ul>
-        </div>
-        -->
-
-        <div class="panel panel-default wasa_panel">
-
-            <div class="panel-heading">
-                <h5>Events <small class="text-muted">(This panel is draggable!)</small></h5>
-                <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-
-            </div>
-            <div class="panel-body">
-
-                <textarea id="events_textarea" class="form-control"></textarea>
-
-                <button type="button" class="btn btn-default" onclick="roll_NDS(1,6)">Roll D6</button>
-                <button type="button" class="btn btn-default" onclick="roll_NDS(2,6)">Roll 2D6</button>
-                <button type="button" class="btn btn-default" onclick="roll_NDS(5,6)">Roll 5D6</button>
-                <button type="button" class="btn btn-default" onclick="roll_NDS(1,10)">Roll D10</button>
-                <button type="button" class="btn btn-default" onclick="roll_NDS(1,20)">Roll D20</button>
-
-                <input id="event_input" class="form-control" placeholder="Chat, comments, clarifications etc.">
-            </div>
-        </div>
-        <div class="panel panel-default wasa_panel resizable">
-
-            <div class="panel-heading">
-                <h5>Counter tray <small class="text-muted">(This panel is draggable!)</small></h5>
-                <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-            </div>
-            <div class="panel-body component_tray" id="main_tray">
-                <input class="form-control" onkeyup="filter_components(this)" id="filter_input" placeholder="Filter component by ID">
-            </div>
-        </div>
-
     </div>
-    <div class="col-sm-8">
-        <div id="tab_side">
+
+        {% include "player_panel.html" %}
+
+    <div id="main_tabs">
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
@@ -133,6 +74,5 @@ This file is generated using Nunjucks:
 
         </div>
 
-    </div>
 </div>
 

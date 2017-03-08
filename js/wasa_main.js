@@ -283,7 +283,10 @@ function game_event_handler(ge) {
      * But you could of course add game specific events here
      *
      */
-    console.log("Application received event:" + JSON.stringify(ge));
+
+    //console.log("Application received event:" + JSON.stringify(ge));
+
+    flash_game_board();
 
     event_cache.push(ge);
 
@@ -346,6 +349,11 @@ function loadScenario(scenario_id) {
 
                 wasa_client.store_chat_event(username, ' --- LOADING SCENARIO: '+scenario['title']+' ---');
 
+                /**
+                 *
+                 * TODO: Fix, Note Async store behaviour. Not really optimal when order is important.
+                 *
+                 */
                 setTimeout(function () {
 
                     for (var i=0; i < scenario_setup.length; i++) {
@@ -369,7 +377,7 @@ function loadScenario(scenario_id) {
                         // And reload page
                         window.location = window.location.href;
 
-                    }, 500);
+                    }, 2000);
 
                 }, 300);
 
@@ -381,10 +389,10 @@ function loadScenario(scenario_id) {
 
 function flash_game_board() {
 
-    $('.game_board').addClass('board_flash_white');
+    $('#player_panel').addClass('event_signal');
 
     setTimeout(function () {
-        $('.game_board').removeClass('board_flash_white');
-    }, 300);
+        $('#player_panel').removeClass('event_signal');
+    }, 1000);
 
 }

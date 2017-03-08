@@ -21,14 +21,14 @@ function init_wasa_front() {
 
     var is_touch_device = test_is_touch_device();
 
-    document.getElementById('event_input').onkeypress = function(e){
+    document.getElementById('event_input').onkeypress = function (e) {
         if (!e) e = window.event;
         var keyCode = e.keyCode || e.which;
-        if (keyCode == '13'){
-          send_chat_message();
-          return false;
+        if (keyCode == '13') {
+            send_chat_message();
+            return false;
         }
-      };
+    };
 
     $(".wasa_panel").draggable({
         handle: '.panel-heading',
@@ -36,6 +36,30 @@ function init_wasa_front() {
     });
 
     $(".resizable").resizable();
+
+    $(".resizable_scroller")
+        .wrap('<div/>')
+        .css({'overflow': 'hidden'})
+        .parent()
+        .css({
+            'display': 'inline-block',
+            'overflow': 'hidden',
+            'height': function () {
+                return $('.resizable_scroller', this).height();
+            },
+            'width': function () {
+                return $('.resizable_scroller', this).width();
+            },
+            'paddingBottom': '12px',
+            'paddingRight': '12px'
+
+        }).resizable()
+        .find('.resizable_scroller')
+        .css({
+            overflow: 'auto',
+            width: '100%',
+            height: '100%'
+        });
 
     $(".new_component").draggable({
         grid: [ 5, 5 ],
@@ -75,6 +99,10 @@ function init_wasa_front() {
     $(".game_board").bind("click tap touchstart", function(e){
         resetSelectionAndLineup();
         e.stopPropagation();
+    });
+    $(".game_board").bind("dblclick tap touchstart", function(e){
+       alert("dblclick!");
+
     });
 
     $(".lineup_box").bind("click tap touchstart", function(e){

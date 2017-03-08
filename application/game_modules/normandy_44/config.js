@@ -59,22 +59,25 @@ var game_data = {
         {
             'title': 'At Cherbourg',
             'id': 'tab3',
-            'image_src': 'components/vassal/AtStartCard-CHERBOURG_2015.png',
+            'image_src': 'components/vassal/AtStartCard-CHERBOURG_2015.png'
         },
         {
             'title': 'Invasion tables',
             'id': 'tab4',
-            'image_src': 'components/vassal/Invasion_tables-2015.png',
+            'image_src': 'components/vassal/Invasion_tables-2015.png'
+            'image_style': 'width: 1200px; height: auto;'
         },
         {
             'title': 'Combat result table',
             'id': 'tab5',
-            'image_src': 'components/vassal/N44-CRT-2015.jpg',
+            'image_src': 'components/vassal/N44-CRT-2015.jpg'
+            'image_style': 'width: 1200px; height: auto;'
         },
         {
             'title': 'Terrain effects',
             'id': 'tab6',
-            'image_src': 'components/vassal/N44-TEC-2015.jpg',
+            'image_src': 'components/vassal/N44-TEC-2015.jpg'
+            'image_style': 'width: 1200px; height: auto;'
         }
     ],
 

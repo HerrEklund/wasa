@@ -100,10 +100,6 @@ function init_wasa_front() {
         resetSelectionAndLineup();
         e.stopPropagation();
     });
-    $(".game_board").bind("dblclick tap touchstart", function(e){
-       alert("dblclick!");
-
-    });
 
     $(".lineup_box").bind("click tap touchstart", function(e){
         resetSelectionAndLineup();

@@ -14,11 +14,32 @@
     background-image: url('components/vassal/USE Map-WEST&EAST.jpg');
     width: 6550px;
     height: 5100px;
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: inherit;
-    border: #111 4px solid;
+}
+#faction_pools {
+    background-image: url('components/vassal/FactionPools.jpg');
+    width: 1209px;
+    height: 934px;
+}
+#western_faction_card {
+    background-image: url('components/vassal/WesternFactionCard.jpg');
+    width: 1209px;
+    height: 934px;
+}
+#axis_faction_card {
+    background-image: url('components/vassal/AxisFactionCard.jpg');
+    width: 1208px;
+    height: 933px;
+}
+
+#soviet_faction_card {
+    background-image: url('components/vassal/SovietFactionCard.jpg');
+    width: 1209px;
+    height: 934px;
+}
+#national_tracks {
+    background-image: url('components/vassal/NationalTracks.jpg');
+    width: 934px;
+    height: 1209px;
 }
 
 .uc_counter_small {

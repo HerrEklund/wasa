@@ -40,7 +40,32 @@ var game_data = {
         {   // Just special as it may contain special markup and is also active by default
             'title': 'Main',
             'id': 'main_game_board',
-            'classes': ''
+            'classes': 'game_board'
+        },
+        {   // Just special as it may contain special markup and is also active by default
+            'title': 'Western FC',
+            'id': 'western_faction_card',
+            'classes': 'game_board'
+        },
+        {   // Just special as it may contain special markup and is also active by default
+            'title': 'Axis FC',
+            'id': 'axis_faction_card',
+            'classes': 'game_board'
+        },
+        {   // Just special as it may contain special markup and is also active by default
+            'title': 'Soviet FC',
+            'id': 'soviet_faction_card',
+            'classes': 'game_board'
+        },
+        {   // Just special as it may contain special markup and is also active by default
+            'title': 'Faction pools',
+            'id': 'faction_pools',
+            'classes': 'game_board'
+        },
+        {   // Just special as it may contain special markup and is also active by default
+            'title': 'National tracks',
+            'id': 'national_tracks',
+            'classes': 'game_board'
         }
     ],
 
@@ -63,5 +88,12 @@ var game_data = {
         'id': 'rules_tab',
         'link_src': 'http://www.gmtgames.com/US/USE_RulebookGMT2014-03-05.pdf',
         'link_title': 'Official rules by GMT'
-    }
+    },
+    'scenarios': [
+        {
+            'id':'1_poland_1939',
+            'title': 'Poland 1939',
+            'script': '1_poland_1939.js'
+        }
+    ]
 };

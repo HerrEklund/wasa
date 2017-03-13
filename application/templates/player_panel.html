@@ -12,7 +12,8 @@
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#pp_events_tab" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
             <li role="presentation"><a href="#pp_component_tray_tab" aria-controls="component_tray" role="tab" data-toggle="tab">Component tray</a></li>
-            <li role="presentation"><a href="#pp_game_tab" aria-controls="game_tab" role="tab" data-toggle="tab">Game</a></li>
+            <li role="presentation"><a href="#pp_scenario_tab" aria-controls="game_tab" role="tab" data-toggle="tab">Scenario</a></li>
+            <li role="presentation"><a href="#pp_session_tab" aria-controls="game_tab" role="tab" data-toggle="tab">Session</a></li>
           </ul>
 
           <!-- Tab panes -->
@@ -29,13 +30,40 @@
                 <input id="event_input" class="form-control" placeholder="Chat, comments, clarifications etc.">
 
             </div>
+
             <div role="tabpanel" class="tab-pane pp_tab_pane" id="pp_component_tray_tab">
                 <div class="panel-body component_tray resizable_scroller" id="main_tray">
                     <input class="form-control" onkeyup="filter_components(this)" id="filter_input" placeholder="Filter component by ID">
                 </div>
             </div>
 
-            <div role="tabpanel" class="tab-pane pp_tab_pane" id="pp_game_tab">
+            <div role="tabpanel" class="tab-pane pp_tab_pane" id="pp_scenario_tab">
+                {% if game.scenarios %}
+                <p>Use the menu below to load a scenario setup. NOTE: After confirming the scenario selection, the current game session will be reset and set up using the scenario data.</p>
+                <select class="form-control" onchange="loadScenario(this.value)">
+                    <option>-- Select scenario --</option>
+                    {% for scenario in game.scenarios %}
+                    <option value="{{scenario.id}}">{{ scenario.title }}</option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                <div class="alert alert-info">There are no scenarios defined for this game yet.</div>
+                {% endif %}
+                <br>
+                <p>You can contribute to the scenario definitions like this, it is simple, fun but also a bit time consuming.</p>
+                <ol>
+                    <li>Scenario creation are easiest made using a PC with mouse.</li>
+                    <li>Start a new blank game</li>
+                    <li>Place the counters according to a scenario description from the rule book</li>
+                    <li>Double check that your work was complete and accurate. It is easy to make small but fatal errors.</li>
+                    <li>In the chat window, typ <strong>/dump</strong>.</li>
+                    <li>Click 'Select all' and copy the selection to the clip-board.</li>
+                    <li>Create an email and describe what scenario and what game you have created it for.</li>
+                    <li>Send the contents (as a plain-text, ie. no formatting) email to <a href="mailto:herr.eklund@gmail.com?subject=Wasa scenario">the Wasa Author</a>.</li>
+                </ol>
+            </div>
+
+            <div role="tabpanel" class="tab-pane pp_tab_pane" id="pp_session_tab">
                 <br>
                 {% include "game_menu.html" %}
                 <br>

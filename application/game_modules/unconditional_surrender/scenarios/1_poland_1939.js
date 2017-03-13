@@ -236,5 +236,53 @@ var scenario_setup = [
       "top": 2384.6732103125,
       "zIndex": "20"
     }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1489403565,
+    "payload": {
+      "tray_component_id": "C_western_ground_support_-_front",
+      "component_id": "0tc8rjdi",
+      "game_board_id": "faction_pools",
+      "left": 477.7465515136719,
+      "top": 784.8264465332031
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1489403570,
+    "payload": {
+      "tray_component_id": "C_western_ground_support_-_front",
+      "component_id": "co4lu6qv",
+      "game_board_id": "faction_pools",
+      "left": 587.74658203125,
+      "top": 789.8264465332031
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1489404483,
+    "payload": {
+      "tray_component_id": "C_poland_will_10s_-_front",
+      "component_id": "ju6qgont",
+      "game_board_id": "western_faction_card",
+      "left": 194.82986450195312,
+      "top": 300.5208435058594
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1489404489,
+    "payload": {
+      "tray_component_id": "C_poland_will_1s_-_front",
+      "component_id": "baymczj5",
+      "game_board_id": "western_faction_card",
+      "left": 271.7743225097656,
+      "top": 380.5208435058594
+    }
   }
 ];

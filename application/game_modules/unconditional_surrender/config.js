@@ -94,6 +94,11 @@ var game_data = {
             'id':'1_poland_1939',
             'title': 'Poland 1939',
             'script': '1_poland_1939.js'
+        },
+        {
+            'id':'2_scandinavia_1940',
+            'title': 'Scandinavia 1940',
+            'script': '2_scandinavia_1940.js'
         }
     ]
 };

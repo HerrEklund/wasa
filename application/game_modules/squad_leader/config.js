@@ -38,13 +38,8 @@ var game_data = {
 
     'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
-            'title': 'First',
+            'title': '1 West',
             'id': 'map1_west',
-            'classes': 'sql_map'
-        },
-        {   // Just special as it may contain special markup and is also active by default
-            'title': 'Second',
-            'id': 'map2_west',
             'classes': 'sql_map'
         }
     ],

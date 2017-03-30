@@ -69,6 +69,13 @@ This file is generated using Nunjucks:
                 <p>We recommend to open the rules in a separate <strong>browser tab</strong> for best performance, just click the button below!</p>
                 <br>
                 <a href="{{ game.rules_tab.link_src }}" target="_blank" class="btn btn-default">{{ game.rules_tab.link_title }}</a>
+                <br>
+                {% if game.links %}
+                <h3>Links</h3>
+                {% for link in game.rules_tab.links %}
+                <a href="{{ link.src }}" target="_blank" class="">{{ link.title }}</a>
+                {% endfor %}
+                {% endif %}
             </div>
           </div>
 

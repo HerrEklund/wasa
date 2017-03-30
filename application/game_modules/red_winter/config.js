@@ -68,5 +68,13 @@ var game_data = {
         'id': 'rules_tab',
         'link_src': 'http://www.gmtgames.com/redwinter/RW_Rules_FINAL_Med_Res.pdf',
         'link_title': 'Red Winter Final Rules at GMT Games'
-    }
+    },
+
+    'scenarios': [
+        {
+            'id':'17_1_campaign_game',
+            'title': '17.1 The Campaign Game - The Battle of Tolvajärvi [semi complete]',
+            'script': '17_1_campaign_game.js'
+        }
+    ]
 };

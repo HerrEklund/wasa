@@ -87,7 +87,13 @@ var game_data = {
     'rules_tab': {
         'id': 'rules_tab',
         'link_src': 'http://www.gmtgames.com/US/USE_RulebookGMT2014-03-05.pdf',
-        'link_title': 'Official rules by GMT'
+        'link_title': 'Official rules by GMT',
+        'links': [
+            {
+                'title': 'Game page at GMT games',
+                'src': 'http://www.gmtgames.com/p-534-unconditional-surrender-2nd-printing.aspx'
+            }
+        ]
     },
     'scenarios': [
         {

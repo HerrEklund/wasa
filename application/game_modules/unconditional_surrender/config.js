@@ -105,6 +105,12 @@ var game_data = {
             'id':'2_scandinavia_1940',
             'title': 'Scandinavia 1940',
             'script': '2_scandinavia_1940.js'
+        },
+        {
+            'id':'3_france_1940',
+            'title': 'France 1940',
+            'script': '3_france_1940.js'
         }
+
     ]
 };

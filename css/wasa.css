@@ -38,7 +38,14 @@
         z-index: 2;
         width: 500px;
         right: 50px;
-        top: 300px;
+        top: 250px;
+    }
+    #toolbox {
+        position: fixed;
+        z-index: 2;
+        width: 500px;
+        right: 50px;
+        top: 100px;
     }
     #pp_tab_pane {
         height: 500px;
@@ -103,10 +110,13 @@
         z-index: 1000000;
         padding: 15px;
         padding-left: 20px;
-        opacity: 0.8;
     }
     .hidden_component {
         opacity: 0.6;
+        /* display: none; */
+    }
+    .very_hidden_component {
+        opacity: 0.2;
         /* display: none; */
     }
     .cbox_holder {

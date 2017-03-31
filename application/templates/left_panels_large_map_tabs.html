@@ -13,7 +13,9 @@ This file is generated using Nunjucks:
         <p class="lead">{{ game.subtitle }}</p>
     </div>
 
-        {% include "player_panel.html" %}
+    {% include "player_panel.html" %}
+
+    {% include "toolbox.html" %}
 
     <div id="main_tabs">
 
@@ -21,29 +23,34 @@ This file is generated using Nunjucks:
           <ul class="nav nav-tabs" role="tablist">
               {% for tab in game.game_board_tabs %}
                   <li role="presentation" {% if loop.first %} class="active" {% endif %}>
-                      <a href="#{{ tab.id }}_tab" role="tab" data-toggle="tab" class="map_tab_title theme_color">> {{ tab.title }}</a>
+                      <a href="#{{ tab.id }}_game_board_tab" role="tab" data-toggle="tab" class="map_tab_title theme_color">> {{ tab.title }}</a>
                   </li>
               {% endfor %}
 
               {% for tab in game.extra_tabs %}
                   <li role="presentation">
-                      <a href="#{{ tab.id }}" role="tab" data-toggle="tab" class="extra_tab_title">{{ tab.title }}</a>
+                      <a href="#{{ tab.id }}_extra_tab" role="tab" data-toggle="tab" class="extra_tab_title">{{ tab.title }}</a>
                   </li>
               {% endfor %}
 
               <li role="presentation">
-                  <a href="#{{ game.rules_tab.id }}" aria-controls="tab_rules" role="tab" data-toggle="tab" class="rules_tab_title">Rules</a>
+                  <a href="#{{ game.rules_tab.id }}_rules_tab" aria-controls="tab_rules" role="tab" data-toggle="tab" class="rules_tab_title">Rules</a>
               </li>
           </ul>
+
 
           <!-- Tab panes -->
           <div class="tab-content" id="all_tabs">
             {% for tab in game.game_board_tabs %}
-            <div role="tabpanel" class="tab-pane {% if loop.first %}active{% endif %}" id="{{ tab.id }}_tab">
+            <div role="tabpanel" class="tab-pane {% if loop.first %}active{% endif %}" id="{{ tab.id }}_game_board_tab">
+
 
                 <div id="{{tab.id}}" class="ui-widget-header game_board {{ tab.classes }}">
                     <!-- TODO: -->
                     <div class="lineup_box">
+                        <!-- disabled for now
+                        <input id="lineup_box_input" class="form-control input-sm" type="text" placeholder="Labels, remark etc" onchange="">
+                        -->
                         <div class="cbox_holder">
                             <div class="cbox cb_unmark"></div>
                             <div class="cbox cb_mark cb_red"></div>
@@ -59,12 +66,12 @@ This file is generated using Nunjucks:
             {% endfor %}
 
             {% for tab in game.extra_tabs %}
-            <div role="tabpanel" class="tab-pane" id="{{ tab.id }}">
+            <div role="tabpanel" class="tab-pane" id="{{ tab.id }}_extra_tab">
                 <img src="{{ module_path }}/{{ tab.image_src }}" style="{{ tab.image_style }}">
             </div>
             {% endfor %}
 
-            <div role="tabpanel" class="tab-pane" id="{{ game.rules_tab.id }}">
+            <div role="tabpanel" class="tab-pane" id="{{ game.rules_tab.id }}_rules_tab">
                 <br>
                 <p>We recommend to open the rules in a separate <strong>browser tab</strong> for best performance, just click the button below!</p>
                 <br>

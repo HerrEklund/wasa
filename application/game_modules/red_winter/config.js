@@ -51,13 +51,13 @@ var game_data = {
 
     'extra_tabs': [
         {
-            'title': 'Player Aid 1',
+            'title': 'PA: Front',
             'id': 'tab_player_aid_1',
             'image_src': 'components/vassal/pac1.png',
             'image_style': ''
         },
         {
-            'title': 'Player Aid 2',
+            'title': 'PA: Back',
             'id': 'tab_player_aid_2',
             'image_src': 'components/vassal/pac2.png',
             'image_style': ''

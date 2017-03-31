@@ -101,10 +101,14 @@ function init_wasa_front() {
         e.stopPropagation();
     });
 
+    /*
+    This seem not to matter since event propagates to the game_board anyway
+
     $(".lineup_box").bind("click tap touchstart", function(e){
-        resetSelectionAndLineup();
-        e.stopPropagation();
+        //resetSelectionAndLineup();
+        e.cancelBubble = true;
     });
+    */
     $(".cb_unmark").bind("click tap touchstart", function () {
         // Remove marked if already marked
         var component_ids = [];
@@ -404,6 +408,18 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
     new_component.prop('title', 'ID='+new_component_id);
 
     placeComponentOnTop(new_component);
+}
+
+function unmarkAllComponents() {
+    // Remove marked if already marked
+    var component_ids = [];
+    $('.marked_component').each(function () {
+        component_ids.push($(this).attr('id'));
+    });
+
+    if(component_ids.length > 0) {
+        wasa_client.unmark_components_event(component_ids);
+    }
 }
 
 function resetSelectionAndLineup() {

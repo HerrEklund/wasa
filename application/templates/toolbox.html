@@ -1,0 +1,61 @@
+
+    <div class="panel panel-default wasa_panel" id="toolbox">
+
+        <div class="panel-heading">
+            <h5>Toolbox</h5>
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+
+        </div>
+
+        <div class="panel-body">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" onclick="unmarkAllComponents();">Unmark</button>
+                <button type="button" class="btn btn-default" onclick="$('.component').toggleClass('very_hidden_component');">Hide/Show</button>
+                <!--
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Counter tools
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a onclick="unmarkAllComponents();">Remove all colors</a></li>
+                        <li><a onclick="$('.component').toggleClass('very_hidden_component');">Hide/Show all</a></li>
+                    </ul>
+                </div>
+                -->
+            </div>
+
+            <div class="btn-group">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Boards
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      {% for tab in game.game_board_tabs %}
+                          <li>
+                             <a onclick=$('a[href="#{{ tab.id }}_game_board_tab"]').tab('show');> {{ tab.title }}</a>
+                          </li>
+                      {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Player aids
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                      {% for tab in game.extra_tabs %}
+                          <li>
+                             <a onclick=$('a[href="#{{ tab.id }}_extra_tab"]').tab('show');> {{ tab.title }}</a>
+                          </li>
+                      {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>

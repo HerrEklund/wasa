@@ -1,8 +1,10 @@
 
+// Application context
 var wasa_client;
 var wasa_backend_host = '88.99.168.32';
 var wasa_backend_port = '7379';
 
+// Session context
 var email;
 var username;
 var game_id;

@@ -50,5 +50,18 @@ var game_data = {
         'id': 'rules_tab',
         'link_src': 'http://www.multimanpublishing.com/LinkClick.aspx?fileticket=QYWK9bQZuhE%3D&tabid=65',
         'link_title': 'Official rules by MMP'
-    }
+    },
+
+    'scenarios': [
+        {
+            'id': '1_the_hundred_years_war',
+            'title': 'The Hundred Years War',
+            'script': '1_the_hundred_years_war.js'
+        },
+        {
+            'id': '2_the_lion_in_winter',
+            'title': 'The Lion in Winter',
+            'script': '2_the_lion_in_winter.js'
+        }
+    ]
 };

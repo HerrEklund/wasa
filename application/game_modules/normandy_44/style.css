@@ -14,11 +14,6 @@
     background-image: url('components/vassal/N44 Map-2015-FINAL-150.jpg');
     width: 6550px;
     height: 5100px;
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: inherit;
-    border: #111 4px solid;
 }
 
 .normandy44_counter_small {

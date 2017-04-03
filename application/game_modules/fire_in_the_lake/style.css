@@ -14,11 +14,6 @@
     background-image: url('components/vassal/FITL Map VASSAL.jpg');
     width: 2410px;
     height: 3695px;
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: inherit;
-    border: #111 4px solid;
 }
 
 .fitl_marker {

@@ -15,11 +15,6 @@
     background-image: url('components/sjw_NS.jpg');
     width: 3336px;
     height: 3761px;
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: inherit;
-    border: inherit 0 solid;
 }
 
 .sjw_counter {

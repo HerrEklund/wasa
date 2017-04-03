@@ -16,11 +16,6 @@
     background-image: url('components/vassal/NMap.jpg');
     width: 3991px;
     height: 2659px;
-    position: relative;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: inherit;
-    border: 0;
 }
 
 #south_map {

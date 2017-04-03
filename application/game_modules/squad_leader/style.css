@@ -10,30 +10,10 @@
     position: fixed;
 }
 
-/* Will be droppable */
-.game_board {
-}
-
 #map1_west {
     background-image: url('components/maps/map1_west.jpg');
     height: 800px;
     width: 1200px;
-    position: relative;
-    background-size:100%;
-    background-repeat: no-repeat;
-    background-color: inherit;
-    border: orange 4px solid;
-}
-
-#map2_west {
-    background-image: url('components/maps/map1_west.jpg');
-    height: 800px;
-    width: 1200px;
-    position: relative;
-    background-size:100%;
-    background-repeat: no-repeat;
-    background-color: inherit;
-    border: blue 4px solid;
 }
 
 .sl_counter_small {

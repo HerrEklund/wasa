@@ -16,7 +16,7 @@
     }
     .game_board {
         position: relative;
-        background-size:100%;
+        background-size: contain;
         background-repeat: no-repeat;
         background-color: inherit;
         border: 0;

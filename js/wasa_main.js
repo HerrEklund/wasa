@@ -61,7 +61,7 @@ function createWasaBoardGame() {
 
         // First dynamically load all needed scripts for this game module
         loadGameModule(game_id, function () {
-            /* After the loadGameModule, a couple of global accessible variables should exist:
+            /** After the loadGameModule, a couple of global accessible variables should exist:
              *
              *      Variable name            From file       Explanation
              * ----------------------------------------------------------------------------------------------------
@@ -78,9 +78,14 @@ function createWasaBoardGame() {
                 return;
             }
 
-            // Create board game GUI
+            /**
+             * Create board game GUI
+             */
             layoutWasaBoardGaame(game_id, game_data);
 
+            /**
+             *  Find out what session should be activated
+             */
             if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
                 // No game session, dont load client or init wasa front yet
                 $('#game_session_modal').modal('show');
@@ -188,7 +193,6 @@ function _get_base_template_data() {
 
 function layoutWasaBoardGaame(game_id, game_data) {
 
-    // TODO: Use real sessions
     var available_sessions = [
         {
             'game_session_id': (fnv1Hash(game_id+'_PUBL_1')),
@@ -206,6 +210,7 @@ function layoutWasaBoardGaame(game_id, game_data) {
 
     var template_data = _get_base_template_data();
 
+    // Make some important data available to the template renderer
     template_data['available_sessions'] = available_sessions;
     template_data['game'] = game_data;
 
@@ -216,6 +221,25 @@ function layoutWasaBoardGaame(game_id, game_data) {
 
     // 2) When done, add all components
     createComponentsForTray(component_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['component_classes'], 'main_tray');
+
+    // 3) And add cards if possible
+    if (game_data['cards'] !== 'undefined') {
+        addScript('game_modules/'+game_id+'/cards.js', function () {
+            /**
+             *  A couple of new variables are now accessible
+             *
+             *  card_back     ... the graphics representing the back of a card
+             *  card_list     ... the graphics for all the cards
+             */
+
+            // If deck is wanted, build it here, shuffle?
+            //buildDeck(cards_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['card_classes'], 'deck_holder');
+
+            // Always build the manifest
+            buildCardManifest(cards_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['card_classes'], 'manifest_holder');
+
+        });
+    }
 
     if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
         // Show session modal then.
@@ -257,6 +281,78 @@ function createComponentsForTray(component_list, component_path_prefix, componen
         tray_component.css('backgroundImage', 'url(' + component_image_path + ')');
 
         tray_component.appendTo(component_tray);
+
+    }
+}
+
+function buildDeck(card_list, card_path_prefix, card_classes, deck_holder_id) {
+    var deck_holder = $('#'+deck_holder_id);
+
+    for (var i=0; i<card_list.length; i++) {
+        var file_name = card_list[i];
+
+        var card_image_path = card_path_prefix+encodeURIComponent(file_name);
+
+        // Handle parenthesis
+        card_image_path = card_image_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
+
+        // Create ID from the file name, make sure it is safe for ID also
+        var base_id = file_name.substring(0, file_name.lastIndexOf(".")).toLowerCase();
+        var new_id = 'C_'+base_id.replace('.', '_');
+
+        new_id = new_id.replace('(', '');
+        new_id = new_id.replace(')', '');
+
+        new_id = new_id.replace(/[^a-z0-9\-_:\.()]|^[^a-z]+/gi, "_");
+
+        if (new_id.length == 0) {
+            console.error("Failed to synthesize ID from file name = "+file_name);
+            continue;
+        } else {
+            //console.log("Adding card ("+file_name+") using ID = "+new_id);
+        }
+
+        var card_div = $('<div class="new_component card_component '+card_classes+'" id="'+new_id+'" title="'+base_id+'"></div>');
+
+        card_div.css('backgroundImage', 'url(' + card_image_path + ')');
+
+        card_div.appendTo(deck_holder);
+
+    }
+}
+
+function buildCardManifest(card_list, card_path_prefix, card_classes, card_manifest_holder_id) {
+    var manifest_holder = $('#'+card_manifest_holder_id);
+
+    for (var i=0; i<card_list.length; i++) {
+        var file_name = card_list[i];
+
+        var card_image_path = card_path_prefix+encodeURIComponent(file_name);
+
+        // Handle parenthesis
+        card_image_path = card_image_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
+
+        // Create ID from the file name, make sure it is safe for ID also
+        var base_id = file_name.substring(0, file_name.lastIndexOf(".")).toLowerCase();
+        var new_id = 'C_'+base_id.replace('.', '_');
+
+        new_id = new_id.replace('(', '');
+        new_id = new_id.replace(')', '');
+
+        new_id = new_id.replace(/[^a-z0-9\-_:\.()]|^[^a-z]+/gi, "_");
+
+        if (new_id.length == 0) {
+            console.error("Failed to synthesize ID from file name = "+file_name);
+            continue;
+        } else {
+            //console.log("Adding card ("+file_name+") using ID = "+new_id);
+        }
+
+        var card_div = $('<div class="manifest_card" id="'+new_id+'" title="'+base_id+'"></div>');
+
+        card_div.css('backgroundImage', 'url(' + card_image_path + ')');
+
+        card_div.appendTo(manifest_holder);
 
     }
 }

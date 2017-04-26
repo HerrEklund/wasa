@@ -36,6 +36,14 @@ var game_data = {
 
     'component_classes': 'fitl_marker',
 
+    'card_classes': 'fitl_card',
+
+    'cards':
+    {
+        // Add global deck configuration here
+    },
+
+
     'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
             'title': 'Game board',
@@ -43,10 +51,6 @@ var game_data = {
             'classes': ''
         }
     ],
-    'cards_tab':
-        {
-            'cards_js': 'cards.js'
-        },
 
     'extra_tabs': [
         {

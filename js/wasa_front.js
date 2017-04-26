@@ -32,7 +32,7 @@ function init_wasa_front() {
 
     $(".wasa_panel").draggable({
         handle: '.panel-heading',
-        stack: ".wasa_panel"
+        stack: ".global_stackable"
     });
 
     $(".resizable").resizable();
@@ -62,6 +62,8 @@ function init_wasa_front() {
         });
 
     $(".new_component").draggable({
+        stack: ".global_stackable",
+        zIndex: 10000000,           // This will "lift" the component above anything else
         grid: [ 5, 5 ],
         helper: "clone",
         appendTo: "#all_tabs"       // Wrapper of the maps, drop will be off by some 40 pixels.
@@ -323,6 +325,7 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
 
     new_component.removeClass("new_component");
     new_component.addClass("component");
+    new_component.addClass("global_stackable");
 
     new_component.draggable({
         grid: [ 5, 5 ],

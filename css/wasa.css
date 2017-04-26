@@ -27,6 +27,7 @@
         box-shadow: 0px 0px 77px 18px rgba(88,179,4,1);
     }
     .wasa_panel {
+        z-index: 1000;
     }
     .resizable {
     }
@@ -47,6 +48,12 @@
         right: 50px;
         top: 100px;
     }
+    #cards_panel {
+        position: fixed;
+        width: 700px;
+        left: 50px;
+        top: 250px;
+    }
     #pp_tab_pane {
         height: 500px;
     }
@@ -55,8 +62,14 @@
         margin-bottom: 5px;
     }
     .resizable_scroller {
-        width: 450px;
+        width: 480px;
         height: 400px;
+        background-color: #2c3338;
+    }
+    .resizable_card_scroller {
+        width: 680px;
+        height: 400px;
+        background-color: #2c3338;
     }
     #main_tray {
         background-color: #2c3338;
@@ -88,7 +101,17 @@
         border: 1px solid black;
 
         margin: 3px;
-        z-index: 1000000;
+        z-index: 100;
+    }
+    .manifest_card {
+        float: left;
+        width: 300px;
+        height: 400px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        border: 0;
     }
     .selected_component {
         border: #fff dashed 2px;

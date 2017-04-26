@@ -17,6 +17,10 @@ This file is generated using Nunjucks:
 
     {% include "toolbox.html" %}
 
+    {% if game.cards %}
+        {% include "cards_panel.html" %}
+    {% endif %}
+
     <div id="main_tabs">
 
           <!-- Nav tabs -->

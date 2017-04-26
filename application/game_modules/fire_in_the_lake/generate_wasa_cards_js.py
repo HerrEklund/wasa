@@ -64,7 +64,7 @@ def create_component_js():
 
     with open("cards.js", "w") as components_file:
 
-        components_file.write("var component_list = [")
+        components_file.write("var cards_list = [")
 
         for r in result:
             if "Card" not in r:

@@ -236,7 +236,7 @@ function layoutWasaBoardGaame(game_id, game_data) {
             //buildDeck(cards_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['card_classes'], 'deck_holder');
 
             // Always build the manifest
-            buildCardManifest(cards_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['card_classes'], 'manifest_holder');
+            buildCardManifest(cards_list, card_back, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['card_classes'], 'manifest_holder');
 
         });
     }
@@ -321,16 +321,45 @@ function buildDeck(card_list, card_path_prefix, card_classes, deck_holder_id) {
     }
 }
 
-function buildCardManifest(card_list, card_path_prefix, card_classes, card_manifest_holder_id) {
+function createCardDiv(card_id, card_title, card_classes, card_front_image_path, card_back_image_path) {
+    // This is templates
+    var flippable_card = "<div class='flippable_card new_component CARD_CLASSES' id='CARD_ID' title='CARD_TITLE'></div>";
+    var flipper = "<div class='flipper CARD_CLASSES' onclick=this.classList.toggle('flipped')></div>";
+    var card_front = "<div class='front CARD_CLASSES'></div>";
+    var card_back = "<div class='back CARD_CLASSES'></div>";
+
+    var card_div = $(flippable_card.replace('CARD_CLASSES', card_classes).replace('CARD_ID', card_id).replace('CARD_TITLE', card_title));
+
+    var flipper_div = $(flipper.replace('CARD_CLASSES', card_classes));
+
+    var card_front_div = $(card_front.replace('CARD_CLASSES', card_classes));
+    card_front_div.css('backgroundImage', 'url(' + card_front_image_path + ')');
+
+    var card_back_div = $(card_back.replace('CARD_CLASSES', card_classes));
+    card_back_div.css('backgroundImage', 'url(' + card_back_image_path + ')');
+
+    // Order of addition does not matter
+    card_front_div.appendTo(flipper_div);
+    card_back_div.appendTo(flipper_div);
+
+    flipper_div.appendTo(card_div);
+
+    return card_div;
+}
+
+
+function buildCardManifest(card_list, card_back, card_path_prefix, card_classes, card_manifest_holder_id) {
     var manifest_holder = $('#'+card_manifest_holder_id);
+
+    var card_back_path = card_path_prefix+encodeURIComponent(card_back);
 
     for (var i=0; i<card_list.length; i++) {
         var file_name = card_list[i];
 
-        var card_image_path = card_path_prefix+encodeURIComponent(file_name);
+        var card_front_path = card_path_prefix+encodeURIComponent(file_name);
 
         // Handle parenthesis
-        card_image_path = card_image_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
+        card_front_path = card_front_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
 
         // Create ID from the file name, make sure it is safe for ID also
         var base_id = file_name.substring(0, file_name.lastIndexOf(".")).toLowerCase();
@@ -348,9 +377,12 @@ function buildCardManifest(card_list, card_path_prefix, card_classes, card_manif
             //console.log("Adding card ("+file_name+") using ID = "+new_id);
         }
 
-        var card_div = $('<div class="manifest_card" id="'+new_id+'" title="'+base_id+'"></div>');
+        //var card_div = $('<div class="manifest_card" id="'+new_id+'" title="'+base_id+'"></div>');
 
-        card_div.css('backgroundImage', 'url(' + card_image_path + ')');
+        // Since we are building a manifest card, add that class also, that will add some padding around the card
+        card_classes = card_classes + " manifest_card";
+
+        var card_div = createCardDiv(new_id, "Title for "+new_id, card_classes, card_front_path, card_back_path);  //.css('backgroundImage', 'url(' + card_image_path + ')');
 
         card_div.appendTo(manifest_holder);
 

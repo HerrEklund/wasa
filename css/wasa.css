@@ -105,13 +105,8 @@
     }
     .manifest_card {
         float: left;
-        width: 300px;
-        height: 400px;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        background-repeat: no-repeat;
-        background-size: contain;
-        border: 0;
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
     .selected_component {
         border: #fff dashed 2px;

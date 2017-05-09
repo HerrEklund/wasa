@@ -1,0 +1,39 @@
+
+#main_title {
+}
+
+.theme_color {
+    color: #1cb15d;
+}
+
+#tab_side {
+    /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
+    position: relative;
+}
+#game_board {
+    background-image: url('components/vassal/Board_MainAlternate.jpg');
+    width: 4140px;
+    height: 2700px;
+}
+
+.daob_marker {
+    /* Custom for this game */
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+
+    background-size: contain;
+    border: 0;
+
+}
+
+.daob_card {
+    /* Custom for this game */
+    background-repeat: no-repeat;
+    width: 226px;
+    height: 352px;
+
+    background-size: contain;
+    border: 0;
+}
+

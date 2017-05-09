@@ -58,5 +58,11 @@ var registered_modules = [
         'title': 'Next War: Korea',
         'subtitle': '',
         'box_front': './game_modules/next_war_korea/components/vassal/nwkbox.jpg'
+    },
+    {
+        'game_id': 'd_day_at_omaha_beach',
+        'title': 'D-Day at Omaha Beach',
+        'subtitle': '',
+        'box_front': './game_modules/d_day_at_omaha_beach/components/vassal/Splash.jpg'
     }
 ];

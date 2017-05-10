@@ -39,7 +39,7 @@ var game_data = {
     'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
             'title': 'Main',
-            'id': 'game_board',
+            'id': 'main_game_board',
             'classes': ''
         }
     ],

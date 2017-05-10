@@ -10,10 +10,10 @@
     /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
     position: relative;
 }
-#game_board {
+#main_game_board {
     background-image: url('components/vassal/N44 Map-2015-FINAL-150.jpg');
-    width: 6550px;
-    height: 5100px;
+    width: 5100px;
+    height: 3300px;
 }
 
 .normandy44_counter_small {

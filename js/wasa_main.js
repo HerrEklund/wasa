@@ -353,6 +353,9 @@ function buildCardManifest(card_list, card_back, card_path_prefix, card_classes,
 
     var card_back_path = card_path_prefix+encodeURIComponent(card_back);
 
+    // Since we are building a manifest card, add that class also, that will add some padding around the card
+    card_classes = card_classes + " manifest_card";
+
     for (var i=0; i<card_list.length; i++) {
         var file_name = card_list[i];
 
@@ -376,11 +379,6 @@ function buildCardManifest(card_list, card_back, card_path_prefix, card_classes,
         } else {
             //console.log("Adding card ("+file_name+") using ID = "+new_id);
         }
-
-        //var card_div = $('<div class="manifest_card" id="'+new_id+'" title="'+base_id+'"></div>');
-
-        // Since we are building a manifest card, add that class also, that will add some padding around the card
-        card_classes = card_classes + " manifest_card";
 
         var card_div = createCardDiv(new_id, "Title for "+new_id, card_classes, card_front_path, card_back_path);  //.css('backgroundImage', 'url(' + card_image_path + ')');
 

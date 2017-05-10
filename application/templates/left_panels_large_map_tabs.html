@@ -48,21 +48,22 @@ This file is generated using Nunjucks:
             {% for tab in game.game_board_tabs %}
             <div role="tabpanel" class="tab-pane {% if loop.first %}active{% endif %}" id="{{ tab.id }}_game_board_tab">
 
-
-                <div id="{{tab.id}}" class="ui-widget-header game_board {{ tab.classes }}">
-                    <!-- TODO: -->
-                    <div class="lineup_box">
-                        <!-- disabled for now
-                        <input id="lineup_box_input" class="form-control input-sm" type="text" placeholder="Labels, remark etc" onchange="">
-                        -->
-                        <div class="cbox_holder">
-                            <div class="cbox cb_unmark"></div>
-                            <div class="cbox cb_mark cb_red"></div>
-                            <div class="cbox cb_mark cb_green"></div>
-                            <div class="cbox cb_mark cb_blue"></div>
-                            <div class="cbox cb_mark cb_yellow"></div>
-                            <div class="cbox cb_mark cb_pink"></div>
-                            <div class="cbox cb_mark cb_cyan"></div>
+                <div class="game_table">
+                    <div id="{{tab.id}}" class="ui-widget-header game_board {{ tab.classes }}">
+                        <!-- TODO: -->
+                        <div class="lineup_box">
+                            <!-- disabled for now
+                            <input id="lineup_box_input" class="form-control input-sm" type="text" placeholder="Labels, remark etc" onchange="">
+                            -->
+                            <div class="cbox_holder">
+                                <div class="cbox cb_unmark"></div>
+                                <div class="cbox cb_mark cb_red"></div>
+                                <div class="cbox cb_mark cb_green"></div>
+                                <div class="cbox cb_mark cb_blue"></div>
+                                <div class="cbox cb_mark cb_yellow"></div>
+                                <div class="cbox cb_mark cb_pink"></div>
+                                <div class="cbox cb_mark cb_cyan"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

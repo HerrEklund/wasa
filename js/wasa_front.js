@@ -86,11 +86,12 @@ function init_wasa_front() {
             var tray_component_id = ghost_component.context.id;
             var coordinates = ghost_component.position();
 
-            var left = coordinates.left;
-            var top = coordinates.top;
+            //  Ghost component seem to use coordinates from a parent div (the tab holder?)
+            var left = coordinates.left - 250;
+            var top = coordinates.top - 42 -250;
 
             // Store event to backend, Note the -40 is due to the drop becomes due to the appendTo on the new_component draggable.
-            wasa_client.store_create_component_event(tray_component_id, get_random_id(), event.target.id, left, top-42);
+            wasa_client.store_create_component_event(tray_component_id, get_random_id(), event.target.id, left, top);
 
             ghost_component.remove();
         }

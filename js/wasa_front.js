@@ -30,6 +30,10 @@ function init_wasa_front() {
         }
     };
 
+    // Set a random table material
+    var rnd_nr = Math.floor(Math.random() * 6) + 1;
+    $(".game_table").css({'background-image': 'url(../img/wood/wood-00'+rnd_nr+'.png)'});
+
     $(".wasa_panel").draggable({
         handle: '.panel-heading',
         stack: ".global_stackable"

@@ -14,6 +14,7 @@
             <li role="presentation"><a href="#pp_component_tray_tab" aria-controls="component_tray" role="tab" data-toggle="tab">Component tray</a></li>
             <li role="presentation"><a href="#pp_scenario_tab" aria-controls="game_tab" role="tab" data-toggle="tab">Scenario</a></li>
             <li role="presentation"><a href="#pp_session_tab" aria-controls="game_tab" role="tab" data-toggle="tab">Session</a></li>
+            <li role="presentation"><a href="#pp_about_tab" aria-controls="game_tab" role="tab" data-toggle="tab">About</a></li>
           </ul>
 
           <!-- Tab panes -->
@@ -76,9 +77,38 @@
 
             <div role="tabpanel" class="tab-pane pp_tab_pane" id="pp_session_tab">
                 <br>
-                {% include "game_menu.html" %}
+                {% if game_session_id %}
+                <p>The link in your browser window represent this game. You could share it with your opponents, but they will not be able to list it in this box.</p>
+
+                <br><br>
+                <button class="btn btn-danger pull-right" onclick="wasa_client.reset_current_game()" >Reset current game</button>
+                <br><br>
+                {% else %}
+                <div class="alert alert-info">
+                    No session selected, either continue with an ongoing game, or create a new one.
+                </div>
+                {% endif %}
+
+                <h5>You have access to the following games: </h5>
+
+                <table class="table">
+                    <tr>
+                        <th>Session Link</th>
+                        <th>Comment</th>
+                    </tr>
+                    {% for session in available_sessions %}
+                    <tr>
+                        <td><a class="btn btn-sm btn-primary" href="?game_session_id={{ session.game_session_id }}&game_id={{ game_id }}">{{ session.game_session_id }}</a></td>
+                        <td>{{ session.comment }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <a disabled="disabled" class="btn btn-success pull-right" href="?game_id={{ game_id }}&game_session_id={{ new_session_id }}">New session</a>
                 <br>
-                <hr>
+
+            </div>
+            <div role="tabpanel" class="tab-pane pp_tab_pane" id="pp_about_tab">
+                <br>
                 <div class="alert alert-warning alert-dismissible" role="alert">
                   <strong>Note:</strong>
                     <p>Game is still in <strong>alpha stage</strong> development and any game my be erased or appear buggy at times.</p>

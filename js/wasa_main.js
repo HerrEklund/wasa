@@ -23,10 +23,10 @@ function createWasaBoardGame() {
     game_session_id = pq.game_session_id;
 
     // Try get by cookie
-    email = Cookies.get('email');
+    email = localStorage.getItem('email');
 
     // Render game lobby if no game_id was supplied
-    if (typeof email === 'undefined') {
+    if (email == null) {
         // Ok, get by GET-parameter and then set Cookie
         email = pq.email;
 
@@ -42,7 +42,7 @@ function createWasaBoardGame() {
     username = email.split('@')[0];
 
     // Save for later
-    Cookies.set('email', email);
+    localStorage.setItem('email', email);
 
 
     if (typeof game_id === 'undefined' || game_id.length == 0) {
@@ -51,10 +51,10 @@ function createWasaBoardGame() {
 
         // Try get session from URL, if not, load by cookie.
         if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
-            var current_game_session_id = Cookies.get(game_id+'_last_session');
+            var current_game_session_id = localStorage.getItem(game_id+'_last_session');
             if (current_game_session_id != null && current_game_session_id.length > 0 ) {
                 // Redirect to update URL
-                window.location = window.location.href.split("?")[0] + '?game_id='+game_id+'&game_session_id='+current_game_session_id
+                window.location = window.location.href.split("?")[0] + '?game_id='+game_id+'&game_session_id='+current_game_session_id;
                 return;
             }
         }
@@ -92,7 +92,7 @@ function createWasaBoardGame() {
             } else {
 
                 // If here, the user selected a session, save it as current session_id
-                Cookies.set(game_id+'_last_session', game_session_id);
+                localStorage.setItem(game_id+'_last_session', game_session_id);
 
                 // Connect the client to the backend
                 wasa_client = new WasaClient(wasa_backend_host, wasa_backend_port, game_session_id, username, game_event_notification_handler, game_event_handler);
@@ -167,13 +167,12 @@ function loadGameModule(game_id, on_modules_loaded_callback) {
     addStylesheet('game_modules/'+game_id+'/style.css');
 }
 
+// Note: Async load method, cant catch errors
 function addScript(script_src, on_script_loaded_callback) {
     var script = document.createElement('script');
     script.src = script_src;
     script.onload = on_script_loaded_callback;
     document.head.appendChild(script);
-
-    console.log("Added script "+script_src);
 }
 
 function addStylesheet(stylesheet) {

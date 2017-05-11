@@ -64,5 +64,11 @@ var registered_modules = [
         'title': 'D-Day at Omaha Beach',
         'subtitle': '',
         'box_front': './game_modules/d_day_at_omaha_beach/components/vassal/Splash.jpg'
+    },
+    {
+        'game_id': 'here_i_stand',
+        'title': 'Here I Stand',
+        'subtitle': '',
+        'box_front': './game_modules/here_i_stand/components/vassal/HIS_cover.jpg'
     }
 ];

@@ -30,9 +30,12 @@ function init_wasa_front() {
         }
     };
 
-    // Set a random table material
-    var rnd_nr = Math.floor(Math.random() * 6) + 1;
-    $(".game_table").css({'background-image': 'url(../img/wood/wood-00'+rnd_nr+'.png)'});
+    // Load table_material from localStorage
+    var table_material = localStorage.getItem('table_material');
+    if (table_material != null) {
+        $(".game_table").css({'background-image': 'url(../img/'+table_material+')'});
+    }
+
 
     $(".wasa_panel").draggable({
         handle: '.panel-heading',

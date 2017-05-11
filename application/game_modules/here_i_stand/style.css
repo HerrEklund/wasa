@@ -1,0 +1,74 @@
+
+#main_title {
+}
+
+.theme_color {
+    color: #F7E88B;
+}
+
+#tab_side {
+    /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
+    position: relative;
+}
+
+#map_of_europe {
+    background-image: url('components/vassal/HereIStandMap.jpg');
+    width: 5100px;
+    height: 3300px;
+}
+
+#player_ottomans {
+    background-image: url('components/his_ottoman.jpg');
+    width: 1221px;
+    height: 810px;
+}
+#player_hapsburgs {
+    background-image: url('components/his_hapsburgs.jpg');
+    width: 1219px;
+    height: 791px;
+}
+#player_england {
+    background-image: url('components/his_england.jpg');
+    width: 1233px;
+    height: 799px;
+}
+#player_france {
+    background-image: url('components/his_france.jpg');
+    width: 1231px;
+    height: 807px;
+}
+#player_papacy {
+    background-image: url('components/his_papacy.jpg');
+    width: 1223px;
+    height: 795px;
+}
+#player_protestant {
+    background-image: url('components/his_protestant.jpg');
+    width: 1222px;
+    height: 795px;
+}
+#religious_struggle_card {
+    background-image: url('components/vassal/religious.jpg');
+    width: 1100px;
+    height: 1424px;
+}
+.his_marker {
+    /* Custom for this game */
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    border-color: rgba(0,0,0,0);
+
+    background-size: contain;
+}
+
+.his_card {
+    /* Custom for this game */
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 450px;
+
+    background-size: contain;
+    border: 0;
+}
+

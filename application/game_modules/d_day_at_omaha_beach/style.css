@@ -18,10 +18,12 @@
         001 - Light
          ....
         001 - Almost black
-     */
+
+
     background-image: url('../../../img/wood/wood-001.png');
     padding: 250px;
     border-radius: 100px;
+     */
 }
 
 #game_board {

@@ -14,7 +14,7 @@
     .rules_tab_title {
         color: #ccc;
     }
-     .game_table {
+     #game_table {
         /*
             NOTE: This is the default table, this can be overridden by every games own CSS.
 
@@ -24,7 +24,7 @@
             001 - Almost black
          */
          margin-top: 10px;
-         background-image: url('../img/wood/wood-003.png');
+         background-image: url('../img/wood/wood-004.png');
          padding: 250px;
          border-radius: 100px;
          border-style: ridge;
@@ -40,6 +40,10 @@
         -moz-box-shadow: 0px 0px 21px 6px rgba(0,0,0,0.68);
         box-shadow: 0px 0px 21px 6px rgba(0,0,0,0.68);
         border-radius: 10px;
+    }
+    .rules_tab {
+        background-color: #252b30;
+        padding: 50px;
     }
     .event_signal {
         -webkit-box-shadow: 0px 0px 77px 18px rgba(88,179,4,1);

@@ -284,41 +284,6 @@ function createComponentsForTray(component_list, component_path_prefix, componen
     }
 }
 
-function buildDeck(card_list, card_path_prefix, card_classes, deck_holder_id) {
-    var deck_holder = $('#'+deck_holder_id);
-
-    for (var i=0; i<card_list.length; i++) {
-        var file_name = card_list[i];
-
-        var card_image_path = card_path_prefix+encodeURIComponent(file_name);
-
-        // Handle parenthesis
-        card_image_path = card_image_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
-
-        // Create ID from the file name, make sure it is safe for ID also
-        var base_id = file_name.substring(0, file_name.lastIndexOf(".")).toLowerCase();
-        var new_id = 'C_'+base_id.replace('.', '_');
-
-        new_id = new_id.replace('(', '');
-        new_id = new_id.replace(')', '');
-
-        new_id = new_id.replace(/[^a-z0-9\-_:\.()]|^[^a-z]+/gi, "_");
-
-        if (new_id.length == 0) {
-            console.error("Failed to synthesize ID from file name = "+file_name);
-            continue;
-        } else {
-            //console.log("Adding card ("+file_name+") using ID = "+new_id);
-        }
-
-        var card_div = $('<div class="new_component card_component '+card_classes+'" id="'+new_id+'" title="'+base_id+'"></div>');
-
-        card_div.css('backgroundImage', 'url(' + card_image_path + ')');
-
-        card_div.appendTo(deck_holder);
-
-    }
-}
 
 function createCardDiv(card_id, card_title, card_classes, card_front_image_path, card_back_image_path) {
     // This is templates

@@ -43,56 +43,54 @@ This file is generated using Nunjucks:
           </ul>
 
 
-          <!-- Tab panes -->
-          <div class="tab-content" id="all_tabs">
-            {% for tab in game.game_board_tabs %}
-            <div role="tabpanel" class="tab-pane {% if loop.first %}active{% endif %}" id="{{ tab.id }}_game_board_tab">
+            <div id="game_table">
+                <!-- Tab panes -->
+                <div class="tab-content" id="all_tabs">
+                    {% for tab in game.game_board_tabs %}
+                    <div role="tabpanel" class="tab-pane {% if loop.first %}active{% endif %}" id="{{ tab.id }}_game_board_tab">
 
-                <div class="game_table">
-                    <div id="{{tab.id}}" class="ui-widget-header game_board {{ tab.classes }}">
-                        <!-- TODO: -->
-                        <div class="lineup_box">
-                            <!-- disabled for now
-                            <input id="lineup_box_input" class="form-control input-sm" type="text" placeholder="Labels, remark etc" onchange="">
-                            -->
-                            <div class="cbox_holder">
-                                <div class="cbox cb_unmark"></div>
-                                <div class="cbox cb_mark cb_red"></div>
-                                <div class="cbox cb_mark cb_green"></div>
-                                <div class="cbox cb_mark cb_blue"></div>
-                                <div class="cbox cb_mark cb_yellow"></div>
-                                <div class="cbox cb_mark cb_pink"></div>
-                                <div class="cbox cb_mark cb_cyan"></div>
+                        <div id="{{tab.id}}" class="ui-widget-header game_board {{ tab.classes }}">
+                            <!-- TODO: -->
+                            <div class="lineup_box">
+                                <!-- disabled for now
+                                <input id="lineup_box_input" class="form-control input-sm" type="text" placeholder="Labels, remark etc" onchange="">
+                                -->
+                                <div class="cbox_holder">
+                                    <div class="cbox cb_unmark"></div>
+                                    <div class="cbox cb_mark cb_red"></div>
+                                    <div class="cbox cb_mark cb_green"></div>
+                                    <div class="cbox cb_mark cb_blue"></div>
+                                    <div class="cbox cb_mark cb_yellow"></div>
+                                    <div class="cbox cb_mark cb_pink"></div>
+                                    <div class="cbox cb_mark cb_cyan"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
 
+                    {% for tab in game.extra_tabs %}
+                    <div role="tabpanel" class="tab-pane" id="{{ tab.id }}_extra_tab">
+                        <img src="{{ module_path }}/{{ tab.image_src }}" style="{{ tab.image_style }}">
+                    </div>
+                    {% endfor %}
+
+                    <div role="tabpanel" class="tab-pane rules_tab" id="{{ game.rules_tab.id }}_rules_tab">
+                        <br>
+                        <p>We recommend to open the rules in a separate <strong>browser tab</strong> for best performance, just click the button below!</p>
+                        <br>
+                        <a href="{{ game.rules_tab.link_src }}" target="_blank" class="btn btn-default">{{ game.rules_tab.link_title }}</a>
+                        <br>
+                        {% if game.links %}
+                        <h3>Links</h3>
+                        {% for link in game.rules_tab.links %}
+                        <a href="{{ link.src }}" target="_blank" class="">{{ link.title }}</a>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
                 </div>
+
             </div>
-            {% endfor %}
 
-            {% for tab in game.extra_tabs %}
-            <div role="tabpanel" class="tab-pane" id="{{ tab.id }}_extra_tab">
-                <img src="{{ module_path }}/{{ tab.image_src }}" style="{{ tab.image_style }}">
-            </div>
-            {% endfor %}
-
-            <div role="tabpanel" class="tab-pane" id="{{ game.rules_tab.id }}_rules_tab">
-                <br>
-                <p>We recommend to open the rules in a separate <strong>browser tab</strong> for best performance, just click the button below!</p>
-                <br>
-                <a href="{{ game.rules_tab.link_src }}" target="_blank" class="btn btn-default">{{ game.rules_tab.link_title }}</a>
-                <br>
-                {% if game.links %}
-                <h3>Links</h3>
-                {% for link in game.rules_tab.links %}
-                <a href="{{ link.src }}" target="_blank" class="">{{ link.title }}</a>
-                {% endfor %}
-                {% endif %}
-            </div>
-          </div>
-
-        </div>
-
-</div>
+    </div>
 

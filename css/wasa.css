@@ -133,7 +133,11 @@
         margin-bottom: 10px;
     }
     .selected_component {
-        border: #fff dashed 2px;
+        -webkit-box-shadow: 0px 0px 21px 6px rgba(0,0,0,0.68);
+        -moz-box-shadow: 0px 0px 21px 6px rgba(0,0,0,0.68);
+        box-shadow: 0px 0px 21px 6px rgba(0,0,0,0.68);
+        border-radius: 15px;
+        /*border: rgba(0,0,0,1) dashed 2px; */
     }
     .marked_component {
         border: solid 4px;

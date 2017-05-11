@@ -111,6 +111,30 @@ function init_wasa_front() {
         e.stopPropagation();
     });
 
+    /**
+     * TODO: investigate how to enable lasso properly, not working well atm
+     *
+    if (!is_touch_device) {
+        $(".game_board").selectable({
+          filter: "div",
+            start: function( event, ui ) {
+
+                resetSelectionAndLineup();
+            },
+          selected: function( event, ui ) {
+              var selected_element = $(ui)[0];
+              var selected_id = selected_element.selected.id;
+              if (selected_id) {
+                  console.log("Selected "+selected_id);
+                  $('#'+selected_id).addClass('selected_component');
+              } else {
+                  console.log("Select event with not hit.")
+              }
+          }
+        });
+    }
+     */
+
     /*
     This seem not to matter since event propagates to the game_board anyway
 
@@ -147,29 +171,6 @@ function init_wasa_front() {
         wasa_client.mark_components_event(component_ids, cbox_border_color);
 
     });
-    /**
-     * TODO: investigate how to enable lasso properly, not working well atm
-     *
-    if (!is_touch_device) {
-        $(".game_board").selectable({
-          filter: "div",
-            start: function( event, ui ) {
-
-                resetSelectionAndLineup();
-            },
-          selected: function( event, ui ) {
-              var selected_element = $(ui)[0];
-              var selected_id = selected_element.selected.id;
-              if (selected_id) {
-                  console.log("Selected "+selected_id);
-                  $('#'+selected_id).addClass('selected_component');
-              } else {
-                  console.log("Select event with not hit.")
-              }
-          }
-        });
-    }
-     */
 }
 
 /**
@@ -290,7 +291,7 @@ function unmarkComponents(unmark_components_event) {
     for (var i=0; i < component_ids.length; i++) {
         var component = $('#'+component_ids[i]);
         component.removeClass('marked_component');
-        component.css({'border-color': '#111'});
+        component.css({'border-color': ''});
     }
 }
 

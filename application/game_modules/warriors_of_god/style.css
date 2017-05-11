@@ -21,13 +21,9 @@
     background-repeat: no-repeat;
     width: 75px;
     height: 75px;
+    border-color: rgba(0,0,0,1);
 
     background-size: contain;
-
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    border-radius: 12px;
-    box-shadow: 4px 4px 4px #111;
 
 }
 

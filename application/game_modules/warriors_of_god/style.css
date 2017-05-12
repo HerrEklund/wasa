@@ -10,6 +10,10 @@
     /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
     position: relative;
 }
+.game_table {
+     /* Override the default game table */
+     padding: 150px;
+}
 #main_game_board {
     background-image: url('components/vassal/wofg-s.jpg');
     width: 2410px;

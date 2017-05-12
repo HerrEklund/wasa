@@ -14,7 +14,7 @@
     .rules_tab_title {
         color: #ccc;
     }
-     #game_table {
+     .game_table {
         /*
             NOTE: This is the default table, this can be overridden by every games own CSS.
 

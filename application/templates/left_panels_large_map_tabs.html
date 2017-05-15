@@ -37,13 +37,15 @@ This file is generated using Nunjucks:
                   </li>
               {% endfor %}
 
+              {% if game.rules_tab %}
               <li role="presentation">
                   <a href="#{{ game.rules_tab.id }}_rules_tab" aria-controls="tab_rules" role="tab" data-toggle="tab" class="rules_tab_title">Rules</a>
               </li>
+              {% endif %}
           </ul>
 
 
-            <div class="game_table">
+            <div class="game_table" id="game_table">
                 <!-- Tab panes -->
                 <div class="tab-content" id="all_tabs">
                     {% for tab in game.game_board_tabs %}
@@ -75,6 +77,7 @@ This file is generated using Nunjucks:
                     </div>
                     {% endfor %}
 
+                    {% if game.rules_tab %}
                     <div role="tabpanel" class="tab-pane rules_tab" id="{{ game.rules_tab.id }}_rules_tab">
                         <br>
                         <p>We recommend to open the rules in a separate <strong>browser tab</strong> for best performance, just click the button below!</p>
@@ -88,6 +91,7 @@ This file is generated using Nunjucks:
                         {% endfor %}
                         {% endif %}
                     </div>
+                    {% endif %}
                 </div>
 
             </div>

@@ -10,6 +10,9 @@ var username;
 var game_id;
 var game_session_id='';
 
+// How many cards per pixel
+var DECK_TILT = 1;
+
 function createWasaBoardGame() {
 
     var url = window.location.href;
@@ -81,41 +84,47 @@ function createWasaBoardGame() {
             /**
              * Create board game GUI
              */
-            layoutWasaBoardGaame(game_id, game_data);
-
-            /**
-             *  Find out what session should be activated
-             */
-            if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
-                // No game session, dont load client or init wasa front yet
-                $('#game_session_modal').modal('show');
-            } else {
-
-                // If here, the user selected a session, save it as current session_id
-                localStorage.setItem(game_id+'_last_session', game_session_id);
-
-                // Connect the client to the backend
-                wasa_client = new WasaClient(wasa_backend_host, wasa_backend_port, game_session_id, username, game_event_notification_handler, game_event_handler);
-
-                // Iniitalize the GUI, add event handlers etc.
-                init_wasa_front();
-
-                // And make this client up-to-date
+            layoutWasaBoardGaame(game_id, game_data, function () {
                 /**
-                 *
-                 * This piece may be a bit application specific
-                 *
-                 *   Load all events is a good start to get the player to the front, but there is room
-                 *   for a custom start here. Depending on supplied keys etc,
-                 *      - observer or player?
-                 *      - setup new scenario or continue?
-                */
-                wasa_client.load_events(function () {
-                    // Slow down animations after all existing elements was loaded
-                    animate_transformation = true;
-                    animate_duration = 400;
-                });
-            }
+                 *  Find out what session should be activated
+                 */
+                if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
+                    // No game session, dont load client or init wasa front yet
+                    $('#game_session_modal').modal('show');
+                } else {
+
+                    if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
+                        // Show session modal then.
+                        $('#game_session_modal').modal('show');
+                    }
+
+                    // If here, the user selected a session, save it as current session_id
+                    localStorage.setItem(game_id+'_last_session', game_session_id);
+
+                    // Connect the client to the backend
+                    wasa_client = new WasaClient(wasa_backend_host, wasa_backend_port, game_session_id, username, game_event_notification_handler, game_event_handler);
+
+                    // Initialize the GUI, add event handlers etc.
+                    init_wasa_front();
+
+                    // And make this client up-to-date
+                    /**
+                     *
+                     * This piece may be a bit application specific
+                     *
+                     *   Load all events is a good start to get the player to the front, but there is room
+                     *   for a custom start here. Depending on supplied keys etc,
+                     *      - observer or player?
+                     *      - setup new scenario or continue?
+                    */
+                    wasa_client.load_events(function () {
+                        // Slow down animations after all existing elements was loaded
+                        animate_transformation = true;
+                        animate_duration = 400;
+                    });
+                }
+
+            });
 
         });
     }
@@ -171,7 +180,9 @@ function loadGameModule(game_id, on_modules_loaded_callback) {
 function addScript(script_src, on_script_loaded_callback) {
     var script = document.createElement('script');
     script.src = script_src;
+    // ASYNC!
     script.onload = on_script_loaded_callback;
+
     document.head.appendChild(script);
 }
 
@@ -190,7 +201,7 @@ function _get_base_template_data() {
     };
 }
 
-function layoutWasaBoardGaame(game_id, game_data) {
+function layoutWasaBoardGaame(game_id, game_data, onComplete) {
 
     var available_sessions = [
         {
@@ -222,28 +233,66 @@ function layoutWasaBoardGaame(game_id, game_data) {
     createComponentsForTray(component_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['component_classes'], 'main_tray');
 
     // 3) And add cards if possible
-    if (game_data['cards'] !== 'undefined') {
+    if (game_data['cards'] != null) {
         addScript('game_modules/'+game_id+'/cards.js', function () {
-            /**
-             *  A couple of new variables are now accessible
-             *
-             *  card_back     ... the graphics representing the back of a card
-             *  card_list     ... the graphics for all the cards
-             */
+            onCardsLoaded(onComplete);
+        } );
+    } else {
+        onComplete();
+    }
+}
 
-            // If deck is wanted, build it here, shuffle?
-            //buildDeck(cards_list, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['card_classes'], 'deck_holder');
+/**
+ * Randomize array element order in-place.
+ * Using Durstenfeld shuffle algorithm.
+ */
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
 
-            // Always build the manifest
-            buildCardManifest(cards_list, card_back, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], game_data['card_classes'], 'manifest_holder');
+function onCardsLoaded(onComplete) {
+    /**
+     *  A couple of new variables are now accessible
+     *
+     *  card_back     ... the graphics representing the back of a card
+     *  card_list     ... the graphics for all the cards
+     */
 
-        });
+    // Build card deck divs first
+
+    // Since we are building a manifest card, add that class also, that will add some padding around the card
+    var card_classes = game_data['card_classes']; // + " manifest_card";
+
+    var card_deck = buildCardDeck(cards_list, card_back, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], card_classes);
+
+    // Suffle?
+    card_deck = shuffleArray(card_deck);
+
+    // Add to a holder
+    var deck_holder =  $('#'+'deck_holder');
+
+    var t = 0;
+    var l = 0;
+
+    for (var i=0; i<card_deck.length; i++) {
+        var card_div = card_deck[i];
+
+        card_div.appendTo(deck_holder);
+
+        var card_abs_pos_top = 160;
+        var card_abs_pos_left = 80;
+
+        var transformation_css = {top: card_abs_pos_top+ (t++/DECK_TILT), left: card_abs_pos_left+(l++/DECK_TILT), zIndex: 1};
+        $(card_div).css(transformation_css);
     }
 
-    if (typeof game_session_id === 'undefined' || game_session_id.length == 0 ) {
-        // Show session modal then.
-        $('#game_session_modal').modal('show');
-    }
+    onComplete();
 
 }
 
@@ -287,8 +336,8 @@ function createComponentsForTray(component_list, component_path_prefix, componen
 
 function createCardDiv(card_id, card_title, card_classes, card_front_image_path, card_back_image_path) {
     // This is templates
-    var flippable_card = "<div class='flippable_card new_component CARD_CLASSES' id='CARD_ID' title='CARD_TITLE'></div>";
-    var flipper = "<div class='flipper CARD_CLASSES' onclick=this.classList.toggle('flipped')></div>";
+    var flippable_card = "<div class='flippable_card game_card CARD_CLASSES' id='CARD_ID' title='CARD_TITLE'></div>";
+    var flipper = "<div class='flipper CARD_CLASSES' ondblclick=this.classList.toggle('flipped')></div>";
     var card_front = "<div class='front CARD_CLASSES'></div>";
     var card_back = "<div class='back CARD_CLASSES'></div>";
 
@@ -312,13 +361,11 @@ function createCardDiv(card_id, card_title, card_classes, card_front_image_path,
 }
 
 
-function buildCardManifest(card_list, card_back, card_path_prefix, card_classes, card_manifest_holder_id) {
-    var manifest_holder = $('#'+card_manifest_holder_id);
+function buildCardDeck(card_list, card_back, card_path_prefix, card_classes) {
 
     var card_back_path = card_path_prefix+encodeURIComponent(card_back);
 
-    // Since we are building a manifest card, add that class also, that will add some padding around the card
-    card_classes = card_classes + " manifest_card";
+    var card_deck = [];
 
     for (var i=0; i<card_list.length; i++) {
         var file_name = card_list[i];
@@ -346,9 +393,11 @@ function buildCardManifest(card_list, card_back, card_path_prefix, card_classes,
 
         var card_div = createCardDiv(new_id, "Title for "+new_id, card_classes, card_front_path, card_back_path);  //.css('backgroundImage', 'url(' + card_image_path + ')');
 
-        card_div.appendTo(manifest_holder);
+        card_deck.push(card_div);
 
     }
+
+    return card_deck;
 }
 
 function game_event_notification_handler(command_event) {

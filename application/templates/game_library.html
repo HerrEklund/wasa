@@ -19,13 +19,20 @@
 
     <table class="table table-striped table-bordered table-responsive">
 
-        {% for module_entry in registered_modules %}
-        <div class="game_container">
-            <a href="?game_id={{ module_entry.game_id }}">
-                <img class="game_image" src="{{ module_entry.box_front }}"><br>
-                <strong>{{ module_entry.title }}</strong>
-            </a>
-        </div>
+        {% for module in registered_modules %}
+        <tr>
+            <td>
+                <div class="game_container">
+                    <a href="?game_id={{ module.game_id }}">
+                        <img class="game_image" src="{{ module.box_front }}"><br>
+                        <strong>{{ module.title }}</strong>
+                    </a>
+                </div>
+            </td>
+            <td>
+                {{ module.comment }}
+            </td>
+        </tr>
         {% endfor %}
 
     </table>

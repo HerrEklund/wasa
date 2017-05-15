@@ -53,5 +53,68 @@ var game_data = {
     ],
 
     'extra_tabs': [
+        {
+            'title': 'Basic Seq. of Play',
+            'id': 'tab1',
+            'image_src': 'components/aids/omaha_1_basic.jpg',
+            'image_style': 'width: 1400px; height: auto;'
+        },
+        {
+            'title': 'Adv Seq. of Play',
+            'id': 'tab2',
+            'image_src': 'components/aids/omaha_2_adv.jpg',
+            'image_style': 'width: 1400px; height: auto;'
+        },
+        {
+            'title': 'Amphibious Landing',
+            'id': 'tab3',
+            'image_src': 'components/aids/omaha_3_amph.jpg',
+            'image_style': 'width: 1400px; height: auto;'
+        },
+        {
+            'title': 'US Weapons',
+            'id': 'tab4',
+            'image_src': 'components/aids/omaha_4_us_weap.jpg',
+            'image_style': 'width: 1400px; height: auto;'
+        },
+        {
+            'title': 'US Barrage',
+            'id': 'tab5',
+            'image_src': 'components/aids/omaha_5_us_barrage.jpg',
+            'image_style': 'width: 1400px; height: auto;'
+        },
+        {
+            'title': 'US Attack Results',
+            'id': 'tab6',
+            'image_src': 'components/aids/omaha_6_us_attack.jpg',
+            'image_style': 'width: 1400px; height: auto;'
+        },
+        {
+            'title': 'German Action',
+            'id': 'tab7',
+            'image_src': 'components/aids/omaha_7_german_action.jpg',
+            'image_style': 'width: 1400px; height: auto;'
+        },
+        {
+            'title': 'Components',
+            'id': 'tab8',
+            'image_src': 'components/aids/omaha_8_comp.jpg',
+            'image_style': 'width: 1400px; height: auto;'
+        },
+        {
+            'title': 'Optional',
+            'id': 'tab9',
+            'image_src': 'components/aids/omaha_9_optional.jpg',
+            'image_style': 'width: 1400px; height: auto;'
+        }
+    ],
+
+    'scenarios': [
+        {
+            'id':'units_only',
+            'title': '(unit turn entry only)',
+            'script': 'units_only.js',
+            'comment': 'This not a complete scenario setup but only the line-up of the units by entry into the game.'
+        }
     ]
 };

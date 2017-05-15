@@ -65,6 +65,10 @@ def create_component_js():
 
             file_name = os.path.basename(r)
 
+            # Skip cards starting with this.. they are part of diplomatic deck
+            if "HIS-2" in file_name:
+                continue
+
             components_file.write("\n    '"+file_name+"',")
 
         components_file.write("];")

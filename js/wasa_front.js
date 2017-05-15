@@ -71,10 +71,21 @@ function init_wasa_front() {
     $(".new_component").draggable({
         stack: ".global_stackable",
         zIndex: 10000000,           // This will "lift" the component above anything else
-        grid: [ 5, 5 ],
         helper: "clone",
         appendTo: "#all_tabs"       // Wrapper of the maps, drop will be off by some 40 pixels.
     });
+    $(".game_card").draggable({
+        stack: ".game_card",
+        start: function (event, ui) {
+            // $(event.target).appendTo($('#main_body'));
+        },
+        drop: function(event, ui) {
+
+            console.log("Dropped card on #" + event.target.id);
+        }
+
+    });
+
     $(".component_tray").droppable({
         accept: '.component',
         drop: function(event, ui) {
@@ -82,25 +93,39 @@ function init_wasa_front() {
         }
     });
     $(".game_board").droppable({
-        accept: '.new_component',
+        accept: '.new_component, .game_card',
         drop: function(event, ui) {
-
             console.log("Dropped on board #"+ event.target.id);
 
-            var ghost_component = $(ui.helper);
+            var dropped_component = $(ui.helper);
 
             // Extract what we need to post the event
-            var tray_component_id = ghost_component.context.id;
-            var coordinates = ghost_component.position();
+            var tray_component_id = dropped_component.context.id;
+            var coordinates = dropped_component.position();
 
-            //  Ghost component seem to use coordinates from a parent div (the tab holder?)
-            var left = coordinates.left - 250;
-            var top = coordinates.top - 42 -250;
+            if (dropped_component.hasClass('game_card')) {
+                /**
+                 * Just temporarily. This will not att the card with persistence
+                 *
+                 */
+                console.log(".... dropped card.");
+                $(dropped_component).appendTo(event.target);
 
-            // Store event to backend, Note the -40 is due to the drop becomes due to the appendTo on the new_component draggable.
-            wasa_client.store_create_component_event(tray_component_id, get_random_id(), event.target.id, left, top);
+            } else if (dropped_component.hasClass('new_component')) {
+                console.log(".... dropped new component.");
 
-            ghost_component.remove();
+                // Clone components
+
+                //  Ghost component seem to use coordinates from a parent div (the tab holder?)
+                var left = coordinates.left - 250;
+                var top = coordinates.top - 42 -250;
+
+                // Store event to backend, Note the -40 is due to the drop becomes due to the appendTo on the new_component draggable.
+                wasa_client.store_create_component_event(tray_component_id, get_random_id(), event.target.id, left, top);
+
+                dropped_component.remove();
+            }
+
         }
     });
     // Draggable lineup box?

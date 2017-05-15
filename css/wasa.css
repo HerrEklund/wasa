@@ -78,6 +78,15 @@
         left: 50px;
         top: 250px;
     }
+    .game_card {
+        z-index: 100;
+        position: absolute;
+        left: 100px;
+        top: 300px;
+    }
+    #deck_holder {
+        height: 700px;
+    }
     #pp_tab_pane {
         height: 500px;
     }

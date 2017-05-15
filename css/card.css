@@ -14,68 +14,72 @@
  */
 
 .teamlogo{
-padding-left:5%;
+    padding-left:5%;
 }
 /* entire container, keeps perspective */
 .flippable_card{
-z-index: 10001;
-/*perspective*/
--webkit-perspective:1000;
-   -moz-perspective:1000;
+    z-index: 10001;
+    /*perspective*/
+    -webkit-perspective:1000;
+    -moz-perspective:1000;
     -ms-perspective:1000;
-     -o-perspective:1000;
-        perspective:1000;
+    -o-perspective:1000;
+    perspective:1000;
 }
 /* flip the pane when hovered */
 .flipped {
-/*transform*/
--webkit-transform:rotateY(180deg);
-   -moz-transform:rotateY(180deg);
+    /*transform*/
+    -webkit-transform:rotateY(180deg);
+    -moz-transform:rotateY(180deg);
     -ms-transform:rotateY(180deg);
-     -o-transform:rotateY(180deg);
-        transform:rotateY(180deg);
+    -o-transform:rotateY(180deg);
+    transform:rotateY(180deg);
 }
 .flippable_card, .front, .back{
 }
 /* flip speed goes here */
 .flipper {
-/*transition*/
--webkit-transition:0.6s;
-   -moz-transition:0.6s;
-     -o-transition:0.6s;
-        transition:0.6s;
-/*transform-style*/
--webkit-transform-style:preserve-3d;
-   -moz-transform-style:preserve-3d;
+    /*transition*/
+    -webkit-transition:0.6s;
+    -moz-transition:0.6s;
+    -o-transition:0.6s;
+    transition:0.6s;
+    /*transform-style*/
+    -webkit-transform-style:preserve-3d;
+    -moz-transform-style:preserve-3d;
     -ms-transform-style:preserve-3d;
-     -o-transform-style:preserve-3d;
-        transform-style:preserve-3d;
-position:relative;
+    -o-transform-style:preserve-3d;
+    transform-style:preserve-3d;
+    position:relative;
 }
 /* hide back of pane during swap */
 .front, .back{
-/*backface-visibility*/
--webkit-backface-visibility:hidden;
-   -moz-backface-visibility:hidden;
+    /*backface-visibility*/
+    -webkit-backface-visibility:hidden;
+    -moz-backface-visibility:hidden;
     -ms-backface-visibility:hidden;
-     -o-backface-visibility:hidden;
-        backface-visibility:hidden;
-position:absolute;
-top:0;
-left:0;
+    -o-backface-visibility:hidden;
+    backface-visibility:hidden;
+    position:absolute;
+    top:0;
+    left:0;
+    border-radius: 15px;
+    -webkit-box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.75);
 }
 
 /* front pane, placed above back */
 .front{
-z-index:1002;
-/*transform*/
--webkit-transform:rotateY(180deg);
-   -moz-transform:rotateY(180deg);
+    z-index:1002;
+    /*transform*/
+    -webkit-transform:rotateY(180deg);
+    -moz-transform:rotateY(180deg);
     -ms-transform:rotateY(180deg);
-     -o-transform:rotateY(180deg);
-        transform:rotateY(180deg);
+    -o-transform:rotateY(180deg);
+    transform:rotateY(180deg);
 }
 /* back, initially hidden pane */
 .back{
-z-index:1003;
+    z-index:1003;
 }

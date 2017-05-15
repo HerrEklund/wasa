@@ -81,8 +81,7 @@
     .game_card {
         z-index: 100;
         position: absolute;
-        left: 100px;
-        top: 300px;
+        border-radius: 20px;
     }
     #deck_holder {
         height: 700px;

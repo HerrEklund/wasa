@@ -11,7 +11,7 @@ var game_id;
 var game_session_id='';
 
 // How many cards per pixel
-var DECK_TILT = 1;
+var DECK_TILT = 2;
 
 function createWasaBoardGame() {
 
@@ -234,7 +234,7 @@ function layoutWasaBoardGaame(game_id, game_data, onComplete) {
 
     // 3) And add cards if possible
     if (game_data['cards'] != null) {
-        addScript('game_modules/'+game_id+'/cards.js', function () {
+        addScript('game_modules/'+game_id+'/decks.js', function () {
             onCardsLoaded(onComplete);
         } );
     } else {
@@ -269,27 +269,49 @@ function onCardsLoaded(onComplete) {
     // Since we are building a manifest card, add that class also, that will add some padding around the card
     var card_classes = game_data['card_classes']; // + " manifest_card";
 
-    var card_deck = buildCardDeck(cards_list, card_back, 'game_modules/'+game_id + '/' + game_data['component_path_prefix'], card_classes);
+    var card_abs_pos_top_start  = 300;
+    var card_abs_pos_left_start = 20;
 
-    // Suffle?
-    card_deck = shuffleArray(card_deck);
+    var card_width = 200;
+    var card_height = 400;
 
-    // Add to a holder
-    var deck_holder =  $('#'+'deck_holder');
+    // Offset each deck when placing them
+    var deck_offs_top = 0;
+    var deck_offs_left = 0;
 
-    var t = 0;
-    var l = 0;
+    for (var d=0; d<decks.length; d++) {
 
-    for (var i=0; i<card_deck.length; i++) {
-        var card_div = card_deck[i];
+        var deck_name = decks[d]['name'];
+        var fronts = decks[d]['fronts'];
+        var back = decks[d]['back'];
 
-        card_div.appendTo(deck_holder);
+        console.log("Building Dec: "+deck_name);
 
-        var card_abs_pos_top = 160;
-        var card_abs_pos_left = 80;
+        var card_deck = buildCardDeck(fronts, back, 'game_modules/' + game_id + '/' + game_data['component_path_prefix'], card_classes);
 
-        var transformation_css = {top: card_abs_pos_top+ (t++/DECK_TILT), left: card_abs_pos_left+(l++/DECK_TILT), zIndex: 1};
-        $(card_div).css(transformation_css);
+        // Suffle?
+        card_deck = shuffleArray(card_deck);
+
+        // Add to a holder
+        var deck_holder = $('#' + 'game_table');
+
+        var t = 0;
+        var l = 0;
+
+        for (var i = 0; i < card_deck.length; i++) {
+            var card_div = card_deck[i];
+
+            card_div.appendTo(deck_holder);
+
+            var card_abs_pos_top = card_abs_pos_top_start + deck_offs_top;
+            var card_abs_pos_left = card_abs_pos_left_start + deck_offs_left;
+
+            var transformation_css = {top: card_abs_pos_top + (t++ / DECK_TILT), left: card_abs_pos_left + (l++ / DECK_TILT), zIndex: 1};
+            $(card_div).css(transformation_css);
+        }
+
+        //deck_offs_left = deck_offs_left + (card_width + 50);
+        deck_offs_top = deck_offs_top + (card_height + 50);
     }
 
     onComplete();

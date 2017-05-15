@@ -6,6 +6,13 @@
 
 var registered_modules = [
     {
+        'game_id': 'paths_of_glory',
+        'title': 'Paths of Glory',
+        'subtitle': 'The First World War, 1914 - 1918',
+        'box_front': './game_modules/paths_of_glory/components/vassal/pog_cover.gif',
+        'comment': 'Not yet working. Need two player deck and had support.'
+    },
+    {
         'game_id': 'red_winter',
         'title': 'Red Winter',
         'subtitle': 'The Soviet Attack at Tolvajärvi, Finland 1939.',

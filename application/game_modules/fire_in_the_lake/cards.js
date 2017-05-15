@@ -125,6 +125,7 @@ var cards_list = [
     'FITL Card 122.png',
     'FITL Card 123.png',
     'FITL Card 124.png',
+
     'FITL Card 125.png',
     'FITL Card 126.png',
     'FITL Card 127.png',

@@ -103,6 +103,10 @@ function init_wasa_front() {
             var tray_component_id = dropped_component.context.id;
             var coordinates = dropped_component.position();
 
+            //  Ghost component seem to use coordinates from a parent div (the tab holder?)
+            var left = coordinates.left - 250;
+            var top = coordinates.top - 42 - 250;
+
             if (dropped_component.hasClass('game_card')) {
                 /**
                  * Just temporarily. This will not att the card with persistence
@@ -115,10 +119,6 @@ function init_wasa_front() {
                 console.log(".... dropped new component.");
 
                 // Clone components
-
-                //  Ghost component seem to use coordinates from a parent div (the tab holder?)
-                var left = coordinates.left - 250;
-                var top = coordinates.top - 42 -250;
 
                 // Store event to backend, Note the -40 is due to the drop becomes due to the appendTo on the new_component draggable.
                 wasa_client.store_create_component_event(tray_component_id, get_random_id(), event.target.id, left, top);

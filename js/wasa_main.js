@@ -273,7 +273,7 @@ function onCardsLoaded(onComplete) {
     var card_abs_pos_left_start = 20;
 
     var card_width = 200;
-    var card_height = 400;
+    var card_height = 250;
 
     // Offset each deck when placing them
     var deck_offs_top = 0;

@@ -42,7 +42,7 @@
 }
 .pog_counter {
     /* Custom for this game */
-    background-repeat: no-repeat;
+    background-size: 100%;   /* Will make all counter the same size even if graphics differs */
     background-position: center;
     width: 50px;
     height: 50px;

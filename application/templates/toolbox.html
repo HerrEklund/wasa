@@ -10,7 +10,11 @@
         <div class="panel-body">
             <div class="btn-group">
                 <button type="button" class="btn btn-default" onclick="unmarkAllComponents();">Unmark</button>
-                <button type="button" class="btn btn-default" onclick="$('.component').toggleClass('very_hidden_component');">Hide/Show</button>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" data-toggle="button" class="btn btn-default" onclick="$('.component').toggleClass('very_hidden_component');">Hide/Show</button>
+                <button type="button" data-toggle="button" class="btn btn-default" onclick="$('.component').toggleClass('highlighted_component');" title="Note, component stacks will glow stronger.">Highlight</button>
                 <!--
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

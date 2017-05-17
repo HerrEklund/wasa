@@ -45,8 +45,13 @@ var game_data = {
 
     'game_board_tabs': [
         {   // Just special as it may contain special markup and is also active by default
-            'title': 'Main',
+            'title': 'Original map',
             'id': 'main_game_board',
+            'classes': ''
+        },
+        {   // Just special as it may contain special markup and is also active by default
+            'title': 'BGG Alt. map',
+            'id': 'alt_map_game_board',
             'classes': ''
         }
     ],
@@ -57,5 +62,18 @@ var game_data = {
         'id': 'rules_tab',
         'link_src': 'http://www.gmtgames.com/living_rules/POG_Rules-2010.pdf',
         'link_title': 'Official rules by GMT (reprint version)'
-    }
+    },
+    'scenarios': [
+        {
+            'id':'original_on_main',
+            'title': 'Main Scenario (on original map)',
+            'script': 'main_on_original.js'
+        },
+        {
+            'id':'original_on_alt',
+            'title': 'Main Scenario (on alternative map)',
+            'script': 'main_on_alt.js'
+        }
+
+    ]
 };

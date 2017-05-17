@@ -31,12 +31,22 @@
     width: 3308px;
     height: 2146px;
 }
-
+#alt_map_game_board {
+    background-image: url('components/PoG_alt_map2.1.jpg');
+    width: 3308px;
+    height: 2146px;
+    /* original size
+    width: 5100px;
+    height: 3292px;
+    */
+}
 .pog_counter {
     /* Custom for this game */
     background-repeat: no-repeat;
+    background-position: center;
     width: 50px;
     height: 50px;
+    border: none;
 }
 .pog_card {
     /* Custom for this game */

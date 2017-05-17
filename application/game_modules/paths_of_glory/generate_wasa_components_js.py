@@ -42,6 +42,12 @@ def get_image_size(fname):
         return width, height
 
 
+def find_case_insensitve(dirname, extensions):
+    for filename in glob.glob(dirname):
+        base, ext = os.path.splitext(filename)
+        if ext.lower() in extensions:
+            yield filename
+
 def create_component_js():
     '''
 
@@ -55,7 +61,9 @@ def create_component_js():
     ];
 
     '''
-    result = glob.glob('components/vassal/*.png')
+    result = find_case_insensitve('components/vassal/*', ['.png'])
+
+    #result = glob.glob(ci_pattern)
     max_width = 60
     max_height = 60
 

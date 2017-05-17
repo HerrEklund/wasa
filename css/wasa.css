@@ -41,6 +41,12 @@
         box-shadow: 0px 0px 21px 6px rgba(0,0,0,0.68);
         border-radius: 10px;
     }
+    .dimmed_background {
+        background: -moz-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7));
+        background: -webkit-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7));
+        background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7));
+    }
+
     .rules_tab {
         background-color: #252b30;
         padding: 50px;
@@ -125,7 +131,7 @@
         float: left;
         cursor: pointer;
         border: 1px solid black;
-        border-radius: 10px;
+        border-radius: 6px;
     }
     .new_component {
         float: left;
@@ -144,7 +150,6 @@
         -webkit-box-shadow: 0px 0px 21px 6px rgba(0,0,0,0.68);
         -moz-box-shadow: 0px 0px 21px 6px rgba(0,0,0,0.68);
         box-shadow: 0px 0px 21px 6px rgba(0,0,0,0.68);
-        border-radius: 15px;
         /*border: rgba(0,0,0,1) dashed 2px; */
     }
     .marked_component {

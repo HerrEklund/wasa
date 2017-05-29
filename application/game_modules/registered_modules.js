@@ -97,5 +97,12 @@ var registered_modules = [
         'subtitle': '',
         'box_front': './game_modules/here_i_stand/components/vassal/HIS_cover.jpg',
         'comment': 'Card deck exists in game but cards can not be drawn or shuffled correctly yet.'
+    },
+    {
+        'game_id': 'wir_sind_das_volk',
+        'title': 'Wir sind Das Volk!',
+        'subtitle': 'The divided Germany, 1945-1989',
+        'box_front': './game_modules/wir_sind_das_volk/components/vassal/Splash.jpg',
+        'comment': 'Euro wargame, not tested.'
     }
 ];

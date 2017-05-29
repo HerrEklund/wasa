@@ -1,0 +1,51 @@
+
+#main_title {
+}
+
+.theme_color {
+    color: #cd5a61;
+}
+
+#tab_side {
+    /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
+    position: relative;
+}
+
+/* The color of the table area around the game board */
+.game_table {
+    /*
+        Six nice wooden pattern to use as table, from Light to dark with higher number
+        001 - Light
+         ....
+        001 - Almost black
+
+
+    background-image: url('../../../img/wood/wood-001.png');
+    padding: 250px;
+    border-radius: 100px;
+     */
+}
+
+#main_game_board {
+    background-image: url('components/vassal/WSDV Board Final v5.jpg');
+    width: 3308px;
+    height: 2146px;
+}
+
+.wsdv_counter {
+    /* Custom for this game */
+    background-size: 100%;   /* Will make all counter the same size even if graphics differs */
+    background-position: center;
+    width: 80px;
+    height: 74px;
+    border: none;
+}
+.wsdv_card {
+    /* Custom for this game */
+    background-repeat: no-repeat;
+    width: 223px;
+    height: 345px;
+
+    background-size: contain;
+    border: 0;
+}

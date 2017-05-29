@@ -80,7 +80,6 @@ function init_wasa_front() {
             // $(event.target).appendTo($('#main_body'));
         },
         drop: function(event, ui) {
-
             console.log("Dropped card on #" + event.target.id);
         }
 

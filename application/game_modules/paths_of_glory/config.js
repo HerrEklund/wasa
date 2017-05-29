@@ -56,12 +56,24 @@ var game_data = {
         }
     ],
     'extra_tabs': [
+        {
+            'title': 'Player Aid',
+            'id': 'tab1',
+            'image_src': 'components/PoG_Play_Aid_v2.jpg',
+            'image_style': 'width: 1800px; height: auto;'
+        }
     ],
 
     'rules_tab': {
         'id': 'rules_tab',
         'link_src': 'http://www.gmtgames.com/living_rules/POG_Rules-2010.pdf',
-        'link_title': 'Official rules by GMT (reprint version)'
+        'link_title': 'Official rules by GMT (reprint version)',
+        'links': [
+            {
+                'title': 'Flatten the learning curve PDF',
+                'src': 'components/Paths_of_Glory_FTLC.pdf'
+            }
+        ]
     },
     'scenarios': [
         {

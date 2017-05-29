@@ -45,7 +45,7 @@ This file is generated using Nunjucks:
           </ul>
 
 
-            <div class="game_table" id="game_table">
+            <div class="game_table custom_game_table" id="game_table">
                 <!-- Tab panes -->
                 <div class="tab-content" id="all_tabs">
                     {% for tab in game.game_board_tabs %}
@@ -74,7 +74,7 @@ This file is generated using Nunjucks:
                     {% endfor %}
 
                     {% for tab in game.extra_tabs %}
-                    <div role="tabpanel" class="tab-pane" id="{{ tab.id }}_extra_tab">
+                    <div role="tabpanel" class="tab-pane extra_tab" id="{{ tab.id }}_extra_tab">
                         <img src="{{ module_path }}/{{ tab.image_src }}" style="{{ tab.image_style }}">
                     </div>
                     {% endfor %}
@@ -86,10 +86,10 @@ This file is generated using Nunjucks:
                         <br>
                         <a href="{{ game.rules_tab.link_src }}" target="_blank" class="btn btn-default">{{ game.rules_tab.link_title }}</a>
                         <br>
-                        {% if game.links %}
+                        {% if game.rules_tab.links %}
                         <h3>Links</h3>
                         {% for link in game.rules_tab.links %}
-                        <a href="{{ link.src }}" target="_blank" class="">{{ link.title }}</a>
+                        <a href="{{ module_path }}/{{ link.src }}" target="_blank" class="">{{ link.title }}</a>
                         {% endfor %}
                         {% endif %}
                     </div>

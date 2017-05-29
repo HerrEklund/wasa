@@ -6,6 +6,10 @@
     color: #F7E88B;
 }
 
+.custom_game_table {
+    padding-left: 500px;
+}
+
 #tab_side {
     /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
     position: relative;

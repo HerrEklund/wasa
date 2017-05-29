@@ -1,3 +1,18 @@
+/**
+ * Controls how to display the decks
+ *
+ * cards_per_pixel_x ... Higher number will make the deck stack tight while a lower number will make the deck be spread out
+ * cards_per_pixel_y ... Same but, vertical spread
+ *
+ */
+var cards_per_pixel_x = 0.4;
+var cards_per_pixel_y = 4;
+
+var card_abs_pos_top_start  = 300;
+var card_abs_pos_left_start = 20;
+
+var card_width = 200;
+var card_height = 250;
 
 var decks = [
     {

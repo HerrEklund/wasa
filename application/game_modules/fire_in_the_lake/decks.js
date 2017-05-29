@@ -1,3 +1,12 @@
+var cards_per_pixel_x = 1;
+var cards_per_pixel_y = 1.5;
+
+var card_abs_pos_top_start  = 400;
+var card_abs_pos_left_start = 20;
+
+var card_width = 200;
+var card_height = 250;
+
 var decks = [
     {
         'name': 'Event cards',

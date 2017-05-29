@@ -55,6 +55,13 @@ var registered_modules = [
         'comment': 'Fully working.'
     },
     {
+        'game_id': 'france_40',
+        'title': 'France \'40',
+        'subtitle': 'Sickle cut / Dynamno',
+        'box_front': './game_modules/france_40/components/vassal/Splash.jpg',
+        'comment': 'Fully working.'
+    },
+    {
         'game_id': 'normandy_44',
         'title': 'Normandy \'44',
         'subtitle': 'D-Day and the Battle for Normandy, 6 - 27 JUNE, 1944',

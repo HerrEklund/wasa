@@ -10,9 +10,6 @@ var username;
 var game_id;
 var game_session_id='';
 
-// How many cards per pixel
-var DECK_TILT = 2;
-
 function createWasaBoardGame() {
 
     var url = window.location.href;
@@ -266,18 +263,15 @@ function onCardsLoaded(onComplete) {
 
     // Build card deck divs first
 
+    // NOTE :a couple of variables from decks.js are used while placing the cards below
+
     // Since we are building a manifest card, add that class also, that will add some padding around the card
     var card_classes = game_data['card_classes']; // + " manifest_card";
-
-    var card_abs_pos_top_start  = 300;
-    var card_abs_pos_left_start = 20;
-
-    var card_width = 200;
-    var card_height = 250;
 
     // Offset each deck when placing them
     var deck_offs_top = 0;
     var deck_offs_left = 0;
+
 
     for (var d=0; d<decks.length; d++) {
 
@@ -287,26 +281,27 @@ function onCardsLoaded(onComplete) {
 
         console.log("Building Dec: "+deck_name);
 
+        // This is a deck in starting order
         var card_deck = buildCardDeck(fronts, back, 'game_modules/' + game_id + '/' + game_data['component_path_prefix'], card_classes);
 
-        // Suffle?
-        card_deck = shuffleArray(card_deck);
+        // Could possibly sync card order in each deck here using Event, but all decks should be alike on all clients
 
         // Add to a holder
         var deck_holder = $('#' + 'game_table');
 
         var t = 0;
         var l = 0;
+        var z = 1;
 
         for (var i = 0; i < card_deck.length; i++) {
-            var card_div = card_deck[i];
+            var card_div = card_deck[card_deck.length-i-1];
 
             card_div.appendTo(deck_holder);
 
             var card_abs_pos_top = card_abs_pos_top_start + deck_offs_top;
             var card_abs_pos_left = card_abs_pos_left_start + deck_offs_left;
 
-            var transformation_css = {top: card_abs_pos_top + (t++ / DECK_TILT), left: card_abs_pos_left + (l++ / DECK_TILT), zIndex: 1};
+            var transformation_css = {top: card_abs_pos_top + (t++ / cards_per_pixel_y), left: card_abs_pos_left + (l++ / cards_per_pixel_x), zIndex: z++};
             $(card_div).css(transformation_css);
         }
 
@@ -315,6 +310,12 @@ function onCardsLoaded(onComplete) {
     }
 
     onComplete();
+
+}
+
+function shuffleDeck(deck_id) {
+    // Suffle?
+    card_deck = shuffleArray(card_deck);
 
 }
 

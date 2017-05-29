@@ -44,12 +44,30 @@ var game_data = {
         }
     ],
     'extra_tabs': [
+        {
+            'title': 'Player Aid 1',
+            'id': 'tab1',
+            'image_src': 'components/wog_pa1.jpg',
+            'image_style': 'width: 1200px; height: auto;'
+        },
+        {
+            'title': 'Player Aid 2',
+            'id': 'tab2',
+            'image_src': 'components/wog_pa2.jpg',
+            'image_style': 'width: 1200px; height: auto;'
+        }
     ],
 
     'rules_tab': {
         'id': 'rules_tab',
         'link_src': 'http://www.multimanpublishing.com/LinkClick.aspx?fileticket=QYWK9bQZuhE%3D&tabid=65',
-        'link_title': 'Official rules by MMP'
+        'link_title': 'Official rules by MMP',
+        'links': [
+            {
+                'title': 'Player Aids as PDF',
+                'src': 'components/wog_rs_pa.pdf'
+            }
+        ]
     },
 
     'scenarios': [

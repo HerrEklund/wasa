@@ -9,7 +9,7 @@ var cards_per_pixel_x = 0.6;
 var cards_per_pixel_y = 1;
 
 var card_abs_pos_top_start  = 300;
-var card_abs_pos_left_start = 20;
+var card_abs_pos_left_start = 60;
 
 var card_width = 223;
 var card_height = 345;

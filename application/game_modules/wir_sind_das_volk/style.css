@@ -26,10 +26,17 @@
      */
 }
 
+.custom_game_table {
+    background-image: url('../../../img/wood/wood-002.png');
+    padding-left: 400px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
 #main_game_board {
     background-image: url('components/vassal/WSDV Board Final v5.jpg');
-    width: 3308px;
-    height: 2146px;
+    width: 2832px;
+    height: 2259px;
 }
 
 .wsdv_counter {

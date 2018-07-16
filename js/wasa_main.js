@@ -66,7 +66,7 @@ function createWasaBoardGame() {
              *      Variable name            From file       Explanation
              * ----------------------------------------------------------------------------------------------------
              *   nuinjucks_main_template ... config.js       The nunjucks template to use, from config.js
-             *   game_data               ... config.js       Module creator set this up, from conig.js
+             *   game_data               ... config.js       Module creator set this up, from config.js
              *   component_list          ... components.js   This can be manually created or genrated by a script
              *
              */

@@ -6,8 +6,6 @@ import struct
 import imghdr
 
 result = glob.glob('components/vassal/*')
-exp_width = 78
-exp_height = 78
 
 
 def get_image_size(fname):
@@ -59,26 +57,86 @@ def create_component_js():
     ];
 
     '''
+    exp_width = 80
+    exp_height = 80
+
+    back_pattern1 = '_Back.gif'
+    back_pattern2 = '_B.gif'
+
+    all_components = list()
+
     with open("components.js", "w") as components_file:
 
-        components_file.write("var component_list = [")
+        # Store until pass two
+        front_images = list()
+        back_images = dict()
 
+        # Pass1, split list of files into front and back lists and filter out invalid images
         for r in result:
             # Analyze image
             w, h = get_image_size(r)
 
-            if w != exp_width or h != exp_height:
+            if w > exp_width or h > exp_height:
                 continue
 
             file_name = os.path.basename(r)
 
-            if file_name.endswith('_Back.gif'):
-                # TODO: add as "back
-                pass
+            all_components.append(file_name)
 
-            if file_name.endswith('_B.gif'):
-                pass
+            if file_name.endswith(back_pattern1):
+                component_id = file_name.replace(back_pattern1, '')
+                back_images[component_id] = file_name
 
+            elif file_name.endswith(back_pattern2):
+                component_id = file_name.replace(back_pattern2, '')
+                back_images[component_id] = file_name
+            else:
+                front_images.append(file_name)
+
+        #
+        # 2 - Pair front with back
+        #
+        double_sided_components = list()
+        single_sided_components = list()
+        for front_file_name in front_images:
+
+            # Extract first part without ending
+            component_id = front_file_name.split('.')[0]
+
+            back_file_name = back_images.get(component_id, None)
+
+            if back_file_name:
+                double_sided_components.append((component_id, front_file_name, back_file_name))
+            else:
+                single_sided_components.append((component_id, front_file_name, '?'))
+                print "No back found for %s" % front_file_name
+
+        # Now generate components.js
+
+        # New front/back model
+        components_file.write("var double_sided_component_list = [")
+        for c in double_sided_components:
+            components_file.write("\n    {"
+                                              "\n        'id':'"+c[0]+"',"
+                                              "\n        'front':'"+c[1]+"',"
+                                              "\n        'back':'"+c[2]+"'\n"
+                                          "    },")
+
+        components_file.write("];")
+
+        components_file.write("\n\nvar single_sided_component_list = [")
+        for c in single_sided_components:
+            components_file.write("\n    {"
+                                              "\n        'id':'"+c[0]+"',"
+                                              "\n        'front':'"+c[1]+"',"
+                                              "\n        'back':'"+c[2]+"'\n"
+                                          "    },")
+
+        components_file.write("];")
+
+        # Old style
+        components_file.write("\n\n\n\nvar component_list = [")
+        for file_name in all_components:
             components_file.write("\n    '"+file_name+"',")
 
         components_file.write("];")

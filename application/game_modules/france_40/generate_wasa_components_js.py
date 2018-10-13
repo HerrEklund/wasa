@@ -1,10 +1,9 @@
-
 import glob
 import os
-
 import struct
 import imghdr
-
+import json
+import collections
 
 def get_image_size(fname):
     '''Determine the image type of fhandle and return its size.
@@ -64,8 +63,11 @@ def create_component_js():
 
     with open("components.js", "w") as components_file:
 
-        components_file.write("var component_list = [")
+        components_file.write("var component_list = [\n")
 
+        # Two sided handling takes to passes
+
+        component_map = dict()
         for r in result:
             #if r[-6:] in ['-2.gif', '-3.gif', '-4.gif', '-5.gif', '-6.gif']:
             #    continue
@@ -82,11 +84,42 @@ def create_component_js():
 
             file_name = os.path.basename(r)
 
-            components_file.write("\n    '"+file_name+"',")
+            # Example file names:
+            #
+            # 'BE-10Div-Bk.png',
+            # 'BE-10Div.png',
+            #
+            # Note, keep simplest last, like: ['-F.png', '.png']
+            #  (else .png will trigger first.
+            #
+            suffixes = ['-Bk.png', '-B.png', '-back.png', '-BK.png']
+            c_key = get_c_key(file_name, suffixes)
+            if c_key:
+                component = component_map.get(c_key, {})
+                component['b'] = file_name
+            else:
+                suffixes = ['-F.png', '.png']
+                c_key = get_c_key(file_name, suffixes)
+                component = component_map.get(c_key, {})
+                component['f'] = file_name
+
+            component_map[c_key] = component
+
+        component_map = collections.OrderedDict(sorted(component_map.items()))
+
+        for c in component_map.items():
+            components_file.write("%s,\n" % json.dumps(c))
 
         components_file.write("];")
 
 
+def get_c_key(file_name, suffixes):
+
+    for s in suffixes:
+        if file_name.endswith(s):
+            return file_name.replace(s, '').lower()
+
+    return None
 if __name__ == '__main__':
 
     create_component_js()

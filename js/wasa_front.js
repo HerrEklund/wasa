@@ -72,8 +72,10 @@ function init_wasa_front() {
         stack: ".global_stackable",
         zIndex: 10000000,           // This will "lift" the component above anything else
         helper: "clone",
+        // cursorAt: { left: 0, top: 0 },
         appendTo: "#all_tabs"       // Wrapper of the maps, drop will be off by some 40 pixels.
     });
+
     $(".game_card").draggable({
         stack: ".game_card",
         start: function (event, ui) {
@@ -94,35 +96,40 @@ function init_wasa_front() {
     $(".game_board").droppable({
         accept: '.new_component, .game_card',
         drop: function(event, ui) {
+
+            // NOTE: This is the ghost (drag shadow) that is about to be dropped
+            var dropping_component = $(ui.helper);
+
+            // ... so it does not yet have the correct coordinates since does not belong to the board yet.
+            // ... that is why I calculate the xorrext X and Y to send as event below.
+            var relX = event.pageX - $(this).offset().left - event.offsetX;
+            var relY = event.pageY - $(this).offset().top - event.offsetY;
+
             console.log("Dropped on board #"+ event.target.id);
 
-            var dropped_component = $(ui.helper);
-
             // Extract what we need to post the event
-            var tray_component_id = dropped_component.context.id;
-            var coordinates = dropped_component.position();
+            var tray_component_id = dropping_component.context.id;
+            var coordinates = dropping_component.position();
 
             //  Ghost component seem to use coordinates from a parent div (the tab holder?)
-            var left = coordinates.left - 250;
-            var top = coordinates.top - 42 - 250;
+            var left = relX;
+            var top = relY;
 
-            if (dropped_component.hasClass('game_card')) {
+            if (dropping_component.hasClass('game_card')) {
                 /**
                  * Just temporarily. This will not att the card with persistence
                  *
                  */
                 console.log(".... dropped card.");
-                $(dropped_component).appendTo(event.target);
+                $(dropping_component).appendTo(event.target);
 
-            } else if (dropped_component.hasClass('new_component')) {
+            } else if (dropping_component.hasClass('new_component')) {
                 console.log(".... dropped new component.");
 
                 // Clone components
 
                 // Store event to backend, Note the -40 is due to the drop becomes due to the appendTo on the new_component draggable.
                 wasa_client.store_create_component_event(tray_component_id, get_random_id(), event.target.id, left, top);
-
-                dropped_component.remove();
             }
 
         }
@@ -361,7 +368,7 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
     new_component.addClass("global_stackable");
 
     new_component.draggable({
-        grid: [ 5, 5 ],
+        // grid: [ 5, 5 ],
         start: function (event, ui) {
             placeComponentOnTop($(event.target));
         },
@@ -412,30 +419,47 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
         });
     }
 
+    // listen for the long-press event
+    new_component.bind('long-press', function(e) {
+
+        $('.selected_component').removeClass('selected_component');
+
+        // Flip
+        var flipper = new_component.find('.flipper')[0];
+
+        $(flipper).toggleClass('flipped');
+
+        // stop the event from bubbling up
+        e.stopPropagation();
+    });
+
     if (enable_stack_selection) {
         new_component.bind("click touchstart tap", function(e){
             console.log("Click on component!");
+
             if(new_component.hasClass('selected_component')) {
                 // Clear selection before doing stack selection (and possibly auto-open lineup box)
                 //$('.selected_component').removeClass('selected_component');
 
+                // If click on selected, add all intersecting to selection also
                 $('.component').each(function () {
                     if( overlaps(new_component, $(this))) {
                         $(this).addClass('selected_component')
                     }
-                    if (direct_lineup_box_on_double_click) {
-                         selectedToLineup(new_component);
-                    }
                 });
+                // .. then open box
+                selectedToLineup(new_component);
             } else {
                 new_component.addClass('selected_component');
             }
 
+            // Stop so it dont trigger other events on board for example
             e.stopPropagation();
         });
     }
 
     new_component.dblclick(function (event, ui) {
+        console.log("DBLCLICK!!")
         // Warning, it is not advised to both use a click AND dblclick handler
 
         // Warning, doubleclick (real or sythesized with timers) seem to work half bad on touch

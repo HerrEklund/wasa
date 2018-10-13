@@ -134,19 +134,16 @@
         margin: 0;
     }
     /*
-        Add game specific game components must carry a class named component
+        Default stuff, can be overridden by games (in style.css)
      */
     .component {
         float: left;
         cursor: pointer;
-        border: 1px solid black;
         border-radius: 6px;
     }
     .new_component {
         float: left;
         cursor: pointer;
-        border: 1px solid black;
-
         margin: 3px;
         z-index: 100;
     }

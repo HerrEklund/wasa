@@ -1,4 +1,5 @@
 
+
 #main_title {
 }
 
@@ -25,6 +26,12 @@
     background-image: url('components/vassal/DYNAMO_MAP-FINAL-120.jpg');
     width: 4080px;
     height: 2640px;
+}
+
+.component {
+    float: left;
+    cursor: pointer;
+    border-radius: 6px;
 }
 
 .france40_counter_small {

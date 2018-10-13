@@ -1,6 +1,6 @@
 /**
 
-<div class="flippable_card">
+<div class="flippable_component">
 	<div class="flipper" onclick="this.classList.toggle('flipped')">
 		<div class="front">
 			Front
@@ -17,7 +17,7 @@
     padding-left:5%;
 }
 /* entire container, keeps perspective */
-.flippable_card{
+.flippable_component{
     z-index: 10001;
     /*perspective*/
     -webkit-perspective:1000;
@@ -35,7 +35,7 @@
     -o-transform:rotateY(180deg);
     transform:rotateY(180deg);
 }
-.flippable_card, .front, .back{
+.flippable_component, .front, .back{
 }
 /* flip speed goes here */
 .flipper {
@@ -63,10 +63,12 @@
     position:absolute;
     top:0;
     left:0;
+    /*
     border-radius: 15px;
     -webkit-box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.75);
     box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.75);
+    */
 }
 
 /* front pane, placed above back */

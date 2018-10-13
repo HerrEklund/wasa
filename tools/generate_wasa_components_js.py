@@ -5,6 +5,7 @@ import os
 import struct
 import imghdr
 
+
 def get_image_size(fname):
     '''Determine the image type of fhandle and return its size.
     from draco'''

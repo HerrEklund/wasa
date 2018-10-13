@@ -324,60 +324,106 @@ function createComponentsForTray(component_list, component_path_prefix, componen
     var component_tray = $('#'+tray_id);
 
     for (var i=0; i<component_list.length; i++) {
-        var file_name = component_list[i];
 
-        var component_image_path = component_path_prefix+encodeURIComponent(file_name);
+        var obj = component_list[i];
 
-        // Handle parenthesis
-        component_image_path = component_image_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
+        // Check if item is list or string
+        if (Array.isArray(obj)) {
 
-        // Create ID from the file name, make sure it is safe for ID also
-        var base_id = file_name.substring(0, file_name.lastIndexOf(".")).toLowerCase();
-        var new_id = 'C_'+base_id.replace('.', '_');
+            // If array, first render header that is first item
+            $("<div class='clearfix'></div").appendTo(component_tray);
+            $("<br><h4 style='width: 100%'>"+obj[0]+"</h4>").appendTo(component_tray);
 
-        new_id = new_id.replace('(', '');
-        new_id = new_id.replace(')', '');
+            // Rest is list of front/back components
+            for (var j=1; j<obj.length; j++) {
+                var component_id = obj[j][0];
+                var front_file_name = obj[j][1]['f'];
+                var back_file_name = obj[j][1]['b'];
 
-        new_id = new_id.replace(/[^a-z0-9\-_:\.()]|^[^a-z]+/gi, "_");
+                var front_path = component_path_prefix+encodeURIComponent(front_file_name);
+                front_path = front_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
 
-        if (new_id.length == 0) {
-            console.error("Failed to synthesize ID from file name = "+file_name);
-            continue;
-        } else {
-            //console.log("Adding component ("+file_name+") using ID = "+new_id);
+                var back_path = component_path_prefix+encodeURIComponent(back_file_name);
+                back_path = back_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
+
+                if (front_file_name && back_file_name) {
+                    var flippable_tray_component = createFlippableComponent(component_id, "Title for "+component_id, component_classes, front_path, back_path);
+                    flippable_tray_component.addClass("new_component");
+                    flippable_tray_component.appendTo(component_tray);
+                } else if (front_file_name) {
+                    var tray_component = createDefaultComponent(front_file_name, component_path_prefix, component_classes, component_tray);
+                    tray_component.appendTo(component_tray);
+                } else if (back_file_name) {
+                    var tray_component = createDefaultComponent(back_file_name, component_path_prefix, component_classes, component_tray);
+                    tray_component.appendTo(component_tray);
+                }
+            }
+
+        } else if (typeof(obj) == "string") {
+            var tray_component = createDefaultComponent(obj, component_path_prefix, component_classes, component_tray);
+            tray_component.appendTo(component_tray);
         }
-
-        var tray_component = $('<div class="new_component '+component_classes+'" id="'+new_id+'" title="'+base_id+'"></div>');
-
-        tray_component.css('backgroundImage', 'url(' + component_image_path + ')');
-
-        tray_component.appendTo(component_tray);
-
     }
 }
 
+function createIDFromFileName(file_name) {
+    // Create ID from the file name, make sure it is safe for ID also
+    var base_id = file_name.substring(0, file_name.lastIndexOf(".")).toLowerCase();
+    var new_id = 'C_'+base_id.replace('.', '_');
 
-function createCardDiv(card_id, card_title, card_classes, card_front_image_path, card_back_image_path) {
+    new_id = new_id.replace('(', '');
+    new_id = new_id.replace(')', '');
+
+    new_id = new_id.replace(/[^a-z0-9\-_:\.()]|^[^a-z]+/gi, "_");
+
+    if (new_id.length == 0) {
+        console.error("Failed to synthesize ID from file name = "+file_name);
+        return;
+    }
+    return new_id;
+}
+
+function createDefaultComponent(file_name, component_path_prefix, component_classes) {
+
+    var tray_component_id = createIDFromFileName(file_name);
+
+    var component_image_path = component_path_prefix+encodeURIComponent(file_name);
+
+    // Handle parenthesis
+    component_image_path = component_image_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
+
+    var tray_component = $('<div class="new_component '+component_classes+'" id="'+tray_component_id+'" title="'+tray_component_id+'"></div>');
+
+    tray_component.css('backgroundImage', 'url(' + component_image_path + ')');
+
+    return tray_component;
+
+}
+
+
+function createFlippableComponent(card_id, card_title, card_classes, card_front_image_path, card_back_image_path, flipped=true) {
+
     // This is templates
-    var flippable_card = "<div class='flippable_card game_card CARD_CLASSES' id='CARD_ID' title='CARD_TITLE'></div>";
-    var flipper = "<div class='flipper CARD_CLASSES' ondblclick=this.classList.toggle('flipped')></div>";
+    var flippable_card = "<div class='flippable_component CARD_CLASSES' id='CARD_ID' title='CARD_TITLE'></div>";
+    var flipper = "<div class='flipper CARD_CLASSES'></div>";
     var card_front = "<div class='front CARD_CLASSES'></div>";
     var card_back = "<div class='back CARD_CLASSES'></div>";
 
     var card_div = $(flippable_card.replace('CARD_CLASSES', card_classes).replace('CARD_ID', card_id).replace('CARD_TITLE', card_title));
-
     var flipper_div = $(flipper.replace('CARD_CLASSES', card_classes));
-
     var card_front_div = $(card_front.replace('CARD_CLASSES', card_classes));
-    card_front_div.css('backgroundImage', 'url(' + card_front_image_path + ')');
-
     var card_back_div = $(card_back.replace('CARD_CLASSES', card_classes));
+
+    card_front_div.css('backgroundImage', 'url(' + card_front_image_path + ')');
     card_back_div.css('backgroundImage', 'url(' + card_back_image_path + ')');
 
     // Order of addition does not matter
     card_front_div.appendTo(flipper_div);
     card_back_div.appendTo(flipper_div);
 
+    if (flipped) {
+        flipper_div.addClass('flipped');
+    }
     flipper_div.appendTo(card_div);
 
     return card_div;
@@ -399,22 +445,12 @@ function buildCardDeck(card_list, card_back, card_path_prefix, card_classes) {
         card_front_path = card_front_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
 
         // Create ID from the file name, make sure it is safe for ID also
-        var base_id = file_name.substring(0, file_name.lastIndexOf(".")).toLowerCase();
-        var new_id = 'C_'+base_id.replace('.', '_');
+        var card_id = createIDFromFileName(file_name);
 
-        new_id = new_id.replace('(', '');
-        new_id = new_id.replace(')', '');
+        var card_div = createFlippableComponent(card_id, "Title for "+card_id, card_classes, card_front_path, card_back_path, false);  //.css('backgroundImage', 'url(' + card_image_path + ')');
 
-        new_id = new_id.replace(/[^a-z0-9\-_:\.()]|^[^a-z]+/gi, "_");
-
-        if (new_id.length == 0) {
-            console.error("Failed to synthesize ID from file name = "+file_name);
-            continue;
-        } else {
-            //console.log("Adding card ("+file_name+") using ID = "+new_id);
-        }
-
-        var card_div = createCardDiv(new_id, "Title for "+new_id, card_classes, card_front_path, card_back_path);  //.css('backgroundImage', 'url(' + card_image_path + ')');
+        // last add global card specific style and behaviour
+        card_div.addClass('game_card');
 
         card_deck.push(card_div);
 

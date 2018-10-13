@@ -72,7 +72,7 @@
 }
 
 /* front pane, placed above back */
-.front{
+.back{
     z-index:1002;
     /*transform*/
     -webkit-transform:rotateY(180deg);
@@ -82,6 +82,6 @@
     transform:rotateY(180deg);
 }
 /* back, initially hidden pane */
-.back{
+.front{
     z-index:1003;
 }

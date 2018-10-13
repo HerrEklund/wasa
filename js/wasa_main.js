@@ -331,8 +331,9 @@ function createComponentsForTray(component_list, component_path_prefix, componen
         if (Array.isArray(obj)) {
 
             // If array, first render header that is first item
-            $("<div class='clearfix'></div").appendTo(component_tray);
-            $("<br><h4 style='width: 100%'>"+obj[0]+"</h4>").appendTo(component_tray);
+            $("<div class='clearfix'></div>").appendTo(component_tray);
+            $("<h4 style='width: 100%'>"+obj[0]+"</h4>").appendTo(component_tray);
+            $("<hr>").appendTo(component_tray);
 
             // Rest is list of front/back components
             for (var j=1; j<obj.length; j++) {
@@ -347,7 +348,7 @@ function createComponentsForTray(component_list, component_path_prefix, componen
                 back_path = back_path.replace(/\(/g, "%28").replace(/\)/g, "%29");
 
                 if (front_file_name && back_file_name) {
-                    var flippable_tray_component = createFlippableComponent(component_id, "Title for "+component_id, component_classes, front_path, back_path);
+                    var flippable_tray_component = createFlippableComponent(component_id, "Title for "+component_id, component_classes, front_path, back_path, false);
                     flippable_tray_component.addClass("new_component");
                     flippable_tray_component.appendTo(component_tray);
                 } else if (front_file_name) {
@@ -358,6 +359,7 @@ function createComponentsForTray(component_list, component_path_prefix, componen
                     tray_component.appendTo(component_tray);
                 }
             }
+            $("<br><br>").appendTo(component_tray);
 
         } else if (typeof(obj) == "string") {
             var tray_component = createDefaultComponent(obj, component_path_prefix, component_classes, component_tray);
@@ -401,32 +403,32 @@ function createDefaultComponent(file_name, component_path_prefix, component_clas
 }
 
 
-function createFlippableComponent(card_id, card_title, card_classes, card_front_image_path, card_back_image_path, flipped=true) {
+function createFlippableComponent(component_id, component_title, component_classes, component_front_image_path, component_back_image_path, flipped=true) {
 
     // This is templates
-    var flippable_card = "<div class='flippable_component CARD_CLASSES' id='CARD_ID' title='CARD_TITLE'></div>";
+    var flippable_component = "<div class='flippable_component CARD_CLASSES' id='CARD_ID' title='CARD_TITLE'></div>";
     var flipper = "<div class='flipper CARD_CLASSES'></div>";
-    var card_front = "<div class='front CARD_CLASSES'></div>";
-    var card_back = "<div class='back CARD_CLASSES'></div>";
+    var component_front = "<div class='front CARD_CLASSES'></div>";
+    var component_back = "<div class='back CARD_CLASSES'></div>";
 
-    var card_div = $(flippable_card.replace('CARD_CLASSES', card_classes).replace('CARD_ID', card_id).replace('CARD_TITLE', card_title));
-    var flipper_div = $(flipper.replace('CARD_CLASSES', card_classes));
-    var card_front_div = $(card_front.replace('CARD_CLASSES', card_classes));
-    var card_back_div = $(card_back.replace('CARD_CLASSES', card_classes));
+    var component_div = $(flippable_component.replace('CARD_CLASSES', component_classes).replace('CARD_ID', component_id).replace('CARD_TITLE', component_title));
+    var flipper_div = $(flipper.replace('CARD_CLASSES', component_classes));
+    var component_front_div = $(component_front.replace('CARD_CLASSES', component_classes));
+    var component_back_div = $(component_back.replace('CARD_CLASSES', component_classes));
 
-    card_front_div.css('backgroundImage', 'url(' + card_front_image_path + ')');
-    card_back_div.css('backgroundImage', 'url(' + card_back_image_path + ')');
+    component_front_div.css('backgroundImage', 'url(' + component_front_image_path + ')');
+    component_back_div.css('backgroundImage', 'url(' + component_back_image_path + ')');
 
     // Order of addition does not matter
-    card_front_div.appendTo(flipper_div);
-    card_back_div.appendTo(flipper_div);
+    component_back_div.appendTo(flipper_div);
+    component_front_div.appendTo(flipper_div);
 
     if (flipped) {
         flipper_div.addClass('flipped');
     }
-    flipper_div.appendTo(card_div);
+    flipper_div.appendTo(component_div);
 
-    return card_div;
+    return component_div;
 }
 
 
@@ -447,7 +449,7 @@ function buildCardDeck(card_list, card_back, card_path_prefix, card_classes) {
         // Create ID from the file name, make sure it is safe for ID also
         var card_id = createIDFromFileName(file_name);
 
-        var card_div = createFlippableComponent(card_id, "Title for "+card_id, card_classes, card_front_path, card_back_path, false);  //.css('backgroundImage', 'url(' + card_image_path + ')');
+        var card_div = createFlippableComponent(card_id, "Title for "+card_id, card_classes, card_front_path, card_back_path, true);  //.css('backgroundImage', 'url(' + card_image_path + ')');
 
         // last add global card specific style and behaviour
         card_div.addClass('game_card');
@@ -484,7 +486,7 @@ function game_event_handler(ge) {
      *
      */
 
-    //console.log("Application received event:" + JSON.stringify(ge));
+    console.log("Application received event:" + JSON.stringify(ge));
 
     flash_game_board();
 
@@ -516,6 +518,9 @@ function game_event_handler(ge) {
     }
     else if (ge['event_type'] == 'dice_roll') {
         handleDiceRollEvent(ge);
+    }
+    else if (ge['event_type'] == 'flip_component') {
+        handleFlipComponentEvent(ge);
     }
     else {
         console.error("Unhandled event type "+ge['event_type']);

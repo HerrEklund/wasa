@@ -61,7 +61,7 @@ var component_list = [
         ["fr-13div", {"b": "FR-13Div-Bk.png", "f": "FR-13DIV.png"}],
         ["fr-14div", {"b": "FR-14Div-Bk.png", "f": "FR-14DIV.png"}],
         ["fr-15div", {"b": "FR-15Div-Bk.png", "f": "FR-15Div.png"}],
-        ["fr-18div", {"b": "FR-18Div-Bk.png", "f": "FR-18Div.png"}],3
+        ["fr-18div", {"b": "FR-18Div-Bk.png", "f": "FR-18Div.png"}],
         ["fr-19div", {"b": "FR-19Div-Bk.png", "f": "FR-19DIV.png"}],
         ["fr-1cav", {"b": "FR-1Cav-Bk.png", "f": "FR-1Cav.png"}],
         ["fr-1cav bgd", {"f": "FR-1Cav Bgd.png"}],
@@ -257,8 +257,7 @@ var component_list = [
         ["ge-pz7-25t", {"b": "GE-Pz7-25T-Bk.png", "f": "GE-Pz7-25T.png"}],
         ["ge-pz7-6", {"b": "GE-Pz7-6-Bk.png", "f": "GE-Pz7-6.png"}],
         ["ge-pz7-7", {"b": "GE-Pz7-7-Bk.png", "f": "GE-Pz7-7.png"}],
-        ["ge-pz8-10", {"b": "GE-Pz8-10-Bk.png"}],
-        ["ge-pz8-10t", {"f": "GE-Pz8-10T.png"}],
+        ["ge-pz8-10t", {"b": "GE-Pz8-10T-Bk.png", "f": "GE-Pz8-10T.png"}],
         ["ge-pz8-8", {"b": "GE-Pz8-8-Bk.png", "f": "GE-Pz8-8.png"}],
         ["ge-pz8-8k", {"b": "GE-Pz8-8K-Bk.png", "f": "GE-Pz8-8K.png"}],
         ["ge-pz9-10", {"b": "GE-Pz9-10-Bk.png", "f": "GE-Pz9-10.png"}],

@@ -101,7 +101,7 @@ function init_wasa_front() {
             var dropping_component = $(ui.helper);
 
             // ... so it does not yet have the correct coordinates since does not belong to the board yet.
-            // ... that is why I calculate the xorrext X and Y to send as event below.
+            // ... that is why I calculate the corrext X and Y to send as event below.
             var relX = event.pageX - $(this).offset().left - event.offsetX;
             var relY = event.pageY - $(this).offset().top - event.offsetY;
 
@@ -115,6 +115,12 @@ function init_wasa_front() {
             var left = relX;
             var top = relY;
 
+            if (dropping_component.find('.flipper').hasClass('flipped')) {
+                flipped = true;
+            } else {
+                flipped = false;
+            }
+
             if (dropping_component.hasClass('game_card')) {
                 /**
                  * Just temporarily. This will not att the card with persistence
@@ -126,10 +132,10 @@ function init_wasa_front() {
             } else if (dropping_component.hasClass('new_component')) {
                 console.log(".... dropped new component.");
 
-                // Clone components
+                // Store event to backend
+                wasa_client.store_create_component_event(tray_component_id, get_random_id(), event.target.id, left, top, flipped);
 
-                // Store event to backend, Note the -40 is due to the drop becomes due to the appendTo on the new_component draggable.
-                wasa_client.store_create_component_event(tray_component_id, get_random_id(), event.target.id, left, top);
+                dropping_component.remove();
             }
 
         }
@@ -243,7 +249,7 @@ function createAndAddComponentToGameBoard(create_component_event) {
     // Create component
     var new_component = tray_component.clone();
 
-    addComponentToGameBoard(new_component, new_component_id, game_board_id, e['payload']['top'], e['payload']['left']);
+    addComponentToGameBoard(new_component, new_component_id, game_board_id, e['payload']['top'], e['payload']['left'], e['payload']['flipped']);
 
     print_game_event(time, event_username, "Created component "+new_component_id);
 }
@@ -337,6 +343,21 @@ function handleDiceRollEvent(dice_roll_event) {
     print_game_event(time, event_username, dice_rolled + " : " + result);
 }
 
+function handleFlipComponentEvent(flip_component_event) {
+    var e = flip_component_event;
+
+    // EVENT DATA
+    var event_username = e['username'];
+    var time = e['time'];
+    var component_id = e['payload']['component_id'];
+
+    // EVENT EXECUTION
+    var component = $('#'+component_id);
+    var flipper = component.find('.flipper');
+    $(flipper).toggleClass('flipped');
+    component.removeClass('selected_component');
+}
+
 /**
  *
  *
@@ -356,7 +377,7 @@ function placeComponentOnTop(component) {
     });
     component.css('zIndex', topZ + 1);
 }
-function addComponentToGameBoard(new_component, new_component_id, game_board_id, top, left) {
+function addComponentToGameBoard(new_component, new_component_id, game_board_id, top, left, flipped) {
 
     new_component.appendTo('#' + game_board_id);
     new_component.attr('id', new_component_id);
@@ -366,6 +387,11 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
     new_component.removeClass("new_component");
     new_component.addClass("component");
     new_component.addClass("global_stackable");
+
+    if(flipped) {
+        var flipper = new_component.find('.flipper');
+        $(flipper).addClass('flipped');
+    }
 
     new_component.draggable({
         // grid: [ 5, 5 ],
@@ -422,12 +448,8 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
     // listen for the long-press event
     new_component.bind('long-press', function(e) {
 
-        $('.selected_component').removeClass('selected_component');
-
-        // Flip
-        var flipper = new_component.find('.flipper')[0];
-
-        $(flipper).toggleClass('flipped');
+        // TODO: Send flip-event instead (move all code below)
+        wasa_client.flip_component_event(new_component[0].id);
 
         // stop the event from bubbling up
         e.stopPropagation();

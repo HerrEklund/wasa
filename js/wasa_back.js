@@ -104,7 +104,7 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
         store_event_to_list(JSON.stringify(chat_event), true);
     };
 
-    that.store_create_component_event = function(tray_component_id, component_id, game_board_id, left, top) {
+    that.store_create_component_event = function(tray_component_id, component_id, game_board_id, left, top, flipped) {
         var component_event = {
             'event_type': 'create_component',
             'username': encodeURIComponent(username),
@@ -114,7 +114,8 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
                 'component_id': component_id,
                 'game_board_id': game_board_id,
                 'left': left,
-                'top': top
+                'top': top,
+                'flipped': flipped
             }
         };
         store_event_to_list(JSON.stringify(component_event), true);
@@ -173,6 +174,18 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
         store_event_to_list(JSON.stringify(dice_event), true);
     };
 
+    that.flip_component_event = function(component_id) {
+        var flip_component_event = {
+            'event_type': 'flip_component',
+            'username': encodeURIComponent(username),
+            'time': getTimestamp(),
+            'payload': {
+                'component_id': component_id
+            }
+        };
+        store_event_to_list(JSON.stringify(flip_component_event), true);
+    }
+
     that.mark_components_event = function(component_ids, color) {
         var mark_components_event = {
             'event_type': 'mark_components',
@@ -198,6 +211,9 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
         store_event_to_list(JSON.stringify(unmark_components_event), true);
     };
 
+    /*
+     * Game / session related events
+     */
     that.reset_current_game = function() {
         if(confirm("Are you sure?\n\nThis can not be undone.")) {
             async_get_jsonp('/DEL/'+wasa_event_list_name, function (data) {
@@ -212,6 +228,10 @@ var WasaClient = function (hostname, port, game_session_id, username, game_event
         });
     };
 
+
+    /*
+     * Event store methods
+     */
     that.store_event = function(event, notify) {
         store_event_to_list(JSON.stringify(event), notify);
     };

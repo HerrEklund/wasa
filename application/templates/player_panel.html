@@ -33,8 +33,12 @@
             </div>
 
             <div role="tabpanel" class="tab-pane pp_tab_pane" id="pp_component_tray_tab">
-                <div class="panel-body component_tray resizable_scroller" id="main_tray">
+                <div class="row">
                     <input class="form-control" onkeyup="filter_components(this)" id="filter_input" placeholder="Filter component by ID">
+                    <button class="btn btn-default" data-toggle="button" onclick="$('#main_tray').find('.flipper').toggleClass('flipped');">Flip all</button>
+                </div>
+                <br>
+                <div class="panel-body component_tray resizable_scroller" id="main_tray">
                 </div>
             </div>
 

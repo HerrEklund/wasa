@@ -1,0 +1,71 @@
+= Wasa
+
+Wasa is a concept for a fully online board-game platform. Wasa explores how modern web technologies can enable
+board games to be enjoyed on modern platforms such as touch devices as well as on large-screen PCs.
+
+*Disclaimer!* Wasa is not a fully working board game solution. It is a project made to explore
+how real time web-based touch-interface gaming could work. It is a work in process.
+
+image:/img/doc/wasa_france40.jpg[France 40]
+_GMT Games France 40, by Mark Simonitch, based on the Vassal Module._
+
+== Features
+
+What makes Wasa different from other component based board-game (online or not) solutions:
+
+* Web based solution - works on any platform.
+* *Mobile first* Must work great on touch-screens such as smartphones or iPads.
+* Quick access - One link to start, view or continue game.
+* Live experience (if wanted), everything is instantly seen by other players.
+* No files.
+* Generic - Wasa focuses on component movement and interactions, less on specific game rules.
+
+The draw-back is of course that players must know the rules and there is no automatic score/resource counting etc.
+
+== Target games
+
+The content below serves as a demo for the concept and will be updated along the way. While features are added
+continuously, Wasa aims to implement games with the following characteristics at this time:
+
+* Complex wargames (ie. tries to handle stacks of components, component flipping, rotation etc).
+* No hidden informations right now (ie no decks of cards, no bags with chits, no hidden tokens, no block games)</li>
+
+=== Features working
+
+All features are implemented with touch support first in mind (must work great on both PCs and iPads etc.).
+
+* State synchronization between multiple browsers!
+* In-game chat.
+* Current game history loaded when first entering game.
+* Two-sided counters (flip by long click).
+* Component trays.
+* Multiple game sessinos active (even for a single game).
+* Draggable markers.
+* Counter move animations.
+* Rotatable markers (if enabled and useful).
+* Markers move to top when moved (ie. for stacking).
+* Stack selection (select all overlapping).
+* Peek into stacks.
+* Game components can be marked using a colored border.
+* Draggable panels (Tray, game board etc.)
+
+=== Major features currently in development</h4>
+
+* Simple Game lobby (select or create new private game)
+
+=== Cool features in investigation or development</h4>
+
+* Turn concept (ie. lock board of others while acting in your turn).
+* Offline mode (stack events locally until connection is made).
+
+== Technical
+
+=== Front-end
+
+* HTML5
+* "Standard" Bootstrap / Jquery(UI) solution
+* Websocket event notification for instant and no page refresh experience.
+
+=== Back-end
+
+Very simple at this point. Based on Redis for event storage and notification.

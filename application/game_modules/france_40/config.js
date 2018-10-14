@@ -73,5 +73,17 @@ var game_data = {
         'id': 'rules_tab',
         'link_src': 'http://www.gmtgames.com/sichel/France40-RULES-FINAL.pdf',
         'link_title': 'Official rules by GMT'
-    }
+    },
+    'scenarios': [
+        {
+            'id':'sickle_cut',
+            'title': 'Sickle Cut - Guderian´s Drive to the Coast',
+            'script': 'sickle_cut.js'
+        },
+        {
+            'id':'dynamo',
+            'title': 'Dynamo - Retreat to Victory',
+            'script': 'dynamo.js'
+        }
+    ]
 };

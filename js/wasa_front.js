@@ -223,7 +223,6 @@ function addChatMessage(chat_message_event) {
 
     var events_textarea = $('#events_textarea');
     events_textarea.append("\n"+username+": "+ message);
-
     events_textarea.scrollTop(events_textarea[0].scrollHeight);
 }
 
@@ -638,23 +637,58 @@ function send_chat_message() {
     var message = $('#event_input').val();
 
     if (message[0] == '/') {
-        // Handle command
-        if (message == '/dump') {
-            // Empty the events_dump
-            $('#events_dump').empty();
-
-            // Add
-            var dump = '/* Events from game_id = '+game_id+' */\n'+JSON.stringify(event_cache, null, 2);
-            $('<pre id="events_pre">'+dump+'</pre>').appendTo('#events_dump');
-
-            // And show the modal
-            $('#events_modal').modal('show');
-        }
-
+        handle_command(message);
     } else {
         wasa_client.store_chat_event(username, message);
     }
     $('#event_input').val('');
+}
+
+function handle_command(command) {
+    // Handle command
+    if (command == '/dump') {
+        // Empty the events_dump div
+        $('#events_dump').empty();
+
+        // Add a new dump
+        var dump = '/* Events from game_id = '+game_id+' */\n'+JSON.stringify(event_cache, null, 2);
+        $('<pre id="events_pre">'+dump+'</pre>').appendTo('#events_dump');
+
+        // And show the modal
+        $('#events_modal').modal('show');
+    } else if (command == '/dump_setup') {
+        // Empty the events_dump div
+        $('#events_dump').empty();
+
+        // Optimize the event cache (ie. only keep last move of each component)
+        var optimized_events = optimize_events_for_setup(event_cache);
+
+        var dump = '/* Events from game_id = '+game_id+' */\n'+JSON.stringify(optimized_events, null, 2);
+        $('<pre id="events_pre">'+dump+'</pre>').appendTo('#events_dump');
+
+        // And show the modal
+        $('#events_modal').modal('show');
+    } else if (command == '/help') {
+        events_textarea.append("\n*** Supported commands: ");
+        events_textarea.append("\n*** /dump          - Dump all commands ");
+        events_textarea.append("\n*** /dump_setup    - Dump optimized version usable for scenario setups: ");
+        events_textarea.append("\n*** /help          - This text ");
+    } else {
+        events_textarea.append("\n*** ERROR: Unknown command "+command);
+    }
+}
+
+function optimize_events_for_setup(events) {
+
+    var optimized_events = [];
+
+    for (i = 0; i < events.length; i++) {
+        console.log(events[i]);
+
+        optimized_events.push(events[i]);
+    }
+
+    return optimized_events;
 }
 
 function roll_NDS(N, S) {

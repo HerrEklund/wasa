@@ -1,1171 +1,165 @@
-var double_sided_component_list = [
-    {
-        'id':'1-1-364',
-        'name': '',
-        'amount': 4,
-        'front':'1-1-364.gif',
-        'back':'1-1-364_Back.gif'
-    },
-    {
-        'id':'1-1-609',
-        'front':'1-1-609.gif',
-        'back':'1-1-609_Back.gif'
-    },
-    {
-        'id':'1-1-718',
-        'front':'1-1-718.gif',
-        'back':'1-1-718_Back.gif'
-    },
-    {
-        'id':'1-1-JR16',
-        'front':'1-1-JR16.gif',
-        'back':'1-1-JR16_Back.gif'
-    },
-    {
-        'id':'1-13-KT-Pr',
-        'front':'1-13-KT-Pr.gif',
-        'back':'1-13-KT-Pr_Back.gif'
-    },
-    {
-        'id':'1-ErP10',
-        'front':'1-ErP10.gif',
-        'back':'1-ErP10_Back.gif'
-    },
-    {
-        'id':'1-ErP112',
-        'front':'1-ErP112.gif',
-        'back':'1-ErP112_Back.gif'
-    },
-    {
-        'id':'1-ErP9',
-        'front':'1-ErP9.gif',
-        'back':'1-ErP9_Back.gif'
-    },
-    {
-        'id':'1-PPP7',
-        'front':'1-PPP7.gif',
-        'back':'1-PPP7_Back.gif'
-    },
-    {
-        'id':'2-1-364',
-        'front':'2-1-364.gif',
-        'back':'2-1-364_Back.gif'
-    },
-    {
-        'id':'2-1-609',
-        'front':'2-1-609.gif',
-        'back':'2-1-609_Back.gif'
-    },
-    {
-        'id':'2-1-718',
-        'front':'2-1-718.gif',
-        'back':'2-1-718_Back.gif'
-    },
-    {
-        'id':'2-1-JR16',
-        'front':'2-1-JR16.gif',
-        'back':'2-1-JR16_Back.gif'
-    },
-    {
-        'id':'2-13-KT-Pr',
-        'front':'2-13-KT-Pr.gif',
-        'back':'2-13-KT-Pr_Back.gif'
-    },
-    {
-        'id':'2-ErP10',
-        'front':'2-ErP10.gif',
-        'back':'2-ErP10_Back.gif'
-    },
-    {
-        'id':'2-ErP112',
-        'front':'2-ErP112.gif',
-        'back':'2-ErP112_Back.gif'
-    },
-    {
-        'id':'2-ErP9',
-        'front':'2-ErP9.gif',
-        'back':'2-ErP9_Back.gif'
-    },
-    {
-        'id':'2-PPP7',
-        'front':'2-PPP7.gif',
-        'back':'2-PPP7_Back.gif'
-    },
-    {
-        'id':'3-1-364',
-        'front':'3-1-364.gif',
-        'back':'3-1-364_Back.gif'
-    },
-    {
-        'id':'3-1-609',
-        'front':'3-1-609.gif',
-        'back':'3-1-609_Back.gif'
-    },
-    {
-        'id':'3-1-718',
-        'front':'3-1-718.gif',
-        'back':'3-1-718_Back.gif'
-    },
-    {
-        'id':'3-1-JR16',
-        'front':'3-1-JR16.gif',
-        'back':'3-1-JR16_Back.gif'
-    },
-    {
-        'id':'3-13-KT-Pr',
-        'front':'3-13-KT-Pr.gif',
-        'back':'3-13-KT-Pr_Back.gif'
-    },
-    {
-        'id':'3-ErP10',
-        'front':'3-ErP10.gif',
-        'back':'3-ErP10_Back.gif'
-    },
-    {
-        'id':'3-ErP112',
-        'front':'3-ErP112.gif',
-        'back':'3-ErP112_Back.gif'
-    },
-    {
-        'id':'3-ErP9',
-        'front':'3-ErP9.gif',
-        'back':'3-ErP9_Back.gif'
-    },
-    {
-        'id':'3-PPP7',
-        'front':'3-PPP7.gif',
-        'back':'3-PPP7_Back.gif'
-    },
-    {
-        'id':'4-2-364',
-        'front':'4-2-364.gif',
-        'back':'4-2-364_Back.gif'
-    },
-    {
-        'id':'4-2-609',
-        'front':'4-2-609.gif',
-        'back':'4-2-609_Back.gif'
-    },
-    {
-        'id':'4-2-718',
-        'front':'4-2-718.gif',
-        'back':'4-2-718_Back.gif'
-    },
-    {
-        'id':'4-2-JR16',
-        'front':'4-2-JR16.gif',
-        'back':'4-2-JR16_Back.gif'
-    },
-    {
-        'id':'5-2-364',
-        'front':'5-2-364.gif',
-        'back':'5-2-364_Back.gif'
-    },
-    {
-        'id':'5-2-609',
-        'front':'5-2-609.gif',
-        'back':'5-2-609_Back.gif'
-    },
-    {
-        'id':'5-2-718',
-        'front':'5-2-718.gif',
-        'back':'5-2-718_Back.gif'
-    },
-    {
-        'id':'5-2-JR16',
-        'front':'5-2-JR16.gif',
-        'back':'5-2-JR16_Back.gif'
-    },
-    {
-        'id':'6-2-364',
-        'front':'6-2-364.gif',
-        'back':'6-2-364_Back.gif'
-    },
-    {
-        'id':'6-2-609',
-        'front':'6-2-609.gif',
-        'back':'6-2-609_Back.gif'
-    },
-    {
-        'id':'6-2-718',
-        'front':'6-2-718.gif',
-        'back':'6-2-718_Back.gif'
-    },
-    {
-        'id':'6-2-JR16',
-        'front':'6-2-JR16.gif',
-        'back':'6-2-JR16_Back.gif'
-    },
-    {
-        'id':'7-3-364',
-        'front':'7-3-364.gif',
-        'back':'7-3-364_Back.gif'
-    },
-    {
-        'id':'7-3-609',
-        'front':'7-3-609.gif',
-        'back':'7-3-609_Back.gif'
-    },
-    {
-        'id':'7-3-718',
-        'front':'7-3-718.gif',
-        'back':'7-3-718_Back.gif'
-    },
-    {
-        'id':'7-3-JR16',
-        'front':'7-3-JR16.gif',
-        'back':'7-3-JR16_Back.gif'
-    },
-    {
-        'id':'8-3-364',
-        'front':'8-3-364.gif',
-        'back':'8-3-364_Back.gif'
-    },
-    {
-        'id':'8-3-609',
-        'front':'8-3-609.gif',
-        'back':'8-3-609_Back.gif'
-    },
-    {
-        'id':'8-3-718',
-        'front':'8-3-718.gif',
-        'back':'8-3-718_Back.gif'
-    },
-    {
-        'id':'8-3-JR16',
-        'front':'8-3-JR16.gif',
-        'back':'8-3-JR16_Back.gif'
-    },
-    {
-        'id':'8-3-JR37',
-        'front':'8-3-JR37.gif',
-        'back':'8-3-JR37_Back.gif'
-    },
-    {
-        'id':'9-3-364',
-        'front':'9-3-364.gif',
-        'back':'9-3-364_Back.gif'
-    },
-    {
-        'id':'9-3-609',
-        'front':'9-3-609.gif',
-        'back':'9-3-609_Back.gif'
-    },
-    {
-        'id':'9-3-718',
-        'front':'9-3-718.gif',
-        'back':'9-3-718_Back.gif'
-    },
-    {
-        'id':'9-3-JR16',
-        'front':'9-3-JR16.gif',
-        'back':'9-3-JR16_Back.gif'
-    },
-    {
-        'id':'AT-JR16',
-        'front':'AT-JR16.gif',
-        'back':'AT-JR16_Back.gif'
-    },
-    {
-        'id':'BA-10',
-        'front':'BA-10.gif',
-        'back':'BA-10_Back.gif'
-    },
-    {
-        'id':'Captured_LMGs',
-        'front':'Captured_LMGs.gif',
-        'back':'Captured_LMGs_Back.gif'
-    },
-    {
-        'id':'Eng-JR16',
-        'front':'Eng-JR16.gif',
-        'back':'Eng-JR16_Back.gif'
-    },
-    {
-        'id':'MG-1-364',
-        'front':'MG-1-364.gif',
-        'back':'MG-1-364_Back.gif'
-    },
-    {
-        'id':'MG-1-609',
-        'front':'MG-1-609.gif',
-        'back':'MG-1-609_Back.gif'
-    },
-    {
-        'id':'MG-1-718',
-        'front':'MG-1-718.gif',
-        'back':'MG-1-718_Back.gif'
-    },
-    {
-        'id':'MG-1-JR16',
-        'front':'MG-1-JR16.gif',
-        'back':'MG-1-JR16_Back.gif'
-    },
-    {
-        'id':'MG-13-KT-Pr',
-        'front':'MG-13-KT-Pr.gif',
-        'back':'MG-13-KT-Pr_Back.gif'
-    },
-    {
-        'id':'MG-2-364',
-        'front':'MG-2-364.gif',
-        'back':'MG-2-364_Back.gif'
-    },
-    {
-        'id':'MG-2-609',
-        'front':'MG-2-609.gif',
-        'back':'MG-2-609_Back.gif'
-    },
-    {
-        'id':'MG-2-718',
-        'front':'MG-2-718.gif',
-        'back':'MG-2-718_Back.gif'
-    },
-    {
-        'id':'MG-2-JR16',
-        'front':'MG-2-JR16.gif',
-        'back':'MG-2-JR16_Back.gif'
-    },
-    {
-        'id':'MG-3-364',
-        'front':'MG-3-364.gif',
-        'back':'MG-3-364_Back.gif'
-    },
-    {
-        'id':'MG-3-609',
-        'front':'MG-3-609.gif',
-        'back':'MG-3-609_Back.gif'
-    },
-    {
-        'id':'MG-3-718',
-        'front':'MG-3-718.gif',
-        'back':'MG-3-718_Back.gif'
-    },
-    {
-        'id':'MG-3-JR16',
-        'front':'MG-3-JR16.gif',
-        'back':'MG-3-JR16_Back.gif'
-    },
-    {
-        'id':'MG-ErP9',
-        'front':'MG-ErP9.gif',
-        'back':'MG-ErP9_Back.gif'
-    },
-    {
-        'id':'Pajari',
-        'front':'Pajari.gif',
-        'back':'Pajari_Back.gif'
-    },
-    {
-        'id':'Prov-TF-P',
-        'front':'Prov-TF-P.gif',
-        'back':'Prov-TF-P_Back.gif'
-    },
-    {
-        'id':'Soviet_Morale_Collapse',
-        'front':'Soviet_Morale_Collapse.gif',
-        'back':'Soviet_Morale_Collapse_Back.gif'
-    },
-    {
-        'id':'T-26m31',
-        'front':'T-26m31.gif',
-        'back':'T-26m31_Back.gif'
-    },
-    {
-        'id':'T-26m33',
-        'front':'T-26m33.gif',
-        'back':'T-26m33_Back.gif'
-    },
-    {
-        'id':'T-37',
-        'front':'T-37.gif',
-        'back':'T-37_Back.gif'
-    },];
-
-var single_sided_component_list = [
-    {
-        'id':'1-0-0-6_ErP_Platoon',
-        'front':'1-0-0-6_ErP_Platoon.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-0-2-6_ErP_Platoon',
-        'front':'1-0-2-6_ErP_Platoon.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-0-2-6_JR16_Platoon_A',
-        'front':'1-0-2-6_JR16_Platoon_A.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-1-139 AT',
-        'front':'1-1-139 AT.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-1-2-6_ErP_Platoon',
-        'front':'1-1-2-6_ErP_Platoon.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-1-2-6_JR16_Platoon_A',
-        'front':'1-1-2-6_JR16_Platoon_A.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-2-139 AT',
-        'front':'1-2-139 AT.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-3-139 AT',
-        'front':'1-3-139 AT.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-354',
-        'front':'1-354.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-47',
-        'front':'1-47.gif',
-        'back':'?'
-    },
-    {
-        'id':'1-JR16_Field_Kitchen',
-        'front':'1-JR16_Field_Kitchen.gif',
-        'back':'?'
-    },
-    {
-        'id':'2-1-139 AT',
-        'front':'2-1-139 AT.gif',
-        'back':'?'
-    },
-    {
-        'id':'2-2-139 AT',
-        'front':'2-2-139 AT.gif',
-        'back':'?'
-    },
-    {
-        'id':'2-3-139 AT',
-        'front':'2-3-139 AT.gif',
-        'back':'?'
-    },
-    {
-        'id':'2-354',
-        'front':'2-354.gif',
-        'back':'?'
-    },
-    {
-        'id':'2-47',
-        'front':'2-47.gif',
-        'back':'?'
-    },
-    {
-        'id':'2-JR16_Field_Kitchen',
-        'front':'2-JR16_Field_Kitchen.gif',
-        'back':'?'
-    },
-    {
-        'id':'3-354',
-        'front':'3-354.gif',
-        'back':'?'
-    },
-    {
-        'id':'3-47',
-        'front':'3-47.gif',
-        'back':'?'
-    },
-    {
-        'id':'5-KTR12',
-        'front':'5-KTR12.gif',
-        'back':'?'
-    },
-    {
-        'id':'7-KTR6',
-        'front':'7-KTR6.gif',
-        'back':'?'
-    },
-    {
-        'id':'8-KTR6',
-        'front':'8-KTR6.gif',
-        'back':'?'
-    },
-    {
-        'id':'9-KTR13',
-        'front':'9-KTR13.gif',
-        'back':'?'
-    },
-    {
-        'id':'A',
-        'front':'A.png',
-        'back':'?'
-    },
-    {
-        'id':'B',
-        'front':'B.png',
-        'back':'?'
-    },
-    {
-        'id':'Bonfire',
-        'front':'Bonfire.gif',
-        'back':'?'
-    },
-    {
-        'id':'C',
-        'front':'C.png',
-        'back':'?'
-    },
-    {
-        'id':'D',
-        'front':'D.png',
-        'back':'?'
-    },
-    {
-        'id':'Die_1',
-        'front':'Die_1.png',
-        'back':'?'
-    },
-    {
-        'id':'Die_2',
-        'front':'Die_2.png',
-        'back':'?'
-    },
-    {
-        'id':'Die_3',
-        'front':'Die_3.png',
-        'back':'?'
-    },
-    {
-        'id':'Die_4',
-        'front':'Die_4.png',
-        'back':'?'
-    },
-    {
-        'id':'Die_5',
-        'front':'Die_5.png',
-        'back':'?'
-    },
-    {
-        'id':'Die_6',
-        'front':'Die_6.png',
-        'back':'?'
-    },
-    {
-        'id':'E',
-        'front':'E.png',
-        'back':'?'
-    },
-    {
-        'id':'F',
-        'front':'F.png',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_76mm_Ammo_x1',
-        'front':'Finnish_76mm_Ammo_x1.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_76mm_Ammo_x10',
-        'front':'Finnish_76mm_Ammo_x10.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_Artillery_Fired',
-        'front':'Finnish_Artillery_Fired.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_Control',
-        'front':'Finnish_Control.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_Digging_In',
-        'front':'Finnish_Digging_In.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_Dug_In',
-        'front':'Finnish_Dug_In.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_Morale_Bonus',
-        'front':'Finnish_Morale_Bonus.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_Mortars_Fired',
-        'front':'Finnish_Mortars_Fired.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_Player_One',
-        'front':'Finnish_Player_One.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_Supressed',
-        'front':'Finnish_Supressed.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_Turn',
-        'front':'Finnish_Turn.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_VP_-1',
-        'front':'Finnish_VP_-1.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_VP_-10',
-        'front':'Finnish_VP_-10.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_VP_x1',
-        'front':'Finnish_VP_x1.gif',
-        'back':'?'
-    },
-    {
-        'id':'Finnish_VP_x10',
-        'front':'Finnish_VP_x10.gif',
-        'back':'?'
-    },
-    {
-        'id':'G',
-        'front':'G.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_DeadPool',
-        'front':'Icon_DeadPool.jpg',
-        'back':'?'
-    },
-    {
-        'id':'Icon_HidePieces',
-        'front':'Icon_HidePieces.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_LOS',
-        'front':'Icon_LOS.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_Markers',
-        'front':'Icon_Markers.jpg',
-        'back':'?'
-    },
-    {
-        'id':'Icon_Markers',
-        'front':'Icon_Markers.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_MovedClear',
-        'front':'Icon_MovedClear.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_notes',
-        'front':'Icon_notes.gif',
-        'back':'?'
-    },
-    {
-        'id':'Icon_Overview',
-        'front':'Icon_Overview.jpg',
-        'back':'?'
-    },
-    {
-        'id':'Icon_RevealPieces',
-        'front':'Icon_RevealPieces.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_Suppressed',
-        'front':'Icon_Suppressed.jpg',
-        'back':'?'
-    },
-    {
-        'id':'Icon_surpressed',
-        'front':'Icon_surpressed.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_Terrain',
-        'front':'Icon_Terrain.jpg',
-        'back':'?'
-    },
-    {
-        'id':'Icon_TurnTrack',
-        'front':'Icon_TurnTrack.jpg',
-        'back':'?'
-    },
-    {
-        'id':'Icon_Winter',
-        'front':'Icon_Winter.jpg',
-        'back':'?'
-    },
-    {
-        'id':'Icon_winter',
-        'front':'Icon_winter.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_Zoom-In',
-        'front':'Icon_Zoom-In.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_Zoom-Out',
-        'front':'Icon_Zoom-Out.png',
-        'back':'?'
-    },
-    {
-        'id':'Icon_ZoomSelect',
-        'front':'Icon_ZoomSelect.png',
-        'back':'?'
-    },
-    {
-        'id':'IconPicture',
-        'front':'IconPicture.png',
-        'back':'?'
-    },
-    {
-        'id':'IG-364',
-        'front':'IG-364.gif',
-        'back':'?'
-    },
-    {
-        'id':'IG-609',
-        'front':'IG-609.gif',
-        'back':'?'
-    },
-    {
-        'id':'IG-718',
-        'front':'IG-718.gif',
-        'back':'?'
-    },
-    {
-        'id':'JR16_Platoon_back',
-        'front':'JR16_Platoon_back.png',
-        'back':'?'
-    },
-    {
-        'id':'MG-ErP112',
-        'front':'MG-ErP112.gif',
-        'back':'?'
-    },
-    {
-        'id':'MP_Remaining',
-        'front':'MP_Remaining.gif',
-        'back':'?'
-    },
-    {
-        'id':'Mtr-13-KT-Pr',
-        'front':'Mtr-13-KT-Pr.gif',
-        'back':'?'
-    },
-    {
-        'id':'Mtr-364',
-        'front':'Mtr-364.gif',
-        'back':'?'
-    },
-    {
-        'id':'Mtr-609',
-        'front':'Mtr-609.gif',
-        'back':'?'
-    },
-    {
-        'id':'Mtr-718',
-        'front':'Mtr-718.gif',
-        'back':'?'
-    },
-    {
-        'id':'Mtr-JR16_O19',
-        'front':'Mtr-JR16_O19.gif',
-        'back':'?'
-    },
-    {
-        'id':'Mtr-JR16_T8',
-        'front':'Mtr-JR16_T8.gif',
-        'back':'?'
-    },
-    {
-        'id':'Night_Raid',
-        'front':'Night_Raid.gif',
-        'back':'?'
-    },
-    {
-        'id':'Obukov AT',
-        'front':'Obukov AT.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_76mm_Ammo_x1',
-        'front':'Soviet_76mm_Ammo_x1.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_76mm_Ammo_x10',
-        'front':'Soviet_76mm_Ammo_x10.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_Artillery_Fired',
-        'front':'Soviet_Artillery_Fired.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_Control',
-        'front':'Soviet_Control.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_Digging_In',
-        'front':'Soviet_Digging_In.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_Dug_In',
-        'front':'Soviet_Dug_In.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_IG_Fired',
-        'front':'Soviet_IG_Fired.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_Morale_Bonus',
-        'front':'Soviet_Morale_Bonus.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_Mortars_Fired',
-        'front':'Soviet_Mortars_Fired.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_Player_One',
-        'front':'Soviet_Player_One.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_Surpressed',
-        'front':'Soviet_Surpressed.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_Turn',
-        'front':'Soviet_Turn.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_VP_-1',
-        'front':'Soviet_VP_-1.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_VP_-10',
-        'front':'Soviet_VP_-10.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_VP_x1',
-        'front':'Soviet_VP_x1.gif',
-        'back':'?'
-    },
-    {
-        'id':'Soviet_VP_x10',
-        'front':'Soviet_VP_x10.gif',
-        'back':'?'
-    },
-    {
-        'id':'strzalka',
-        'front':'strzalka.png',
-        'back':'?'
-    },
-    {
-        'id':'strzalka_00',
-        'front':'strzalka_00.png',
-        'back':'?'
-    },
-    {
-        'id':'SZLT',
-        'front':'SZLT.gif',
-        'back':'?'
-    },];
-
-
-
 var component_list = [
-    '1-0-0-6_ErP_Platoon.gif',
-    '1-0-2-6_ErP_Platoon.gif',
-    '1-0-2-6_JR16_Platoon_A.gif',
-    '1-0-2-6_JR16_Platoon_B.gif',
-    '1-1-139 AT.gif',
-    '1-1-2-6_ErP_Platoon.gif',
-    '1-1-2-6_JR16_Platoon_A.gif',
-    '1-1-2-6_JR16_Platoon_B.gif',
-    '1-1-364.gif',
-    '1-1-364_Back.gif',
-    '1-1-609.gif',
-    '1-1-609_Back.gif',
-    '1-1-718.gif',
-    '1-1-718_Back.gif',
-    '1-1-JR16.gif',
-    '1-1-JR16_Back.gif',
-    '1-13-KT-Pr.gif',
-    '1-13-KT-Pr_Back.gif',
-    '1-2-139 AT.gif',
-    '1-3-139 AT.gif',
-    '1-354.gif',
-    '1-47.gif',
-    '1-ErP10.gif',
-    '1-ErP10_Back.gif',
-    '1-ErP112.gif',
-    '1-ErP112_Back.gif',
-    '1-ErP9.gif',
-    '1-ErP9_Back.gif',
-    '1-JR16_Field_Kitchen.gif',
-    '1-PPP7.gif',
-    '1-PPP7_Back.gif',
-    '2-1-139 AT.gif',
-    '2-1-364.gif',
-    '2-1-364_Back.gif',
-    '2-1-609.gif',
-    '2-1-609_Back.gif',
-    '2-1-718.gif',
-    '2-1-718_Back.gif',
-    '2-1-JR16.gif',
-    '2-1-JR16_Back.gif',
-    '2-13-KT-Pr.gif',
-    '2-13-KT-Pr_Back.gif',
-    '2-2-139 AT.gif',
-    '2-3-139 AT.gif',
-    '2-354.gif',
-    '2-47.gif',
-    '2-ErP10.gif',
-    '2-ErP10_Back.gif',
-    '2-ErP112.gif',
-    '2-ErP112_Back.gif',
-    '2-ErP9.gif',
-    '2-ErP9_Back.gif',
-    '2-JR16_Field_Kitchen.gif',
-    '2-PPP7.gif',
-    '2-PPP7_Back.gif',
-    '3-1-364.gif',
-    '3-1-364_Back.gif',
-    '3-1-609.gif',
-    '3-1-609_Back.gif',
-    '3-1-718.gif',
-    '3-1-718_Back.gif',
-    '3-1-JR16.gif',
-    '3-1-JR16_Back.gif',
-    '3-13-KT-Pr.gif',
-    '3-13-KT-Pr_Back.gif',
-    '3-354.gif',
-    '3-47.gif',
-    '3-ErP10.gif',
-    '3-ErP10_Back.gif',
-    '3-ErP112.gif',
-    '3-ErP112_Back.gif',
-    '3-ErP9.gif',
-    '3-ErP9_Back.gif',
-    '3-PPP7.gif',
-    '3-PPP7_Back.gif',
-    '354_Artillery_Back.gif',
-    '4-2-364.gif',
-    '4-2-364_Back.gif',
-    '4-2-609.gif',
-    '4-2-609_Back.gif',
-    '4-2-718.gif',
-    '4-2-718_Back.gif',
-    '4-2-JR16.gif',
-    '4-2-JR16_Back.gif',
-    '5-2-364.gif',
-    '5-2-364_Back.gif',
-    '5-2-609.gif',
-    '5-2-609_Back.gif',
-    '5-2-718.gif',
-    '5-2-718_Back.gif',
-    '5-2-JR16.gif',
-    '5-2-JR16_Back.gif',
-    '5-KTR12.gif',
-    '6-2-364.gif',
-    '6-2-364_Back.gif',
-    '6-2-609.gif',
-    '6-2-609_Back.gif',
-    '6-2-718.gif',
-    '6-2-718_Back.gif',
-    '6-2-JR16.gif',
-    '6-2-JR16_Back.gif',
-    '7-3-364.gif',
-    '7-3-364_Back.gif',
-    '7-3-609.gif',
-    '7-3-609_Back.gif',
-    '7-3-718.gif',
-    '7-3-718_Back.gif',
-    '7-3-JR16.gif',
-    '7-3-JR16_Back.gif',
-    '7-KTR6.gif',
-    '8-3-364.gif',
-    '8-3-364_Back.gif',
-    '8-3-609.gif',
-    '8-3-609_Back.gif',
-    '8-3-718.gif',
-    '8-3-718_Back.gif',
-    '8-3-JR16.gif',
-    '8-3-JR16_Back.gif',
-    '8-3-JR37.gif',
-    '8-3-JR37_Back.gif',
-    '8-KTR6.gif',
-    '9-3-364.gif',
-    '9-3-364_Back.gif',
-    '9-3-609.gif',
-    '9-3-609_Back.gif',
-    '9-3-718.gif',
-    '9-3-718_Back.gif',
-    '9-3-JR16.gif',
-    '9-3-JR16_Back.gif',
-    '9-KTR13.gif',
-    'A.png',
-    'AT-JR16.gif',
-    'AT-JR16_Back.gif',
-    'B.png',
-    'BA-10.gif',
-    'BA-10_Back.gif',
-    'Bonfire.gif',
-    'C.png',
-    'Captured_LMGs.gif',
-    'Captured_LMGs_Back.gif',
-    'D.png',
-    'Die_1.png',
-    'Die_2.png',
-    'Die_3.png',
-    'Die_4.png',
-    'Die_5.png',
-    'Die_6.png',
-    'E.png',
-    'Eng-JR16.gif',
-    'Eng-JR16_Back.gif',
-    'ErP_Platoon_Back.gif',
-    'F.png',
-    'Field_Kitchen_Back.gif',
-    'Finnish_76mm_Ammo_x1.gif',
-    'Finnish_76mm_Ammo_x10.gif',
-    'Finnish_Artillery_Fired.gif',
-    'Finnish_Control.gif',
-    'Finnish_Digging_In.gif',
-    'Finnish_Dug_In.gif',
-    'Finnish_Morale_Bonus.gif',
-    'Finnish_Mortars_Fired.gif',
-    'Finnish_Player_One.gif',
-    'Finnish_Supressed.gif',
-    'Finnish_Turn.gif',
-    'Finnish_VP_-1.gif',
-    'Finnish_VP_-10.gif',
-    'Finnish_VP_x1.gif',
-    'Finnish_VP_x10.gif',
-    'G.png',
-    'Icon_DeadPool.jpg',
-    'Icon_HidePieces.png',
-    'Icon_LOS.png',
-    'Icon_Markers.jpg',
-    'Icon_Markers.png',
-    'Icon_MovedClear.png',
-    'Icon_notes.gif',
-    'Icon_Overview.jpg',
-    'Icon_RevealPieces.png',
-    'Icon_Suppressed.jpg',
-    'Icon_surpressed.png',
-    'Icon_Terrain.jpg',
-    'Icon_TurnTrack.jpg',
-    'Icon_Winter.jpg',
-    'Icon_winter.png',
-    'Icon_Zoom-In.png',
-    'Icon_Zoom-Out.png',
-    'Icon_ZoomSelect.png',
-    'IconPicture.png',
-    'IG-364.gif',
-    'IG-609.gif',
-    'IG-718.gif',
-    'JR16_Platoon_Back.gif',
-    'JR16_Platoon_back.png',
-    'MG-1-364.gif',
-    'MG-1-364_Back.gif',
-    'MG-1-609.gif',
-    'MG-1-609_Back.gif',
-    'MG-1-718.gif',
-    'MG-1-718_Back.gif',
-    'MG-1-JR16.gif',
-    'MG-1-JR16_Back.gif',
-    'MG-13-KT-Pr.gif',
-    'MG-13-KT-Pr_Back.gif',
-    'MG-2-364.gif',
-    'MG-2-364_Back.gif',
-    'MG-2-609.gif',
-    'MG-2-609_Back.gif',
-    'MG-2-718.gif',
-    'MG-2-718_Back.gif',
-    'MG-2-JR16.gif',
-    'MG-2-JR16_Back.gif',
-    'MG-3-364.gif',
-    'MG-3-364_Back.gif',
-    'MG-3-609.gif',
-    'MG-3-609_Back.gif',
-    'MG-3-718.gif',
-    'MG-3-718_Back.gif',
-    'MG-3-JR16.gif',
-    'MG-3-JR16_Back.gif',
-    'MG-ErP112.gif',
-    'MG-ErP9.gif',
-    'MG-ErP9_Back.gif',
-    'MP_Remaining.gif',
-    'Mtr-13-KT-Pr.gif',
-    'Mtr-364.gif',
-    'Mtr-609.gif',
-    'Mtr-718.gif',
-    'Mtr-JR16_O19.gif',
-    'Mtr-JR16_T8.gif',
-    'Night_Raid.gif',
-    'Obukov AT.gif',
-    'Pajari.gif',
-    'Pajari_Back.gif',
-    'Prov-TF-P.gif',
-    'Prov-TF-P_Back.gif',
-    'Soviet_76mm_Ammo_x1.gif',
-    'Soviet_76mm_Ammo_x10.gif',
-    'Soviet_Artillery_Fired.gif',
-    'Soviet_Control.gif',
-    'Soviet_Digging_In.gif',
-    'Soviet_Dug_In.gif',
-    'Soviet_IG_Fired.gif',
-    'Soviet_Morale_Bonus.gif',
-    'Soviet_Morale_Collapse.gif',
-    'Soviet_Morale_Collapse_Back.gif',
-    'Soviet_Mortars_Fired.gif',
-    'Soviet_Player_One.gif',
-    'Soviet_Surpressed.gif',
-    'Soviet_Turn.gif',
-    'Soviet_VP_-1.gif',
-    'Soviet_VP_-10.gif',
-    'Soviet_VP_x1.gif',
-    'Soviet_VP_x10.gif',
-    'strzalka.png',
-    'strzalka_00.png',
-    'SZLT.gif',
-    'T-26m31.gif',
-    'T-26m31_Back.gif',
-    'T-26m33.gif',
-    'T-26m33_Back.gif',
-    'T-37.gif',
-    'T-37_Back.gif',];
+[
+    "Soviet Units",
+    ["1-1-139 at", {"f": "1-1-139 AT.gif"}],
+    ["1-1-364", {"b": "1-1-364_Back.gif", "f": "1-1-364.gif"}],
+    ["1-1-609", {"b": "1-1-609_Back.gif", "f": "1-1-609.gif"}],
+    ["1-1-718", {"b": "1-1-718_Back.gif", "f": "1-1-718.gif"}],
+    ["1-2-139 at", {"f": "1-2-139 AT.gif"}],
+    ["1-3-139 at", {"f": "1-3-139 AT.gif"}],
+    ["1-354", {"f": "1-354.gif"}],
+    ["1-47", {"f": "1-47.gif"}],
+    ["2-1-139 at", {"f": "2-1-139 AT.gif"}],
+    ["2-1-364", {"b": "2-1-364_Back.gif", "f": "2-1-364.gif"}],
+    ["2-1-609", {"b": "2-1-609_Back.gif", "f": "2-1-609.gif"}],
+    ["2-1-718", {"b": "2-1-718_Back.gif", "f": "2-1-718.gif"}],
+    ["2-2-139 at", {"f": "2-2-139 AT.gif"}],
+    ["2-3-139 at", {"f": "2-3-139 AT.gif"}],
+    ["2-354", {"f": "2-354.gif"}],
+    ["2-47", {"f": "2-47.gif"}],
+    ["3-1-364", {"b": "3-1-364_Back.gif", "f": "3-1-364.gif"}],
+    ["3-1-609", {"b": "3-1-609_Back.gif", "f": "3-1-609.gif"}],
+    ["3-1-718", {"b": "3-1-718_Back.gif", "f": "3-1-718.gif"}],
+    ["3-354", {"f": "3-354.gif"}],
+    ["3-47", {"f": "3-47.gif"}],
+    ["4-2-364", {"b": "4-2-364_Back.gif", "f": "4-2-364.gif"}],
+    ["4-2-609", {"b": "4-2-609_Back.gif", "f": "4-2-609.gif"}],
+    ["4-2-718", {"b": "4-2-718_Back.gif", "f": "4-2-718.gif"}],
+    ["5-2-364", {"b": "5-2-364_Back.gif", "f": "5-2-364.gif"}],
+    ["5-2-609", {"b": "5-2-609_Back.gif", "f": "5-2-609.gif"}],
+    ["5-2-718", {"b": "5-2-718_Back.gif", "f": "5-2-718.gif"}],
+    ["6-2-364", {"b": "6-2-364_Back.gif", "f": "6-2-364.gif"}],
+    ["6-2-609", {"b": "6-2-609_Back.gif", "f": "6-2-609.gif"}],
+    ["6-2-718", {"b": "6-2-718_Back.gif", "f": "6-2-718.gif"}],
+    ["7-3-364", {"b": "7-3-364_Back.gif", "f": "7-3-364.gif"}],
+    ["7-3-609", {"b": "7-3-609_Back.gif", "f": "7-3-609.gif"}],
+    ["7-3-718", {"b": "7-3-718_Back.gif", "f": "7-3-718.gif"}],
+    ["8-3-364", {"b": "8-3-364_Back.gif", "f": "8-3-364.gif"}],
+    ["8-3-609", {"b": "8-3-609_Back.gif", "f": "8-3-609.gif"}],
+    ["8-3-718", {"b": "8-3-718_Back.gif", "f": "8-3-718.gif"}],
+    ["9-3-364", {"b": "9-3-364_Back.gif", "f": "9-3-364.gif"}],
+    ["9-3-609", {"b": "9-3-609_Back.gif", "f": "9-3-609.gif"}],
+    ["9-3-718", {"b": "9-3-718_Back.gif", "f": "9-3-718.gif"}],
+    ["ba-10", {"b": "BA-10_Back.gif", "f": "BA-10.gif"}],
+    ["ig-364", {"f": "IG-364.gif"}],
+    ["ig-609", {"f": "IG-609.gif"}],
+    ["ig-718", {"f": "IG-718.gif"}],
+    ["mg-1-364", {"b": "MG-1-364_Back.gif", "f": "MG-1-364.gif"}],
+    ["mg-1-609", {"b": "MG-1-609_Back.gif", "f": "MG-1-609.gif"}],
+    ["mg-1-718", {"b": "MG-1-718_Back.gif", "f": "MG-1-718.gif"}],
+    ["mg-2-364", {"b": "MG-2-364_Back.gif", "f": "MG-2-364.gif"}],
+    ["mg-2-609", {"b": "MG-2-609_Back.gif", "f": "MG-2-609.gif"}],
+    ["mg-2-718", {"b": "MG-2-718_Back.gif", "f": "MG-2-718.gif"}],
+    ["mg-3-364", {"b": "MG-3-364_Back.gif", "f": "MG-3-364.gif"}],
+    ["mg-3-609", {"b": "MG-3-609_Back.gif", "f": "MG-3-609.gif"}],
+    ["mg-3-718", {"b": "MG-3-718_Back.gif", "f": "MG-3-718.gif"}],
+    ["mtr-364", {"f": "Mtr-364.gif"}],
+    ["mtr-609", {"f": "Mtr-609.gif"}],
+    ["mtr-718", {"f": "Mtr-718.gif"}],
+    ["t-26m31", {"b": "T-26m31_Back.gif", "f": "T-26m31.gif"}],
+    ["t-26m33", {"b": "T-26m33_Back.gif", "f": "T-26m33.gif"}],
+    ["t-37", {"b": "T-37_Back.gif", "f": "T-37.gif"}],
+
+],
+[
+    "Soviet Markers",
+    ["soviet_76mm_ammo_x1", {"f": "Soviet_76mm_Ammo_x1.gif"}],
+    ["soviet_76mm_ammo_x10", {"f": "Soviet_76mm_Ammo_x10.gif"}],
+    ["soviet_artillery_fired", {"f": "Soviet_Artillery_Fired.gif"}],
+    ["soviet_control", {"f": "Soviet_Control.gif"}],
+    ["soviet_digging_in", {"f": "Soviet_Digging_In.gif", "b": "Soviet_Dug_In.gif"}],
+    ["soviet_ig_fired", {"f": "Soviet_IG_Fired.gif"}],
+    ["soviet_morale_bonus", {"f": "Soviet_Morale_Bonus.gif"}],
+    ["soviet_morale_collapse", {"b": "Soviet_Morale_Collapse_Back.gif", "f": "Soviet_Morale_Collapse.gif"}],
+    ["soviet_mortars_fired", {"f": "Soviet_Mortars_Fired.gif"}],
+    ["soviet_player_one", {"f": "Soviet_Player_One.gif"}],
+    ["soviet_surpressed", {"f": "Soviet_Surpressed.gif"}],
+    ["soviet_turn", {"f": "Soviet_Turn.gif"}],
+    ["soviet_vp_-1", {"f": "Soviet_VP_-1.gif"}],
+    ["soviet_vp_-10", {"f": "Soviet_VP_-10.gif"}],
+    ["soviet_vp_x1", {"f": "Soviet_VP_x1.gif"}],
+    ["soviet_vp_x10", {"f": "Soviet_VP_x10.gif"}],
+    ["szlt", {"f": "SZLT.gif"}],
+    ["354_artillery", {"b": "354_Artillery_Back.gif"}],
+],
+[
+    "Finnish Units",
+    ["1-0-0-6_erp_platoon", {"f": "1-0-0-6_ErP_Platoon.gif"}],
+    ["1-0-2-6_erp_platoon", {"f": "1-0-2-6_ErP_Platoon.gif"}],
+    ["1-0-2-6_jr16_platoon_a", {"f": "1-0-2-6_JR16_Platoon_A.gif"}],
+    ["1-0-2-6_jr16_platoon_b", {"f": "1-0-2-6_JR16_Platoon_B.gif"}],
+    ["1-1-2-6_erp_platoon", {"f": "1-1-2-6_ErP_Platoon.gif"}],
+    ["1-1-2-6_jr16_platoon_a", {"f": "1-1-2-6_JR16_Platoon_A.gif"}],
+    ["1-1-2-6_jr16_platoon_b", {"f": "1-1-2-6_JR16_Platoon_B.gif"}],
+    ["1-1-jr16", {"b": "1-1-JR16_Back.gif", "f": "1-1-JR16.gif"}],
+    ["1-13-kt-pr", {"b": "1-13-KT-Pr_Back.gif", "f": "1-13-KT-Pr.gif"}],
+    ["1-erp10", {"b": "1-ErP10_Back.gif", "f": "1-ErP10.gif"}],
+    ["1-erp112", {"b": "1-ErP112_Back.gif", "f": "1-ErP112.gif"}],
+    ["1-erp9", {"b": "1-ErP9_Back.gif", "f": "1-ErP9.gif"}],
+    ["1-jr16_field_kitchen", {"f": "1-JR16_Field_Kitchen.gif"}],
+    ["1-ppp7", {"b": "1-PPP7_Back.gif", "f": "1-PPP7.gif"}],
+    ["2-1-jr16", {"b": "2-1-JR16_Back.gif", "f": "2-1-JR16.gif"}],
+    ["2-13-kt-pr", {"b": "2-13-KT-Pr_Back.gif", "f": "2-13-KT-Pr.gif"}],
+    ["2-erp10", {"b": "2-ErP10_Back.gif", "f": "2-ErP10.gif"}],
+    ["2-erp112", {"b": "2-ErP112_Back.gif", "f": "2-ErP112.gif"}],
+    ["2-erp9", {"b": "2-ErP9_Back.gif", "f": "2-ErP9.gif"}],
+    ["2-jr16_field_kitchen", {"f": "2-JR16_Field_Kitchen.gif"}],
+    ["2-ppp7", {"b": "2-PPP7_Back.gif", "f": "2-PPP7.gif"}],
+    ["3-1-jr16", {"b": "3-1-JR16_Back.gif", "f": "3-1-JR16.gif"}],
+    ["3-13-kt-pr", {"b": "3-13-KT-Pr_Back.gif", "f": "3-13-KT-Pr.gif"}],
+    ["3-erp10", {"b": "3-ErP10_Back.gif", "f": "3-ErP10.gif"}],
+    ["3-erp112", {"b": "3-ErP112_Back.gif", "f": "3-ErP112.gif"}],
+    ["3-erp9", {"b": "3-ErP9_Back.gif", "f": "3-ErP9.gif"}],
+    ["3-ppp7", {"b": "3-PPP7_Back.gif", "f": "3-PPP7.gif"}],
+    ["4-2-jr16", {"b": "4-2-JR16_Back.gif", "f": "4-2-JR16.gif"}],
+    ["5-2-jr16", {"b": "5-2-JR16_Back.gif", "f": "5-2-JR16.gif"}],
+    ["5-ktr12", {"f": "5-KTR12.gif"}],
+    ["6-2-jr16", {"b": "6-2-JR16_Back.gif", "f": "6-2-JR16.gif"}],
+    ["7-3-jr16", {"b": "7-3-JR16_Back.gif", "f": "7-3-JR16.gif"}],
+    ["7-ktr6", {"f": "7-KTR6.gif"}],
+    ["8-3-jr16", {"b": "8-3-JR16_Back.gif", "f": "8-3-JR16.gif"}],
+    ["8-3-jr37", {"b": "8-3-JR37_Back.gif", "f": "8-3-JR37.gif"}],
+    ["8-ktr6", {"f": "8-KTR6.gif"}],
+    ["9-3-jr16", {"b": "9-3-JR16_Back.gif", "f": "9-3-JR16.gif"}],
+    ["9-ktr13", {"f": "9-KTR13.gif"}],
+    ["at-jr16", {"b": "AT-JR16_Back.gif", "f": "AT-JR16.gif"}],
+    ["eng-jr16", {"b": "Eng-JR16_Back.gif", "f": "Eng-JR16.gif"}],
+    ["mg-1-jr16", {"b": "MG-1-JR16_Back.gif", "f": "MG-1-JR16.gif"}],
+    ["mg-13-kt-pr", {"b": "MG-13-KT-Pr_Back.gif", "f": "MG-13-KT-Pr.gif"}],
+    ["mg-2-jr16", {"b": "MG-2-JR16_Back.gif", "f": "MG-2-JR16.gif"}],
+    ["mg-3-jr16", {"b": "MG-3-JR16_Back.gif", "f": "MG-3-JR16.gif"}],
+    ["mg-erp112", {"f": "MG-ErP112.gif"}],
+    ["mg-erp9", {"b": "MG-ErP9_Back.gif", "f": "MG-ErP9.gif"}],
+    ["mtr-13-kt-pr", {"f": "Mtr-13-KT-Pr.gif"}],
+    ["mtr-jr16_o19", {"f": "Mtr-JR16_O19.gif"}],
+    ["mtr-jr16_t8", {"f": "Mtr-JR16_T8.gif"}],
+    ["obukov at", {"f": "Obukov AT.gif"}],
+    ["pajari", {"b": "Pajari_Back.gif", "f": "Pajari.gif"}],
+    ["prov-tf-p", {"b": "Prov-TF-P_Back.gif", "f": "Prov-TF-P.gif"}],
+
+],
+[
+    "Finnish Markers",
+    ["bonfire", {"f": "Bonfire.gif"}],
+    ["captured_lmgs", {"b": "Captured_LMGs_Back.gif", "f": "Captured_LMGs.gif"}],
+    ["erp_platoon", {"b": "ErP_Platoon_Back.gif"}],
+    ["field_kitchen", {"b": "Field_Kitchen_Back.gif"}],
+    ["finnish_76mm_ammo_x1", {"f": "Finnish_76mm_Ammo_x1.gif"}],
+    ["finnish_76mm_ammo_x10", {"f": "Finnish_76mm_Ammo_x10.gif"}],
+    ["finnish_artillery_fired", {"f": "Finnish_Artillery_Fired.gif"}],
+    ["finnish_control", {"f": "Finnish_Control.gif"}],
+    ["finnish_digging_in", {"b": "Finnish_Dug_In.gif", "f": "Finnish_Digging_In.gif"}],
+    ["finnish_morale_bonus", {"f": "Finnish_Morale_Bonus.gif"}],
+    ["finnish_mortars_fired", {"f": "Finnish_Mortars_Fired.gif"}],
+    ["finnish_player_one", {"f": "Finnish_Player_One.gif"}],
+    ["finnish_supressed", {"f": "Finnish_Supressed.gif"}],
+    ["finnish_turn", {"f": "Finnish_Turn.gif"}],
+    ["finnish_vp_-1", {"f": "Finnish_VP_-1.gif"}],
+    ["finnish_vp_-10", {"f": "Finnish_VP_-10.gif"}],
+    ["finnish_vp_x1", {"f": "Finnish_VP_x1.gif"}],
+    ["finnish_vp_x10", {"f": "Finnish_VP_x10.gif"}],
+    ["jr16_platoon", {"b": "JR16_Platoon_Back.gif"}],
+    ["mp_remaining", {"f": "MP_Remaining.gif"}],
+    ["night_raid", {"f": "Night_Raid.gif"}],
+    ]
+]

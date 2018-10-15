@@ -394,6 +394,8 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
 
     new_component.draggable({
         // grid: [ 5, 5 ],
+        delay: 300,
+        scroll: scroll_if_drag_on_edge,  // Global from wasa_main.js
         start: function (event, ui) {
             placeComponentOnTop($(event.target));
         },

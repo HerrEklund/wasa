@@ -10,6 +10,9 @@ var username;
 var game_id;
 var game_session_id='';
 
+// Globally accessible settings
+var scroll_if_drag_on_edge = false;
+
 function createWasaBoardGame() {
 
     var url = window.location.href;

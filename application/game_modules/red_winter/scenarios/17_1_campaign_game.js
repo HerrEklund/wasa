@@ -2,8 +2,17 @@ var scenario_setup = /* Events from game_id = red_winter */
 /* Events from game_id = red_winter */
 [
   {
-    "event_type": "create_component",
+    "event_type": "chat",
     "username": "herr.eklund",
+    "time": 1539550518,
+    "payload": {
+      "username": "herr.eklund",
+      "message": " --- LOADING SCENARIO: 17.1 The Campaign Game - The Battle of Tolvajärvi [semi complete] ---"
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489954850,
     "payload": {
       "tray_component_id": "C_1-1-jr16",
@@ -15,7 +24,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489954956,
     "payload": {
       "tray_component_id": "C_1-1-jr16",
@@ -27,7 +36,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489954960,
     "payload": {
       "tray_component_id": "C_2-1-jr16",
@@ -39,7 +48,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "delete_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955002,
     "payload": {
       "component_id": "ddkrf65i"
@@ -47,7 +56,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955002,
     "payload": {
       "component_id": "ddkrf65i",
@@ -58,7 +67,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955003,
     "payload": {
       "component_id": "oso4p36w",
@@ -69,7 +78,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "delete_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955003,
     "payload": {
       "component_id": "oso4p36w"
@@ -77,7 +86,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955026,
     "payload": {
       "tray_component_id": "C_5-2-jr16",
@@ -89,7 +98,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955031,
     "payload": {
       "tray_component_id": "C_6-2-jr16",
@@ -101,19 +110,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489955060,
-    "payload": {
-      "tray_component_id": "C_4-2-jr16",
-      "component_id": "izm7ibes",
-      "game_board_id": "turn_track",
-      "left": 1211.53125,
-      "top": 281.66015625
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955151,
     "payload": {
       "tray_component_id": "C_at-jr16",
@@ -125,7 +122,19 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489955060,
+    "payload": {
+      "tray_component_id": "C_4-2-jr16",
+      "component_id": "izm7ibes",
+      "game_board_id": "turn_track",
+      "left": 1211.53125,
+      "top": 281.66015625
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489955163,
     "payload": {
       "tray_component_id": "C_eng-jr16",
@@ -137,7 +146,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955173,
     "payload": {
       "tray_component_id": "C_mtr-jr16_t8",
@@ -149,7 +158,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955183,
     "payload": {
       "tray_component_id": "C_mg-2-jr16",
@@ -161,7 +170,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955204,
     "payload": {
       "tray_component_id": "C_7-3-jr16",
@@ -173,7 +182,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955209,
     "payload": {
       "tray_component_id": "C_8-3-jr16",
@@ -185,7 +194,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955214,
     "payload": {
       "tray_component_id": "C_9-3-jr16",
@@ -197,7 +206,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955227,
     "payload": {
       "tray_component_id": "C_finnish_morale_bonus",
@@ -209,18 +218,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489955265,
-    "payload": {
-      "component_id": "zordp5gh",
-      "left": 816.6796875,
-      "top": 519.35546875,
-      "zIndex": "13"
-    }
-  },
-  {
-    "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955267,
     "payload": {
       "component_id": "itsftlvh",
@@ -231,7 +229,18 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489955265,
+    "payload": {
+      "component_id": "zordp5gh",
+      "left": 816.6796875,
+      "top": 519.35546875,
+      "zIndex": "13"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "-SETUP-",
     "time": 1489955271,
     "payload": {
       "component_id": "39k5pplt",
@@ -242,7 +251,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955274,
     "payload": {
       "component_id": "e44wm250",
@@ -253,7 +262,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955278,
     "payload": {
       "component_id": "e44wm250",
@@ -264,7 +273,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955279,
     "payload": {
       "component_id": "39k5pplt",
@@ -275,7 +284,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955280,
     "payload": {
       "component_id": "izm7ibes",
@@ -286,7 +295,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955282,
     "payload": {
       "component_id": "2hm3iq0j",
@@ -297,7 +306,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955283,
     "payload": {
       "component_id": "35r9s8yh",
@@ -308,18 +317,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489955284,
-    "payload": {
-      "component_id": "j7lmfqvm",
-      "left": 763.75,
-      "top": 241.6015625,
-      "zIndex": "22"
-    }
-  },
-  {
-    "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955285,
     "payload": {
       "component_id": "zybo5d8y",
@@ -330,7 +328,18 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489955284,
+    "payload": {
+      "component_id": "j7lmfqvm",
+      "left": 763.75,
+      "top": 241.6015625,
+      "zIndex": "22"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "-SETUP-",
     "time": 1489955289,
     "payload": {
       "component_id": "itsftlvh",
@@ -341,7 +350,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955290,
     "payload": {
       "component_id": "zordp5gh",
@@ -352,7 +361,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955325,
     "payload": {
       "tray_component_id": "C_finnish_vp_x10",
@@ -364,19 +373,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489955328,
-    "payload": {
-      "tray_component_id": "C_finnish_vp_x1",
-      "component_id": "lwr9gpr8",
-      "game_board_id": "main_game_board",
-      "left": 229.96875,
-      "top": 322.4609375
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955385,
     "payload": {
       "tray_component_id": "C_soviet_vp_x1",
@@ -388,19 +385,19 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489955389,
+    "username": "-SETUP-",
+    "time": 1489955328,
     "payload": {
-      "tray_component_id": "C_soviet_vp_x10",
-      "component_id": "krc9poo4",
+      "tray_component_id": "C_finnish_vp_x1",
+      "component_id": "lwr9gpr8",
       "game_board_id": "main_game_board",
-      "left": 204.6171875,
-      "top": 476.03515625
+      "left": 229.96875,
+      "top": 322.4609375
     }
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955412,
     "payload": {
       "tray_component_id": "C_soviet_turn",
@@ -412,7 +409,19 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489955389,
+    "payload": {
+      "tray_component_id": "C_soviet_vp_x10",
+      "component_id": "krc9poo4",
+      "game_board_id": "main_game_board",
+      "left": 204.6171875,
+      "top": 476.03515625
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489955415,
     "payload": {
       "tray_component_id": "C_finnish_turn",
@@ -424,7 +433,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955448,
     "payload": {
       "tray_component_id": "C_3-erp10",
@@ -435,8 +444,31 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
+    "event_type": "move_component",
+    "username": "-SETUP-",
+    "time": 1489955498,
+    "payload": {
+      "component_id": "26gjgnme",
+      "left": 1388.92578125,
+      "top": 866.9921875,
+      "zIndex": "34"
+    }
+  },
+  {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489955526,
+    "payload": {
+      "tray_component_id": "C_1-erp10",
+      "component_id": "sozx89xp",
+      "game_board_id": "turn_track",
+      "left": 764.96875,
+      "top": 949.8828125
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489955493,
     "payload": {
       "tray_component_id": "C_2-erp9",
@@ -448,30 +480,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489955498,
-    "payload": {
-      "component_id": "26gjgnme",
-      "left": 1388.92578125,
-      "top": 866.9921875,
-      "zIndex": "34"
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489955526,
-    "payload": {
-      "tray_component_id": "C_1-erp10",
-      "component_id": "sozx89xp",
-      "game_board_id": "turn_track",
-      "left": 764.96875,
-      "top": 949.8828125
-    }
-  },
-  {
-    "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955560,
     "payload": {
       "component_id": "26gjgnme",
@@ -481,28 +490,8 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
-    "event_type": "delete_component",
-    "username": "herr.eklund",
-    "time": 1489955560,
-    "payload": {
-      "component_id": "26gjgnme"
-    }
-  },
-  {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489955562,
-    "payload": {
-      "tray_component_id": "C_2-erp10",
-      "component_id": "gis1twrr",
-      "game_board_id": "turn_track",
-      "left": 1382.8984375,
-      "top": 872.8125
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955564,
     "payload": {
       "tray_component_id": "C_3-erp10",
@@ -514,7 +503,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955567,
     "payload": {
       "component_id": "sozx89xp",
@@ -525,7 +514,27 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489955562,
+    "payload": {
+      "tray_component_id": "C_2-erp10",
+      "component_id": "gis1twrr",
+      "game_board_id": "turn_track",
+      "left": 1382.8984375,
+      "top": 872.8125
+    }
+  },
+  {
+    "event_type": "delete_component",
+    "username": "-SETUP-",
+    "time": 1489955560,
+    "payload": {
+      "component_id": "26gjgnme"
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489955587,
     "payload": {
       "tray_component_id": "C_3-erp9",
@@ -537,7 +546,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955596,
     "payload": {
       "tray_component_id": "C_7-ktr6",
@@ -549,7 +558,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955599,
     "payload": {
       "tray_component_id": "C_8-ktr6",
@@ -561,7 +570,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955611,
     "payload": {
       "tray_component_id": "C_1-erp9",
@@ -573,7 +582,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955654,
     "payload": {
       "tray_component_id": "C_1-erp112",
@@ -585,7 +594,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955658,
     "payload": {
       "tray_component_id": "C_2-erp112",
@@ -597,7 +606,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955697,
     "payload": {
       "tray_component_id": "C_1-jr16_field_kitchen",
@@ -609,7 +618,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955703,
     "payload": {
       "component_id": "zordp5gh",
@@ -620,7 +629,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955704,
     "payload": {
       "component_id": "4ov5w2pj",
@@ -631,7 +640,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955709,
     "payload": {
       "component_id": "v2ikhnpz",
@@ -642,7 +651,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955710,
     "payload": {
       "component_id": "1xsw0k0k",
@@ -653,7 +662,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955824,
     "payload": {
       "tray_component_id": "C_1-1-jr16",
@@ -665,19 +674,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489955849,
-    "payload": {
-      "tray_component_id": "C_1-ppp7_back",
-      "component_id": "paj1kpnm",
-      "game_board_id": "main_game_board",
-      "left": 1073.0625,
-      "top": 3203.64599609375
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955866,
     "payload": {
       "tray_component_id": "C_2-ppp7_back",
@@ -689,7 +686,19 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489955849,
+    "payload": {
+      "tray_component_id": "C_1-ppp7_back",
+      "component_id": "paj1kpnm",
+      "game_board_id": "main_game_board",
+      "left": 1073.0625,
+      "top": 3203.64599609375
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489955881,
     "payload": {
       "tray_component_id": "C_3-1-jr16",
@@ -701,7 +710,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955893,
     "payload": {
       "tray_component_id": "C_2-1-jr16",
@@ -713,18 +722,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489955894,
-    "payload": {
-      "component_id": "006zfh5q",
-      "left": 1925.0625,
-      "top": 3250.6458740234375,
-      "zIndex": "55"
-    }
-  },
-  {
-    "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955896,
     "payload": {
       "component_id": "ni752bkr",
@@ -735,7 +733,18 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489955894,
+    "payload": {
+      "component_id": "006zfh5q",
+      "left": 1925.0625,
+      "top": 3250.6458740234375,
+      "zIndex": "55"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "-SETUP-",
     "time": 1489955898,
     "payload": {
       "component_id": "006zfh5q",
@@ -746,18 +755,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489955914,
-    "payload": {
-      "component_id": "006zfh5q",
-      "left": 2030.0625,
-      "top": 3200.6458740234375,
-      "zIndex": "58"
-    }
-  },
-  {
-    "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955915,
     "payload": {
       "component_id": "ni752bkr",
@@ -768,7 +766,18 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489955914,
+    "payload": {
+      "component_id": "006zfh5q",
+      "left": 2030.0625,
+      "top": 3200.6458740234375,
+      "zIndex": "58"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "-SETUP-",
     "time": 1489955918,
     "payload": {
       "component_id": "0khukvvf",
@@ -779,7 +788,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955935,
     "payload": {
       "tray_component_id": "C_8-3-jr37_back",
@@ -791,7 +800,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955962,
     "payload": {
       "tray_component_id": "C_mg-1-jr16",
@@ -803,7 +812,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489955982,
     "payload": {
       "tray_component_id": "C_mtr-jr16_o19",
@@ -815,7 +824,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956006,
     "payload": {
       "component_id": "9uk0b55a",
@@ -826,7 +835,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956011,
     "payload": {
       "component_id": "jmnqmq9h",
@@ -837,7 +846,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956022,
     "payload": {
       "component_id": "00ihha0x",
@@ -848,7 +857,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956035,
     "payload": {
       "tray_component_id": "C_3-erp112_back",
@@ -859,19 +868,8 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
-    "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489956141,
-    "payload": {
-      "component_id": "izfrlfrm",
-      "left": 842.0625,
-      "top": 3508.9791870117188,
-      "zIndex": "68"
-    }
-  },
-  {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956282,
     "payload": {
       "tray_component_id": "C_1-1-609",
@@ -882,8 +880,19 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
+    "event_type": "move_component",
+    "username": "-SETUP-",
+    "time": 1489956141,
+    "payload": {
+      "component_id": "izfrlfrm",
+      "left": 842.0625,
+      "top": 3508.9791870117188,
+      "zIndex": "68"
+    }
+  },
+  {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956288,
     "payload": {
       "tray_component_id": "C_2-1-609",
@@ -895,7 +904,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956297,
     "payload": {
       "tray_component_id": "C_3-1-609",
@@ -907,7 +916,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956303,
     "payload": {
       "tray_component_id": "C_4-2-609",
@@ -919,7 +928,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956306,
     "payload": {
       "tray_component_id": "C_5-2-609",
@@ -931,7 +940,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956309,
     "payload": {
       "tray_component_id": "C_6-2-609",
@@ -943,7 +952,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956351,
     "payload": {
       "tray_component_id": "C_mg-1-609",
@@ -955,7 +964,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956355,
     "payload": {
       "tray_component_id": "C_mg-2-609",
@@ -967,7 +976,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956407,
     "payload": {
       "tray_component_id": "C_1-1-139_at",
@@ -979,7 +988,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956413,
     "payload": {
       "tray_component_id": "C_1-1-364",
@@ -991,7 +1000,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956419,
     "payload": {
       "tray_component_id": "C_1-2-139_at",
@@ -1003,7 +1012,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956428,
     "payload": {
       "tray_component_id": "C_1-47",
@@ -1015,7 +1024,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956442,
     "payload": {
       "tray_component_id": "C_2-1-139_at",
@@ -1026,8 +1035,20 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
+    "event_type": "create_component",
+    "username": "-SETUP-",
+    "time": 1489956466,
+    "payload": {
+      "tray_component_id": "C_2-1-718",
+      "component_id": "7o8r1rho",
+      "game_board_id": "turn_track",
+      "left": 1323.0625,
+      "top": 474.6458511352539
+    }
+  },
+  {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956450,
     "payload": {
       "component_id": "f1c8f5er",
@@ -1038,7 +1059,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956454,
     "payload": {
       "tray_component_id": "C_2-1-364",
@@ -1050,19 +1071,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489956466,
-    "payload": {
-      "tray_component_id": "C_2-1-718",
-      "component_id": "7o8r1rho",
-      "game_board_id": "turn_track",
-      "left": 1323.0625,
-      "top": 474.6458511352539
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956474,
     "payload": {
       "tray_component_id": "C_1-3-139_at",
@@ -1074,7 +1083,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956484,
     "payload": {
       "tray_component_id": "C_2-3-139_at",
@@ -1085,20 +1094,8 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
-    "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489956503,
-    "payload": {
-      "tray_component_id": "C_2-354",
-      "component_id": "t6cm5550",
-      "game_board_id": "turn_track",
-      "left": 696.0625,
-      "top": 573.6458511352539
-    }
-  },
-  {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956508,
     "payload": {
       "component_id": "hz1cmwm2",
@@ -1109,7 +1106,19 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489956503,
+    "payload": {
+      "tray_component_id": "C_2-354",
+      "component_id": "t6cm5550",
+      "game_board_id": "turn_track",
+      "left": 696.0625,
+      "top": 573.6458511352539
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489956513,
     "payload": {
       "tray_component_id": "C_2-47",
@@ -1121,7 +1130,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956530,
     "payload": {
       "tray_component_id": "C_3-1-364",
@@ -1132,8 +1141,19 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
+    "event_type": "move_component",
+    "username": "-SETUP-",
+    "time": 1489956553,
+    "payload": {
+      "component_id": "f1c8f5er",
+      "left": 941.0625,
+      "top": 276.6458282470703,
+      "zIndex": "92"
+    }
+  },
+  {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956533,
     "payload": {
       "tray_component_id": "C_3-47",
@@ -1145,18 +1165,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489956553,
-    "payload": {
-      "component_id": "f1c8f5er",
-      "left": 941.0625,
-      "top": 276.6458282470703,
-      "zIndex": "92"
-    }
-  },
-  {
-    "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956556,
     "payload": {
       "component_id": "0vgjl8lq",
@@ -1167,7 +1176,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956580,
     "payload": {
       "tray_component_id": "C_4-2-364",
@@ -1179,7 +1188,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956598,
     "payload": {
       "tray_component_id": "C_6-2-364",
@@ -1191,7 +1200,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956606,
     "payload": {
       "tray_component_id": "C_8-3-364",
@@ -1203,7 +1212,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956613,
     "payload": {
       "tray_component_id": "C_9-3-364",
@@ -1215,7 +1224,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956619,
     "payload": {
       "tray_component_id": "C_ig-364",
@@ -1227,7 +1236,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956623,
     "payload": {
       "tray_component_id": "C_mg-2-364",
@@ -1239,7 +1248,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956627,
     "payload": {
       "tray_component_id": "C_mg-3-364",
@@ -1251,19 +1260,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489956634,
-    "payload": {
-      "tray_component_id": "C_mtr-364",
-      "component_id": "kfg84heq",
-      "game_board_id": "turn_track",
-      "left": 1172.0625,
-      "top": 344.97916412353516
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956787,
     "payload": {
       "tray_component_id": "C_5-2-364",
@@ -1275,7 +1272,19 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489956634,
+    "payload": {
+      "tray_component_id": "C_mtr-364",
+      "component_id": "kfg84heq",
+      "game_board_id": "turn_track",
+      "left": 1172.0625,
+      "top": 344.97916412353516
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489956798,
     "payload": {
       "tray_component_id": "C_7-3-364",
@@ -1287,7 +1296,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956843,
     "payload": {
       "component_id": "4ov5w2pj",
@@ -1298,18 +1307,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489956898,
-    "payload": {
-      "component_id": "7o8r1rho",
-      "left": 1318.0556640625,
-      "top": 459.63541412353516,
-      "zIndex": "105"
-    }
-  },
-  {
-    "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956902,
     "payload": {
       "component_id": "7o8r1rho",
@@ -1320,7 +1318,18 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489956898,
+    "payload": {
+      "component_id": "7o8r1rho",
+      "left": 1318.0556640625,
+      "top": 459.63541412353516,
+      "zIndex": "105"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "-SETUP-",
     "time": 1489956910,
     "payload": {
       "component_id": "8im3glp4",
@@ -1331,7 +1340,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956918,
     "payload": {
       "tray_component_id": "C_mg-3-718",
@@ -1343,7 +1352,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956920,
     "payload": {
       "component_id": "8im3glp4",
@@ -1354,7 +1363,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956922,
     "payload": {
       "component_id": "mf04clhk",
@@ -1365,19 +1374,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489956986,
-    "payload": {
-      "tray_component_id": "C_mg-2-718",
-      "component_id": "gewubco5",
-      "game_board_id": "turn_track",
-      "left": 336.40972900390625,
-      "top": 769.409782409668
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956995,
     "payload": {
       "tray_component_id": "C_6-2-718",
@@ -1389,7 +1386,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489956998,
     "payload": {
       "tray_component_id": "C_4-2-718",
@@ -1401,7 +1398,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957054,
     "payload": {
       "component_id": "mf04clhk",
@@ -1412,7 +1409,19 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489956986,
+    "payload": {
+      "tray_component_id": "C_mg-2-718",
+      "component_id": "gewubco5",
+      "game_board_id": "turn_track",
+      "left": 336.40972900390625,
+      "top": 769.409782409668
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489957057,
     "payload": {
       "tray_component_id": "C_mtr-718",
@@ -1424,7 +1433,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957068,
     "payload": {
       "component_id": "q8kup8ma",
@@ -1435,7 +1444,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957072,
     "payload": {
       "component_id": "2g5g7jxv",
@@ -1446,7 +1455,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957074,
     "payload": {
       "component_id": "q8kup8ma",
@@ -1457,7 +1466,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957109,
     "payload": {
       "component_id": "q8kup8ma",
@@ -1468,7 +1477,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957120,
     "payload": {
       "tray_component_id": "C_3-1-718",
@@ -1480,19 +1489,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489957124,
-    "payload": {
-      "tray_component_id": "C_1-1-718",
-      "component_id": "l4btyhol",
-      "game_board_id": "turn_track",
-      "left": 1409.7431640625,
-      "top": 497.88195037841797
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957132,
     "payload": {
       "tray_component_id": "C_mg-1-718",
@@ -1504,7 +1501,19 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489957124,
+    "payload": {
+      "tray_component_id": "C_1-1-718",
+      "component_id": "l4btyhol",
+      "game_board_id": "turn_track",
+      "left": 1409.7431640625,
+      "top": 497.88195037841797
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489957195,
     "payload": {
       "tray_component_id": "C_mg-3-jr16",
@@ -1516,7 +1525,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957250,
     "payload": {
       "component_id": "vr1qpdc1",
@@ -1527,18 +1536,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489957251,
-    "payload": {
-      "component_id": "pz0y2ee0",
-      "left": 1444.0626220703125,
-      "top": 341.63196563720703,
-      "zIndex": "125"
-    }
-  },
-  {
-    "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957256,
     "payload": {
       "component_id": "c2r8nt26",
@@ -1549,18 +1547,18 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489957258,
+    "username": "-SETUP-",
+    "time": 1489957251,
     "payload": {
       "component_id": "pz0y2ee0",
-      "left": 1324.0626220703125,
-      "top": 236.63196563720703,
-      "zIndex": "127"
+      "left": 1444.0626220703125,
+      "top": 341.63196563720703,
+      "zIndex": "125"
     }
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957260,
     "payload": {
       "component_id": "vr1qpdc1",
@@ -1571,7 +1569,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957426,
     "payload": {
       "tray_component_id": "C_mg-erp9",
@@ -1582,8 +1580,19 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
+    "event_type": "move_component",
+    "username": "-SETUP-",
+    "time": 1489957258,
+    "payload": {
+      "component_id": "pz0y2ee0",
+      "left": 1324.0626220703125,
+      "top": 236.63196563720703,
+      "zIndex": "127"
+    }
+  },
+  {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957451,
     "payload": {
       "tray_component_id": "C_mtr-jr16_o19",
@@ -1595,7 +1604,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957462,
     "payload": {
       "component_id": "ni752bkr",
@@ -1606,7 +1615,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957463,
     "payload": {
       "component_id": "ijjrfwy7",
@@ -1617,7 +1626,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957466,
     "payload": {
       "component_id": "0khukvvf",
@@ -1628,7 +1637,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957468,
     "payload": {
       "component_id": "006zfh5q",
@@ -1639,7 +1648,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957475,
     "payload": {
       "component_id": "0khukvvf",
@@ -1650,7 +1659,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957479,
     "payload": {
       "tray_component_id": "C_mg-1-jr16",
@@ -1662,7 +1671,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957520,
     "payload": {
       "tray_component_id": "C_9-ktr13",
@@ -1674,7 +1683,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "delete_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957522,
     "payload": {
       "component_id": "gzm989mv"
@@ -1682,7 +1691,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957522,
     "payload": {
       "component_id": "gzm989mv",
@@ -1693,7 +1702,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957557,
     "payload": {
       "component_id": "9uk0b55a",
@@ -1704,30 +1713,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489957561,
-    "payload": {
-      "tray_component_id": "C_3-ppp7_back",
-      "component_id": "gi96kgwt",
-      "game_board_id": "main_game_board",
-      "left": 1093.041748046875,
-      "top": 3228.2918701171875
-    }
-  },
-  {
-    "event_type": "move_component",
-    "username": "herr.eklund",
-    "time": 1489957612,
-    "payload": {
-      "component_id": "izfrlfrm",
-      "left": 837.0625,
-      "top": 3503.9793701171875,
-      "zIndex": "139"
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957899,
     "payload": {
       "tray_component_id": "C_pajari",
@@ -1739,7 +1725,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957959,
     "payload": {
       "tray_component_id": "C_9-ktr13",
@@ -1750,8 +1736,31 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
+    "event_type": "move_component",
+    "username": "-SETUP-",
+    "time": 1489957612,
+    "payload": {
+      "component_id": "izfrlfrm",
+      "left": 837.0625,
+      "top": 3503.9793701171875,
+      "zIndex": "139"
+    }
+  },
+  {
     "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
+    "time": 1489957561,
+    "payload": {
+      "tray_component_id": "C_3-ppp7_back",
+      "component_id": "gi96kgwt",
+      "game_board_id": "main_game_board",
+      "left": 1093.041748046875,
+      "top": 3228.2918701171875
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "-SETUP-",
     "time": 1489957962,
     "payload": {
       "tray_component_id": "C_5-ktr12",
@@ -1763,7 +1772,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "delete_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957984,
     "payload": {
       "component_id": "tz7ywves"
@@ -1771,7 +1780,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489957984,
     "payload": {
       "component_id": "tz7ywves",
@@ -1782,19 +1791,7 @@ var scenario_setup = /* Events from game_id = red_winter */
   },
   {
     "event_type": "create_component",
-    "username": "herr.eklund",
-    "time": 1489958111,
-    "payload": {
-      "tray_component_id": "C_soviet_76mm_ammo_x10",
-      "component_id": "b514sq7c",
-      "game_board_id": "main_game_board",
-      "left": 343.04168701171875,
-      "top": 314.62500762939453
-    }
-  },
-  {
-    "event_type": "create_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489958125,
     "payload": {
       "tray_component_id": "C_finnish_76mm_ammo_x1",
@@ -1805,8 +1802,20 @@ var scenario_setup = /* Events from game_id = red_winter */
     }
   },
   {
+    "event_type": "create_component",
+    "username": "-SETUP-",
+    "time": 1489958111,
+    "payload": {
+      "tray_component_id": "C_soviet_76mm_ammo_x10",
+      "component_id": "b514sq7c",
+      "game_board_id": "main_game_board",
+      "left": 343.04168701171875,
+      "top": 314.62500762939453
+    }
+  },
+  {
     "event_type": "move_component",
-    "username": "herr.eklund",
+    "username": "-SETUP-",
     "time": 1489958181,
     "payload": {
       "component_id": "6hrhag2o",
@@ -1814,5 +1823,403 @@ var scenario_setup = /* Events from game_id = red_winter */
       "top": 3358.2916870117188,
       "zIndex": "145"
     }
+  },
+  {
+    "event_type": "chat",
+    "username": "herr.eklund",
+    "time": 1539550520,
+    "payload": {
+      "username": "herr.eklund",
+      "message": " --- SETUP COMPLETE ---"
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539550664,
+    "payload": {
+      "tray_component_id": "1-1-jr16",
+      "component_id": "p0ze52mz",
+      "game_board_id": "main_game_board",
+      "left": 1909,
+      "top": 3262,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539550672,
+    "payload": {
+      "tray_component_id": "2-1-jr16",
+      "component_id": "idlfggze",
+      "game_board_id": "main_game_board",
+      "left": 1924,
+      "top": 3274,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539550687,
+    "payload": {
+      "component_id": "idlfggze",
+      "left": 1913,
+      "top": 3528,
+      "zIndex": "37"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539550688,
+    "payload": {
+      "component_id": "p0ze52mz",
+      "left": 1925,
+      "top": 3516,
+      "zIndex": "38"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539550710,
+    "payload": {
+      "component_id": "p0ze52mz",
+      "left": 1911,
+      "top": 3698,
+      "zIndex": "39"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539550751,
+    "payload": {
+      "component_id": "idlfggze",
+      "left": 2409,
+      "top": 3262,
+      "zIndex": "40"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539550760,
+    "payload": {
+      "component_id": "jmnqmq9h",
+      "left": 1548.0625,
+      "top": 3613.96875,
+      "zIndex": "41"
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539550783,
+    "payload": {
+      "tray_component_id": "3-1-jr16",
+      "component_id": "n91pdezy",
+      "game_board_id": "main_game_board",
+      "left": 1566,
+      "top": 3599,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539550818,
+    "payload": {
+      "tray_component_id": "2-ppp7",
+      "component_id": "3xdtc1hn",
+      "game_board_id": "main_game_board",
+      "left": 1076,
+      "top": 3189,
+      "flipped": true
+    }
+  },
+  {
+    "event_type": "flip_component",
+    "username": "herr.eklund",
+    "time": 1539550822,
+    "payload": {
+      "component_id": "3xdtc1hn"
+    }
+  },
+  {
+    "event_type": "flip_component",
+    "username": "herr.eklund",
+    "time": 1539550825,
+    "payload": {
+      "component_id": "3xdtc1hn"
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539550835,
+    "payload": {
+      "tray_component_id": "3-ppp7",
+      "component_id": "0yp4006b",
+      "game_board_id": "main_game_board",
+      "left": 1093,
+      "top": 3177,
+      "flipped": true
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539550878,
+    "payload": {
+      "tray_component_id": "pajari",
+      "component_id": "0nzjclzm",
+      "game_board_id": "main_game_board",
+      "left": 2424,
+      "top": 3251,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539550929,
+    "payload": {
+      "component_id": "0vgjl8lq",
+      "left": 969.0625,
+      "top": 350.640625,
+      "zIndex": "40"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539550935,
+    "payload": {
+      "component_id": "vr1qpdc1",
+      "left": 1342.046875,
+      "top": 224.625,
+      "zIndex": "39"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539550943,
+    "payload": {
+      "component_id": "0vgjl8lq",
+      "left": 1585.0625,
+      "top": 228.640625,
+      "zIndex": "40"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539550946,
+    "payload": {
+      "component_id": "kfg84heq",
+      "left": 1172.0625,
+      "top": 323.96875,
+      "zIndex": "41"
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539550996,
+    "payload": {
+      "tray_component_id": "3-erp112",
+      "component_id": "ttcjxfws",
+      "game_board_id": "main_game_board",
+      "left": 840,
+      "top": 3479,
+      "flipped": true
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551006,
+    "payload": {
+      "tray_component_id": "8-3-jr37",
+      "component_id": "joqged11",
+      "game_board_id": "main_game_board",
+      "left": 856,
+      "top": 3468,
+      "flipped": true
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539551024,
+    "payload": {
+      "component_id": "n91pdezy",
+      "left": 1631,
+      "top": 3614,
+      "zIndex": "44"
+    }
+  },
+  {
+    "event_type": "delete_component",
+    "username": "herr.eklund",
+    "time": 1539551030,
+    "payload": {
+      "component_id": "ijjrfwy7"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539551030,
+    "payload": {
+      "component_id": "ijjrfwy7",
+      "left": 2461.03125,
+      "top": 3485.625,
+      "zIndex": "45"
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539551033,
+    "payload": {
+      "component_id": "n91pdezy",
+      "left": 1566,
+      "top": 3597,
+      "zIndex": "45"
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551051,
+    "payload": {
+      "tray_component_id": "mg-1-jr16",
+      "component_id": "19npob5q",
+      "game_board_id": "main_game_board",
+      "left": 1684,
+      "top": 3418,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "move_component",
+    "username": "herr.eklund",
+    "time": 1539551063,
+    "payload": {
+      "component_id": "n91pdezy",
+      "left": 1565,
+      "top": 3596,
+      "zIndex": "44"
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551147,
+    "payload": {
+      "tray_component_id": "1-1-609",
+      "component_id": "q1smoelp",
+      "game_board_id": "main_game_board",
+      "left": 2136,
+      "top": 4087,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551150,
+    "payload": {
+      "tray_component_id": "2-1-609",
+      "component_id": "owwp3rue",
+      "game_board_id": "main_game_board",
+      "left": 2141,
+      "top": 4096,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551152,
+    "payload": {
+      "tray_component_id": "3-1-609",
+      "component_id": "paqmembe",
+      "game_board_id": "main_game_board",
+      "left": 2149,
+      "top": 4106,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551172,
+    "payload": {
+      "tray_component_id": "4-2-609",
+      "component_id": "cyx2b3py",
+      "game_board_id": "main_game_board",
+      "left": 2260,
+      "top": 4299,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551175,
+    "payload": {
+      "tray_component_id": "5-2-609",
+      "component_id": "j5u5kgz3",
+      "game_board_id": "main_game_board",
+      "left": 2270,
+      "top": 4311,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551178,
+    "payload": {
+      "tray_component_id": "6-2-609",
+      "component_id": "wmyxx68f",
+      "game_board_id": "main_game_board",
+      "left": 2279,
+      "top": 4324,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551192,
+    "payload": {
+      "tray_component_id": "mg-2-609",
+      "component_id": "opkp1uwq",
+      "game_board_id": "main_game_board",
+      "left": 2291,
+      "top": 4336,
+      "flipped": false
+    }
+  },
+  {
+    "event_type": "create_component",
+    "username": "herr.eklund",
+    "time": 1539551197,
+    "payload": {
+      "tray_component_id": "mg-1-609",
+      "component_id": "yf7vqm1t",
+      "game_board_id": "main_game_board",
+      "left": 2158,
+      "top": 4118,
+      "flipped": false
+    }
   }
+]
 ];

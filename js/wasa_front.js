@@ -441,18 +441,24 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
         });
     }
 
-    // listen for the long-press event
-    new_component.bind('long-press', function(e) {
+    new_component.mousedown(function(e) {
 
-        // TODO: Send flip-event instead (move all code below)
-        wasa_client.flip_component_event(new_component[0].id);
+        if(e.which == 3)
+        {
+            wasa_client.flip_component_event(new_component[0].id);
+        }
 
-        // stop the event from bubbling up
+        // Stop so it dont trigger other events on board for example
         e.stopPropagation();
     });
 
+    // listen for the long-press event
+    new_component.bind('taphold', function(e) {
+        wasa_client.flip_component_event(new_component[0].id);
+    });
+
     if (enable_stack_selection) {
-        new_component.bind("click touchstart tap", function(e){
+        new_component.bind("click tap", function(e){
             console.log("Click on component!");
 
             if(new_component.hasClass('selected_component')) {
@@ -462,7 +468,7 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
                 // If click on selected, add all intersecting to selection also
                 $('.component').each(function () {
                     if( overlaps(new_component, $(this))) {
-                        $(this).addClass('selected_component')
+                        $(this).addClass('selected_component');
                     }
                 });
                 // .. then open box
@@ -470,6 +476,8 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
             } else {
                 new_component.addClass('selected_component');
             }
+
+            e.preventDefault();
 
             // Stop so it dont trigger other events on board for example
             e.stopPropagation();
@@ -557,8 +565,6 @@ function placeLineupBox(left, top) {
     $('.lineup_box').css({top: top + 60, left: left, position: 'absolute'});
     $('.lineup_box').show();
 }
-
-
 
 var overlaps = (function () {
     function getPositions( elem ) {

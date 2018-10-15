@@ -4,11 +4,7 @@ jQuery.fn.rotate = function(degrees) {
     return $(this);
 };
 
-function test_is_touch_device() {
-  return 'ontouchstart' in window;
-}
-
-function init_wasa_front() {
+function initWasaFront() {
 
     console.log('##');
     console.log('##');
@@ -19,7 +15,6 @@ function init_wasa_front() {
     console.log('##');
     console.log('##');
 
-    var is_touch_device = test_is_touch_device();
 
     document.getElementById('event_input').onkeypress = function (e) {
         if (!e) e = window.event;
@@ -394,7 +389,7 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
 
     new_component.draggable({
         // grid: [ 5, 5 ],
-        delay: 300,
+        delay: 150,
         scroll: scroll_if_drag_on_edge,  // Global from wasa_main.js
         start: function (event, ui) {
             placeComponentOnTop($(event.target));

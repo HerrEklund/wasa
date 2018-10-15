@@ -1,4 +1,11 @@
 
+
+/*
+ * NOTE: Global variables
+ *
+ * TODO: refactor
+ */
+
 // Application context
 var wasa_client;
 var wasa_backend_host = '88.99.168.32';
@@ -10,8 +17,14 @@ var username;
 var game_id;
 var game_session_id='';
 
-// Globally accessible settings
-var scroll_if_drag_on_edge = false;
+var is_touch_device = test_is_touch_device();
+
+// Enable scroll if not on touch devices, for which that sucks badly
+var scroll_if_drag_on_edge = !is_touch_device;
+
+function test_is_touch_device() {
+  return 'ontouchstart' in window;
+}
 
 function createWasaBoardGame() {
 
@@ -105,7 +118,7 @@ function createWasaBoardGame() {
                     wasa_client = new WasaClient(wasa_backend_host, wasa_backend_port, game_session_id, username, game_event_notification_handler, game_event_handler);
 
                     // Initialize the GUI, add event handlers etc.
-                    init_wasa_front();
+                    initWasaFront();
 
                     // And make this client up-to-date
                     /**

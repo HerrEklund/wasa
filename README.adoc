@@ -66,6 +66,20 @@ Below is just a take-out of what works:
 
 == Technical
 
+=== Overview
+TODO: Add figure showing how stuff fits together.
+
+Application fundamentals:
+
+1. application/index.html is loaded by the browser.
+
+1. from the document.ready() function nunjucks.js is configured and then createWasaBoardGame() is executed.
+
+1. createWasaBoardGame sets up the back-end client and check for email, session ids and stuff.
+
+1. after a while, the GUI is created through initWasaFront()
+
+
 === Front-end
 
 * HTML5

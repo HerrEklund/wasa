@@ -81,6 +81,10 @@ Application fundamentals:
 
 
 === Front-end
+A good thing to always take in mind is that Wasa, just as Vassal, works with game component as pictures and pixels and
+not as scalable objects. All objects are placed by absolute position. This means, that whenever a module is implemented,
+all components and movements are done by chaing the absolute X/Y coordinate. So, the game map can not be replaced, or re-scaled
+without resetting all games (or possible converting existing games to the new scale, not implemented yet).
 
 * HTML5
 * "Standard" Bootstrap / Jquery(UI) solution
@@ -89,3 +93,292 @@ Application fundamentals:
 === Back-end
 
 Very simple at this point. Based on Redis for event storage and notification.
+
+== HOWTO
+
+=== Convert Vassal Moule to Wasa Moule
+Converting a (modern) Vassal module to a Wasa module is fairly straight forward. It can be done by a person not skilled
+in programming, but will probably go a lot faster if you are able to edit some simple scripts that will better match
+the Vassal module in question.
+
+Follow the example below, where I convert the Holland ´44 game to a Wasa module, step by step to get the picture.
+
+This game contain no cards, and that step is not yet explained since cards are not fully implemented yet.
+
+==== Preparing the source files
+1. Download the Vassal module somwhere around http://www.vassalengine.org/wiki/Category:Modules[here].
+
+1. Use your normal un-ZIP program of choice (The ".vmod"-file is actually just a zip-file), to un-zip the file at a
+temporary place.
+
+1. Open up the folder containing the un-Zipped Vassal module.
+
+1. Inside it you will find a sub-folder named 'images'. Open it.
+
+1. This directory should contain a hand-full of large files (the game map and player aids), and probably a lot more
+smaller files - the chits/counters and/or the cards of the game. Keep the window open until later.
+
+==== Creating the new game module
+Best method is to just copy the most similar module found. Most modules are actually very similar in structure. But
+two good modules to use as a starting-point would be Red Winter or France 40. Lets go for France 40 since it is a game
+of the same series.
+
+https://github.com/HerrEklund/wasa/tree/master/application/game_modules
+
+1. From the wasa sources (clone using git, or just https://github.com/HerrEklund/wasa/archive/master.zip[download them as a ZIP-file].
+
+1. If ZIP-download, unpack the sources and go to wasa/applicatin/game_modules/ and copy the france_40 folder and
+rename the copy to holland_44. This name also doubles as the game module ID used URLs later on.
+
+1. Now, we need to clean out the France 40 components. Remove everything inside "components".
+
+1. Copy the entire 'images' folder of the Hollad 44 vassal module to the "components" directory you just cleaned. After
+copying it, rename the directory 'images' to 'vassal'.
+
+1. Back in the 'holland_44' folder, open up the file config.js and edit the fields under "game_data" (leave everythin
+above unchanged for now):
+
+It should look something like below:
+
+    var game_data = {
+        //
+        // Game id and directory name under "game_modules"
+        'game_id': 'holland_44',
+        //
+        // Whatever you like
+        'version': '0.1a',
+        //
+        // Textual tile, used to present the game
+        'title': 'Holland 44',
+        //
+        // A sub tile is common, fill it in if applicable
+        'subtitle': 'Operation Market-Garden',
+        //
+        // Path ot the box front. Used for presenting the game
+        'box_front_img': 'components/vassal/Holland44 Cover Scaled.png',
+        //
+        // Leave this as default
+        'component_path_prefix': 'components/vassal/',
+        //
+        // A custom CSS class that will be applied to all counters of this game
+        //
+        // This class is defined in the file style.css (more about that below)
+        'component_classes': 'holland44_counter_small',
+        //
+        // This structure defines the "tabs" of the game. There are three classes of tabs:
+        // 1) Game maps, on which game components can be dropped
+        //   Note that map boards do not define their game image at this point.
+        //   (it is done in the style.css file)
+        'game_board_tabs': [
+            {
+                'title': 'Main map',
+                'id': 'main_map',
+                'classes': ''
+            }
+        ],
+        // 2) Non game-maps, like tables and Player Aids
+        //   At this point look inside the "components/vassal" directory and look for the few big files:
+        //   Note, that you need to set the correct width in pixles for each image.
+        //   If you want, you could add more tabs (images) by adding new blocks similar to the one below.
+        'extra_tabs': [
+            {
+                'title': 'Player Aid',
+                'id': 'tab2',
+                'image_src': 'components/vassal/HO44-PAC-FINAL-HiRes-1 100.jpg',
+                'image_style': 'width: 1100px; height: auto;'
+            },
+            {
+                'title': 'Terrain effects',
+                'id': 'tab3',
+                'image_src': 'components/vassal/HO44-PAC-FINAL-HiRes-2 100.jpg',
+                'image_style': 'width: 1100px; height: auto;'
+            },
+        ],
+        // 3) Rules. This tab does not display the rules, but simply a link to the rules.
+        //    you can often find a link to the game rules using Google.
+        'rules_tab': {
+            'id': 'rules_tab',
+            'link_src': 'https://s3-us-west-2.amazonaws.com/gmtwebsiteassets/Holland44/HO44-LIVINGRULES-May2018.pdf',
+            'link_title': 'Official rules by GMT'
+        },
+        // You will add the scenarios at a later point. You could keep the "scenarios" field empty for now.
+        'scenarios': [
+        ]
+    };
+
+==== Style.js
+This file contains the play board definitions as well as some custom CSS for this particular game.
+
+The IDs of the game boards above (in config.js) must each appear here. So we need include main_map
+as well as normandy44_counter_small and add the correct sizes for the big map and the small counters.
+
+You could customize the component class as well to give each component some more space in the component tray
+for example.
+
+    #main_title {
+    }
+    .theme_color {
+        color: #b2392e;
+    }
+    .custom_game_table {
+        padding: 150px;
+        padding-bottom: 500px;
+    }
+    #tab_side {
+        /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
+        position: relative;
+    }
+    #main_map {
+        background-image: url('components/vassal/HOLLAND44_Map-nf.jpg');
+        height: 6528px;
+        width: 3300px;
+    }
+    .component {
+        float: left;
+        cursor: pointer;
+        border-radius: 6px;
+    }
+    .holland44_counter_small {
+        /* Custom for this game */
+        background-repeat: no-repeat;
+        width: 85px;
+        height: 85px;
+    }
+
+==== Creating the components.js file
+The components.js file defines what usable and placeable components are available in each game.
+
+This file _can_ be created by hand, but can much faster be partly generated by a small python-script and then instead
+tidied up by hand, whatever details the script could not automatically set up.
+
+Most game module contains a script called "generate_wasa_components_js.py". Have a look at them. The script is quite
+simple as it just scans through the images-directory (under "components/vassal"). It filters out the large files and
+possibly also very small files, or files not matching a certain naming-scheme etc.
+
+The goal is to create a file called components.js. In its simplest form it looks like the one below:
+
+    var component_list = [
+        '12VA.ex.png',
+        '12VA.png',
+        '13PA.ex.png',
+        '13PA.png',
+        '17VA.ex.png',
+        '17VA.png',
+        '1CT.ex.png',
+        ];
+
+However, Wasa supports a slightly more rich structure. And the generation-script of later modules (like France 40) instead
+generates a file that looks like this (shortened to save some space), which is much more useful, but also a bit tougher
+to generate. The Normandy 44-game contains over 600 different sides (300+ front and back) to pair up.
+
+The big deal is that the script can detect the front- and back-sides of the components and create the
+pairs of images as seen below. But note, that some components may not be correctly detected in full, and so to make
+the Wasa module be correct. Some manual labour is often needed.
+
+The script could very well be re-written in a more general and more useful manner. I did not spend much time on this
+part.
+
+Also note, that the components are roughly categorized, where the first item of each list (the [] brackets) containing
+the header of each category:
+
+    var component_list = [
+        [
+            "Belgic",
+            ["be-16div", {"b": "BE-16Div-Bk.png", "f": "BE-16Div.png"}],
+            ["be-17div", {"b": "BE-17Div-Bk.png", "f": "BE-17Div.png"}],
+            ["be-18div", {"b": "BE-18Div-Bk.png", "f": "BE-18Div.png"}],
+            ["be-1cav", {"b": "BE-1Cav-Bk.png", "f": "BE-1Cav.png"}],
+        ],
+        [
+            "British",
+            ["br-12div", {"b": "BR-12Div-Bk.png", "f": "BR-12Div.png"}],
+            ["br-12l-recon", {"f": "BR-12L-recon.png"}],
+            ["br-1div", {"b": "BR-1DIV-Bk.png", "f": "BR-1Div.png"}],
+        ],
+        [
+            "French",
+            ["fr-101-84", {"b": "FR-101-84-Bk.png", "f": "FR-101-84.png"}],
+            ["fr-101-87", {"b": "FR-101-87-Bk.png", "f": "FR-101-87.png"}],
+            ["fr-102-148", {"b": "FR-102-148-Bk.png", "f": "FR-102-148.png"}],
+            ["fr-102-42", {"b": "FR-102-42-Bk.png", "f": "FR-102-42.png"}],
+            ["fr-tkbn-6", {"f": "FR-TkBn-6.png"}],
+            ["fr-tkbn-7", {"f": "FR-TkBn-7.png"}],
+            ["fr-tkbn-9", {"f": "FR-TkBn-9.png"}],
+        ],
+        [
+            "Germans",
+            ["ge-1", {"b": "GE-1-Bk.png", "f": "GE-1.png"}],
+            ["ge-10", {"b": "GE-10-Bk.png", "f": "GE-10.png"}],
+            ["ge-11", {"b": "GE-11-Bk.png", "f": "GE-11.png"}],
+            ["ge-11sch", {"b": "GE-11Sch-B.png", "f": "GE-11Sch-F.png"}],
+            ["ge-ssrem", {"b": "GE-SSREM-B.png"}],
+            ["ge-ssrem-a", {"f": "GE-SSREM-A.png"}],
+            ["ge-sstot", {"b": "GE-SSTot-B.png", "f": "GE-SSTot.png"}],
+            ["ge-ssverf", {"b": "GE-SSVerf-B.png", "f": "GE-SSVerf.png"}],
+        ],
+        [
+            "Misc",
+            ["m-autods", {"f": "m-AutoDS.png"}],
+            ["m-control-allied", {"f": "m-CONTROL-Allied.png"}],
+            ["m-train", {"f": "m-Train.png"}],
+            ["m-turn", {"f": "m-Turn-GE.png", "b": "m-Turn-Allied.png"}],
+        ]
+    ];
+
+So to get started with the often small modifications needed, it is allways a good idea too look at the images directory
+and find out if the front- and back-sides seem to follow a common pattern. The images for the back-side of the
+counters are often named with a suffice like '-b' or '-back' for example. In Holland 44, the module uses '-f' for
+the front and '-b' for the backs.
+
+I only modified a part of the script in the middle of the iteration over the directories:
+
+    back_suffixes = ['-r.png']
+    front_suffixes = ['-f.png', '.png']
+    c_key = get_c_key(file_name, back_suffixes)
+    if c_key:
+        component = component_map.get(c_key, {})
+        component['b'] = file_name
+    else:
+        c_key = get_c_key(file_name, front_suffixes)
+        component = component_map.get(c_key, {})
+        component['f'] = file_name
+
+And then run the script once to generate the first components.js. I then manually added a default header
+such as "All" to make it follow the grouped structure seen above.
+
+Now, the manual labour takes place. But wait with this until the module loads correctly, since it is very useful
+to load and see all components and the errors.
+
+==== Registering the new game module
+Before the new game module shows up in the game directory, it needs to be registered in a separate file.
+
+Open up **wasa/application/game_modules/registered_modules.js**
+
+I now add a the new entry below somewhere close to France 40:
+
+    {
+        'game_id': 'holland_44',
+        'title': 'Holland \'44',
+        'subtitle': 'Operation Market-Garden',
+        'box_front': './game_modules/holland_44/components/vassal/Holland44 Cover Scaled.png',
+        'comment': 'Partially working.'
+    },
+
+I should be able to use the new module by surfing to the lobby, seeing the game box appear:
+
+image:/img/doc/new_game_added.png[Holland 44]
+
+
+==== Testing and debugging.
+At this point, chances are a few things are not fully correctly set-up. If the module does not load correctly. Make
+sure to keep an eye on the browser console for any errors. Common errors I have encounted are:
+
+* Miss-spelled paths.
+* Failed to update some fields when I copy and pasted another module.
+* Wrong format of the components.js, a missing comma for example.
+
+
+==== Correcting generated components
+Now, after the module loads correctly, you will need to look through the component tray and update the generated file
+with better pairs of fronts and backs. You could at this point alsow categorize the components into suitable groups,
+such as by faction or component types etc.

@@ -8,8 +8,8 @@
 
 // Application context
 var wasa_client;
-var wasa_backend_host = '88.99.168.32';
-var wasa_backend_port = '7379';
+var wasa_backend_host;
+var wasa_backend_port;
 
 // Session context
 var email;
@@ -26,13 +26,16 @@ function test_is_touch_device() {
   return 'ontouchstart' in window;
 }
 
-function createWasaBoardGame() {
+function createWasaBoardGame(db_host, db_port) {
 
     var url = window.location.href;
     var uri = new URI(url);
 
     // Parse the URI
     var pq = URI.parseQuery(uri.query());
+
+    wasa_backend_host = db_host;
+    wasa_backend_port = db_port;
 
     // Try assign
     game_id = pq.game_id;

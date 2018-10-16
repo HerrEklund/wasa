@@ -1,0 +1,29 @@
+#main_title {
+}
+.theme_color {
+    color: #b2392e;
+}
+.custom_game_table {
+    padding: 150px;
+    padding-bottom: 500px;
+}
+#tab_side {
+    /* Most of the times, keep it to relative (large maps). Some small maps could use fixed though */
+    position: relative;
+}
+#main_map {
+    background-image: url('components/vassal/HOLLAND44_Map-nf.jpg');
+    height: 6528px;
+    width: 3300px;
+}
+.component {
+    float: left;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.holland44_counter_small {
+    /* Custom for this game */
+    background-repeat: no-repeat;
+    width: 85px;
+    height: 85px;
+}

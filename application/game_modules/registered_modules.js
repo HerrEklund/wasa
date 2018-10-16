@@ -55,6 +55,13 @@ var registered_modules = [
         'comment': 'Fully working.'
     },
     {
+        'game_id': 'holland_44',
+        'title': 'Holland \'44',
+        'subtitle': 'Operation Market-Garden',
+        'box_front': './game_modules/holland_44/components/vassal/Holland44 Cover Scaled.png',
+        'comment': 'Partially working.'
+    },
+    {
         'game_id': 'france_40',
         'title': 'France \'40',
         'subtitle': 'Sickle cut / Dynamno',
@@ -66,7 +73,7 @@ var registered_modules = [
         'title': 'Normandy \'44',
         'subtitle': 'D-Day and the Battle for Normandy, 6 - 27 JUNE, 1944',
         'box_front': './game_modules/normandy_44/components/vassal/cover.jpg',
-        'comment': 'Fully working.'
+        'comment': 'Partially working.'
     },
     {
         'game_id': 'fire_in_the_lake',

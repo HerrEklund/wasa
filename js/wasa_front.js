@@ -33,6 +33,7 @@ function initWasaFront() {
 
 
     $(".wasa_panel").draggable({
+        scroll: scroll_if_drag_on_edge,
         handle: '.panel-heading',
         stack: ".global_stackable"
     });
@@ -449,7 +450,7 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
         }
 
         // Stop so it dont trigger other events on board for example
-        e.stopPropagation();
+        // e.stopPropagation();
     });
 
     // listen for the long-press event
@@ -458,7 +459,7 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
     });
 
     if (enable_stack_selection) {
-        new_component.bind("click tap", function(e){
+        new_component.bind("click tap touchstart", function(e){
             console.log("Click on component!");
 
             if(new_component.hasClass('selected_component')) {
@@ -477,7 +478,7 @@ function addComponentToGameBoard(new_component, new_component_id, game_board_id,
                 new_component.addClass('selected_component');
             }
 
-            e.preventDefault();
+            //e.preventDefault();
 
             // Stop so it dont trigger other events on board for example
             e.stopPropagation();

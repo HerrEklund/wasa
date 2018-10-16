@@ -382,3 +382,48 @@ sure to keep an eye on the browser console for any errors. Common errors I have 
 Now, after the module loads correctly, you will need to look through the component tray and update the generated file
 with better pairs of fronts and backs. You could at this point alsow categorize the components into suitable groups,
 such as by faction or component types etc.
+
+
+==== Setting up scenarios / starting positions
+After the components was improved and verified. It is time for the last and most fun part before the module is ready.
+
+This step is fairly straight forward.
+
+1. Reset the game by clicking on the "Session" tap of the Player Panel.
+1. Then follow the scenario set-up instructions of the game to place all components.
+1. Verify the set-up. For complex games, it is easy to make misstakes.
+1. After all components are correctly placed, go to the chat-window and type
+
+    /dump
+
+You will be presented with a window containing all data needed for the set-up. Something like this:
+
+    /* Events from game_id = holland_44 */
+    [
+      {
+        "event_type": "dice_roll",
+        "username": "herr.eklund",
+        "time": 1539725790,
+        "payload": {
+          "dice_rolled": "1D6",
+          "result": 1
+        }
+      },
+      {
+        "event_type": "create_component",
+        "username": "herr.eklund",
+        "time": 1539726241,
+        "payload": {
+          "tray_component_id": "us-101-502-1-para-inf-bttn",
+          "component_id": "blc5d2cq",
+          "game_board_id": "main_map",
+          "left": 458.6666564941406,
+          "top": 890.0208129882812,
+          "flipped": true
+        }
+      },
+
+Copy and paste the contents into a new file under *normandy_44/scenarios*. Prepend the list of events with
+
+ var scenario_setup =
+

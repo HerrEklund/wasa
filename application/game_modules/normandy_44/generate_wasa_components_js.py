@@ -1,10 +1,9 @@
-
 import glob
 import os
-
 import struct
 import imghdr
-
+import json
+import collections
 
 def get_image_size(fname):
     '''Determine the image type of fhandle and return its size.
@@ -59,14 +58,25 @@ def create_component_js():
     max_width = 100
     max_height = 100
 
-    min_width = 40
-    min_height = 40
+    min_width = 70
+    min_height = 70
 
-    with open("components.js", "w") as components_file:
+    with open("generated_components.js", "w") as components_file:
 
-        components_file.write("var component_list = [")
+        components_file.write("var component_list = [\n")
 
+        total_files = 0
+        big_images = 0
+
+        double_sided_created = 0
+        single_sided_created = 0
+
+        # Two sided handling takes to passes
+
+        component_map = dict()
         for r in result:
+            total_files += 1
+
             #if r[-6:] in ['-2.gif', '-3.gif', '-4.gif', '-5.gif', '-6.gif']:
             #    continue
 
@@ -78,15 +88,60 @@ def create_component_js():
 
             # Skip too small or too large images
             if w > max_width or h > max_height or w < min_width or h < min_height:
+                big_images += 1
                 continue
 
             file_name = os.path.basename(r)
 
-            components_file.write("\n    '"+file_name+"',")
+
+            # Example file names:
+            #
+            # 'BE-10Div-Bk.png',
+            # 'BE-10Div.png',
+            #
+            # Note, keep simplest last, like: ['-F.png', '.png']
+            #  (else .png will trigger first.
+            #
+            back_suffixes = ['-B.png', '-b.png']
+            front_suffixes = ['.png']
+
+            c_key = get_c_key(file_name, back_suffixes)
+            if c_key:
+                component = component_map.get(c_key, {})
+                component['b'] = file_name
+            else:
+                c_key = get_c_key(file_name, front_suffixes)
+                component = component_map.get(c_key, {})
+                component['f'] = file_name
+
+            component_map[c_key] = component
+
+        component_map = collections.OrderedDict(sorted(component_map.items()))
+
+        for c in component_map.items():
+            if len(c[1]) == 1:
+                single_sided_created += 1
+            if len(c[1]) == 2:
+                double_sided_created += 1
+            components_file.write("%s,\n" % json.dumps(c))
 
         components_file.write("];")
 
+        print "Result:"
+        print "Total number of files: %s" % total_files
+        print "Big images found: %s" % big_images
+        print "Single sided components created: %s" % single_sided_created
+        print "Double sided components created: %s" % double_sided_created
+        print "Component sides used %s" % (single_sided_created + 2*double_sided_created)
 
+
+def get_c_key(file_name, suffixes):
+
+    for s in suffixes:
+        if file_name.lower().endswith(s.lower()):
+            return file_name.replace(s, '').lower()
+
+    return None
 if __name__ == '__main__':
 
     create_component_js()

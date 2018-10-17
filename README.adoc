@@ -119,6 +119,9 @@ temporary place.
 smaller files - the chits/counters and/or the cards of the game. Keep the window open until later.
 
 ==== Creating the new game module
+Creating a new game module takes 20-30 min for the basics. But touch up the components and setting up scenarios varies
+a lot from game to game.
+
 Best method is to just copy the most similar module found. Most modules are actually very similar in structure. But
 two good modules to use as a starting-point would be Red Winter or France 40. Lets go for France 40 since it is a game
 of the same series.

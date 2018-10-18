@@ -672,10 +672,18 @@ function handle_command(command) {
 
         // And show the modal
         $('#events_modal').modal('show');
+    } else if (command.startsWith('/D')) {
+        var splits = command.split(' ', 2);
+
+        var sides = parseInt(splits[1]);
+
+        roll_NDS(1, sides);
+
     } else if (command == '/help') {
         events_textarea.append("\n*** Supported commands: ");
         events_textarea.append("\n*** /dump          - Dump all commands ");
         events_textarea.append("\n*** /dump_setup    - Dump optimized version usable for scenario setups: ");
+        events_textarea.append("\n*** /D [dice size] - Roll one custom size die. (ie, a random number from 0 to size)");
         events_textarea.append("\n*** /help          - This text ");
     } else {
         events_textarea.append("\n*** ERROR: Unknown command "+command);
@@ -696,12 +704,18 @@ function optimize_events_for_setup(events) {
 }
 
 function roll_NDS(N, S) {
-    var result = 0;
+    var sum = 0;
 
+    var results = [];
     for (i = 0; i < N; i++) {
-        result += Math.floor(Math.random() * S) + 1;
+        var result = Math.floor(Math.random() * S) + 1;
+        results.push(result)
+        sum += result;
     }
-    wasa_client.roll_dice_event(N+'D'+S, result);
+
+    var result_message = results.toString() + " = " + sum;
+
+    wasa_client.roll_dice_event(N+'D'+S, result_message);
 }
 
 function filter_components(target) {

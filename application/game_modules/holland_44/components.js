@@ -344,7 +344,7 @@ var component_list = [
         ["us-setup-marker3", {"f": "US-Setup-Marker3.png"}]
     ],
     [
-        "Misc",
+        "Markers",
         ["ge-phase-marker", {"b": "GE-Phase-Marker-r.png", "f": "GE-Phase-Marker-f.png"}],
         ["ge-weather-am-marker", {"f": "GE-Weather-AM-Marker-f.png"}],
         ["ge-weather-pm-marker", {"f": "GE-Weather-PM-Marker-f.png"}],
